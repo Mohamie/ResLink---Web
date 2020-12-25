@@ -1,0 +1,6 @@
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink%20Web\ResLink\ResLink.BL\bin\Debug\ResLink.BL.dll
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink%20Web\ResLink\ResLink.BL\bin\Debug\ResLink.BL.pdb
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink%20Web\ResLink\ResLink.BL\obj\Debug\ResLink.BL.csprojAssemblyReference.cache
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink%20Web\ResLink\ResLink.BL\obj\Debug\ResLink.BL.csproj.CoreCompileInputs.cache
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink%20Web\ResLink\ResLink.BL\obj\Debug\ResLink.BL.dll
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink%20Web\ResLink\ResLink.BL\obj\Debug\ResLink.BL.pdb
