@@ -140,6 +140,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackendlessInit\BackendlessInit.cs" />
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Complaint.cs" />
@@ -154,9 +155,7 @@
     <Compile Include="Models\YearOfStudy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Managers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
