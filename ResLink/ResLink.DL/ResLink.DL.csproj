@@ -135,6 +135,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResLinkDatabase.cs" />
+    <Compile Include="ResLinkUserLogin.cs" />
+    <Compile Include="ResLinkUserRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

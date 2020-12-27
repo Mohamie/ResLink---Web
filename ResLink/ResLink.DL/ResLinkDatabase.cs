@@ -27,6 +27,7 @@ namespace ResLink.DL
         public void DeleteItem<T>( string objectId)
         {
             Backendless.Data.Of<T>().Remove($"objectId = '{objectId}'");
+
         }
     }
 }
