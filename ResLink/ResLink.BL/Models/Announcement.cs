@@ -12,6 +12,7 @@ namespace ResLink.BL.Models
         [SetClientClassMemberName("objectID")]
         public int ObjectID { get; set; }
 
+
         [SetClientClassMemberName("announcementDescription")]
         public string AnnouncementDescription { get; set; }
 
