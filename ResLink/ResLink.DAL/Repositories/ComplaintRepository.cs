@@ -24,7 +24,7 @@ namespace ResLink.DAL.Repositories
         }
 
 
-        public static IEnumerable<Complaint> GetComplaint()
+        public static IEnumerable<Complaint> getComplaints()
         {
             return instance.db.GetItems<Complaint>();
         }

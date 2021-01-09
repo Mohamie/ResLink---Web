@@ -24,7 +24,7 @@ namespace ResLink.DAL.Repositories
         }
 
 
-        public static IEnumerable<Event> GetEvent()
+        public static IEnumerable<Event> GetEvents()
         {
             return instance.db.GetItems<Event>();
         }
