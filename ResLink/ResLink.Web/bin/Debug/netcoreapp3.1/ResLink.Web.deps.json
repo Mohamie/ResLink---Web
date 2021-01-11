@@ -25,6 +25,8 @@
       "ResLink.Web/1.0.0": {
         "dependencies": {
           "Radzen.Blazor": "2.18.10",
+          "ResLink.BL": "1.0.0",
+          "ResLink.DAL": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -386,6 +388,42 @@
         },
         "compile": {
           "lib/netcoreapp2.1/System.Linq.Dynamic.Core.dll": {}
+        }
+      },
+      "ResLink.BL/1.0.0": {
+        "runtime": {
+          "ResLink.BL.dll": {}
+        },
+        "compile": {
+          "ResLink.BL.dll": {}
+        }
+      },
+      "ResLink.DAL/1.0.0": {
+        "dependencies": {
+          "ResLink.BL": "1.0.0",
+          "ResLink.DL": "1.0.0"
+        },
+        "runtime": {
+          "ResLink.DAL.dll": {}
+        },
+        "compile": {
+          "ResLink.DAL.dll": {}
+        }
+      },
+      "ResLink.DL/1.0.0": {
+        "runtime": {
+          "ResLink.DL.dll": {}
+        },
+        "compile": {
+          "ResLink.DL.dll": {}
+        }
+      },
+      "Backendless/6.0.2.0": {
+        "runtime": {
+          "Backendless.dll": {
+            "assemblyVersion": "6.0.2.0",
+            "fileVersion": "6.0.2.0"
+          }
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -2192,6 +2230,26 @@
       "sha512": "sha512-I3IaeyTL7eXF1EmRe5K5qpFomnD0Fd8uLfv7SqBC9IniiM2xaUDMarjDsHT1Qbvv40irH0278RkzEu0ajHKh+w==",
       "path": "system.linq.dynamic.core/1.2.2",
       "hashPath": "system.linq.dynamic.core.1.2.2.nupkg.sha512"
+    },
+    "ResLink.BL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ResLink.DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ResLink.DL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Backendless/6.0.2.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
       "type": "referenceassembly",

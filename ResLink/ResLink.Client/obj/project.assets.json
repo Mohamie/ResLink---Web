@@ -5687,20 +5687,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user-pc\\.nuget\\packages\\": {}
+    "C:\\Users\\mohau\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.Client\\ResLink.Client.csproj",
+      "projectUniqueName": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.Client\\ResLink.Client.csproj",
       "projectName": "ResLink.Client",
-      "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.Client\\ResLink.Client.csproj",
-      "packagesPath": "C:\\Users\\user-pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.Client\\obj\\",
+      "projectPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.Client\\ResLink.Client.csproj",
+      "packagesPath": "C:\\Users\\mohau\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.Client\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\user-pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\mohau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
@@ -5711,12 +5716,13 @@
       },
       "frameworks": {
         "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj": {
-              "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj"
+            "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj": {
+              "projectPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj"
             },
-            "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj": {
-              "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj"
+            "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj": {
+              "projectPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj"
             }
           }
         }
@@ -5729,6 +5735,7 @@
     },
     "frameworks": {
       "netstandard2.1": {
+        "targetAlias": "netstandard2.1",
         "dependencies": {
           "Backendless.NET": {
             "target": "Package",
@@ -5772,7 +5779,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

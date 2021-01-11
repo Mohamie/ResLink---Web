@@ -6,7 +6,7 @@
   "linkerEnabled": false,
   "resources": {
     "assembly": {
-      "ResLink.Client.dll": "sha256-GRNJjSdGSVBmdj7NUuCTkFwM+rFtnWUmd1yV8Shqc5k=",
+      "ResLink.Client.dll": "sha256-8g1D6bYk8Eyg01WXsLA+JdVhJivFfhsfviQa1OwzCjk=",
       "System.Net.Http.Json.dll": "sha256-99dseBOagY3mzu5Y8Eqm8gRI+o8QbbCp7R2Ew9bQ+5E=",
       "System.Buffers.dll": "sha256-ZxXy75PYbzJxNfAc\/SAP1nUYm4gt1jSaOpFnBb9m85M=",
       "mscorlib.dll": "sha256-BaZPMj95+YNe3G4ckTGD6szZFwZeA2MOHn91zTGKDeU=",
@@ -64,9 +64,9 @@
       "System.Reflection.dll": "sha256-8Q+uKcqkDjFjcXfcYU073dQlKb5IRta\/UHFtV3Tjz9s=",
       "Newtonsoft.Json.dll": "sha256-mRd6TL4DYldo1ko9czkjEDcoiPdMPrJxz3dekwV6OOY=",
       "SocketIoClientDotNet.dll": "sha256-BRPyovttOgQlJfaQKBuvIbM7tXM8C3s4ssz3y5MDeSI=",
-      "ResLink.DAL.dll": "sha256-PrWV+kqdD9p\/RJEtr8ol4u97tigYrmEptPCDVr3YxfY=",
-      "ResLink.BL.dll": "sha256-XRLU1R12g0+rWwBPpcTorG0m0sirjUCvsF45Eg8OACI=",
-      "ResLink.DL.dll": "sha256-tFfukbd+k9IPzhuPZJy4nP4RwCX7JpNFNPlJJBw8WPA=",
+      "ResLink.DAL.dll": "sha256-Cj16fClOevuuVRjSvtDJn6vgV4Etl38fQHG80FwXFm8=",
+      "ResLink.BL.dll": "sha256-vsp2utN0pQkE4kU7I6LFuSHabf4tVR1XE2B2q+6LLyg=",
+      "ResLink.DL.dll": "sha256-7T2ZafV+JchizTOnQLwskz9GM0HbLGItQ6a2AzUrb9g=",
       "Radzen.Blazor.dll": "sha256-dZc8gqGpA\/+U9LcO3C5Af7Jd6aE+pMrIo7xzKC3DGXU=",
       "System.ComponentModel.Annotations.dll": "sha256-tmnkCmP9OzLUkpQ3LP7PRosi7gt5pyfEZCM6aqAokFI=",
       "System.ComponentModel.DataAnnotations.dll": "sha256-LIfCYwg+PHltTK4z3EnbSkA7m2cn8JS4jHVthdKrDF8=",
@@ -94,10 +94,10 @@
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-czNf3btAeBW\/vvID5LAfgcsNZ+GM3ssVuPaMflcg0rs="
     },
     "pdb": {
-      "ResLink.Client.pdb": "sha256-YZDeygw47PX8HdklA9XBIOtPjj\/jvl16D9Xevc7CBDo=",
-      "ResLink.DAL.pdb": "sha256-I5MYyju0lBg9p9q7uMQBYkYf80gC8v9hKN6TpnKe8ZU=",
-      "ResLink.BL.pdb": "sha256-EBdFGYGAPLj5Y16QhftQXf5Ym5GJ8wAIQaDshKvYDrI=",
-      "ResLink.DL.pdb": "sha256-teSzXSM19uHe6QCx7d2oRCpU4CJ2irkxJm3Sg7zLPvM=",
+      "ResLink.Client.pdb": "sha256-n5e+RhhtYk+oM7QhzQonG5kNFlx58SpAlcYj0hYnx5o=",
+      "ResLink.DAL.pdb": "sha256-g9qKLlphID\/6FuBiXNwodKOpQTrn87fhwksJFp+WTLY=",
+      "ResLink.BL.pdb": "sha256-nrKDnM05K\/yFcSCJ1EGIz5B1XNYCDpQ1caR1U1K32SY=",
+      "ResLink.DL.pdb": "sha256-0hePNQPAzwo7CbLsrQ3q3sh2wYo38HPBLyNC9MrqsHA=",
       "System.Linq.Dynamic.Core.pdb": "sha256-zOBZ+bv44N0h0EaRYZhGqngeYcBonLjpA36C+TrA\/lA="
     },
     "runtime": {
