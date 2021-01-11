@@ -16,7 +16,7 @@ namespace ResLink.BL.Models
         public string ResidenceName { get; set; }
 
         [SetClientClassMemberName("residenceGender")]
-        public string ResidenceGender { get; set; }
+        public Gender ResidenceGender { get; set; }
 
         [SetClientClassMemberName("residenceManager")]
         public ResidenceManager ResidenceManager { get; set; }
