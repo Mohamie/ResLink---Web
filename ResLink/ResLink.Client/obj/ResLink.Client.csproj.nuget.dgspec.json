@@ -1,0 +1,137 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.Client\\ResLink.Client.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj",
+        "projectName": "ResLink.BL",
+        "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.Client\\ResLink.Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.Client\\ResLink.Client.csproj",
+        "projectName": "ResLink.Client",
+        "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.Client\\ResLink.Client.csproj",
+        "packagesPath": "C:\\Users\\user-pc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.Client\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\user-pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {
+              "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj": {
+                "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj"
+              },
+              "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj": {
+                "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "Backendless.NET": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly": {
+              "target": "Package",
+              "version": "[3.2.1, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.Build": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.2.1, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.2.1, )"
+            },
+            "Radzen.Blazor": {
+              "target": "Package",
+              "version": "[2.18.10, )"
+            },
+            "System.Net.Http.Json": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj",
+        "projectName": "ResLink.DAL",
+        "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj": {
+                "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj"
+              },
+              "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DL\\ResLink.DL.csproj": {
+                "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DL\\ResLink.DL.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DL\\ResLink.DL.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DL\\ResLink.DL.csproj",
+        "projectName": "ResLink.DL",
+        "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DL\\ResLink.DL.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}

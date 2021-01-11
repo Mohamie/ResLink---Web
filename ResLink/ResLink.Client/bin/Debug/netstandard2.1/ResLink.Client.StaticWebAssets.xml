@@ -1,0 +1,4 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink\ResLink.Client\bin\Debug\netstandard2.1\wwwroot\" />
+  <ContentRoot BasePath="_content/Radzen.Blazor" Path="C:\Users\user-pc\.nuget\packages\radzen.blazor\2.18.10\build\..\staticwebassets\" />
+</StaticWebAssets>

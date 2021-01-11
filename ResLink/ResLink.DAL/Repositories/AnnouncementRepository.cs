@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ResLink.DAL
+namespace ResLink.DAL.Repositories
 {
     public class AnnouncementRepository
     {
