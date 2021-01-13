@@ -1,0 +1,42 @@
+﻿@page "/auth/login"
+@layout AuthLayout
+
+
+<h1 class="text-muted text-center display-2">Welcome To ResLink</h1>
+<h1 class="text-muted text-center">Login To Account</h1>
+
+<div class="row mt-5">
+    <div class="col-7 mx-auto">
+        <EditForm Model="@user" OnValidSubmit="LoginUser">
+            <RadzenCard>
+                <RadzenLabel Text="Email"/>
+                <RadzenTextBox @bind-Value="user.Email" class="my-2"/>
+                
+                <RadzenLabel Text="Password"/>
+                <RadzenPassword @bind-Value="user.Password"  class="my-2"/>
+
+                <RadzenButton class="my-2" Text="Login" ButtonStyle="Radzen.ButtonStyle.Success" />
+
+            </RadzenCard>
+
+        </EditForm>
+        <h4 class="text-muted text-info my-2">Registered Your Res Yet? <span><a href="/auth/register">Click To Register</a></span></h4>
+    </div>
+</div>
+
+@code 
+{
+    public class User
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+
+    }
+
+    User user = new User();
+
+    private void LoginUser()
+    {
+
+    }
+}

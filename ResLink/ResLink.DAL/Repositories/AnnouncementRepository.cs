@@ -24,24 +24,24 @@ namespace ResLink.DAL.Repositories
         }
 
 
-        public static IEnumerable<Announcement> GetAnnouncements()
+        public static async Task<IEnumerable<Announcement>> GetAnnouncements()
         {
-            return instance.db.GetItems<Announcement>();
+            return await instance.db.GetItems<Announcement>();
         }
 
-        public static Announcement GetAnnouncementById(string id)
+        public static async Task<Announcement> GetAnnouncementById(string id)
         {
-            return instance.db.GetItem<Announcement>(id);
+            return await instance.db.GetItem<Announcement>(id);
         }
 
-        public static void SaveAnnouncement(Announcement item)
+        public static async Task SaveAnnouncement(Announcement item)
         {
-            instance.db.SaveItem<Announcement>(item);
+            await instance.db.SaveItem<Announcement>(item);
         }
 
-        public static void DeleteAnnouncement( string objectId)
+        public static async Task DeleteAnnouncement( string objectId)
         {
-            instance.db.DeleteItem<Announcement>(objectId);
+            await instance.db.DeleteItem<Announcement>(objectId);
         }
 
         

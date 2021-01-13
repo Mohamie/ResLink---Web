@@ -1,0 +1,20 @@
+﻿<h3 class="text-muted">Events List</h3>
+
+<RadzenGrid class="shadow mt-3" AllowFiltering="true" AllowPaging="true" PageSize="4"
+            AllowSorting="true" Data="@events" TItem="Event" ColumnWidth="200px">
+    <Columns>
+        <RadzenGridColumn TItem="Event" Property="EventTitle" Title="Title" />
+        <RadzenGridColumn TItem="Event" Property="EventDescription" Title="Description" />
+        <RadzenGridColumn TItem="Event" Property="EventTitle" Title="Date Scheduled" />
+        <RadzenGridColumn TItem="Event" Property="EventTitle" Title="Venue" />
+    </Columns>
+</RadzenGrid>
+
+@code {
+
+    List<Event> events = new List<Event>();
+
+   
+
+   
+}

@@ -21,6 +21,7 @@ namespace ResLink.BL.Models
         public string AnnouncementTitle { get; set; }
 
 
+
         [SetClientClassMemberName("houseCommitee")]
         public HouseCommittee HouseCommittee { get; set; }
     }

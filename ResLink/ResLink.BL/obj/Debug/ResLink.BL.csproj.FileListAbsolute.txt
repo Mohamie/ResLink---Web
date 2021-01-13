@@ -35,3 +35,4 @@ C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink-
 C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.BL\obj\Debug\ResLink.BL.csproj.CopyComplete
 C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.BL\obj\Debug\ResLink.BL.dll
 C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.BL\obj\Debug\ResLink.BL.pdb
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.BL\obj\Debug\ResLink.BL.csprojAssemblyReference.cache

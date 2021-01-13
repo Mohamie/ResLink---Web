@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZbbsUhrUqtnrAL5UBCtUmwM+8qwcfXz0CaJu5lrJshynjbYM+TPQEH9N/LHLc+lEeomLSrpjgEYciKw8v24Z7A==",
+  "dgSpecHash": "RJSnRwdr+gohV/idowjsTuErlsSg8UklHrEDmvijoZi/TxV7YbH+kxtRuAy3DQ+I8aEeZsc6NUw35qz8GOkUxg==",
   "success": true,
   "projectFilePath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.Web\\ResLink.Web.csproj",
   "expectedPackageFiles": [
@@ -20,5 +20,12 @@
     "C:\\Users\\mohau\\.nuget\\packages\\radzen.blazor\\2.18.10\\radzen.blazor.2.18.10.nupkg.sha512",
     "C:\\Users\\mohau\\.nuget\\packages\\system.linq.dynamic.core\\1.2.2\\system.linq.dynamic.core.1.2.2.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.Web\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

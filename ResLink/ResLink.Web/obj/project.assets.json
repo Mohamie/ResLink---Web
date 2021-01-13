@@ -171,6 +171,37 @@
         "runtime": {
           "lib/netcoreapp2.1/System.Linq.Dynamic.Core.dll": {}
         }
+      },
+      "ResLink.BL/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ResLink.BL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResLink.BL.dll": {}
+        }
+      },
+      "ResLink.DAL/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "ResLink.BL": "1.0.0",
+          "ResLink.DL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ResLink.DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResLink.DAL.dll": {}
+        }
+      },
+      "ResLink.DL/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ResLink.DL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResLink.DL.dll": {}
+        }
       }
     }
   },
@@ -515,11 +546,28 @@
         "system.linq.dynamic.core.1.2.2.nupkg.sha512",
         "system.linq.dynamic.core.nuspec"
       ]
+    },
+    "ResLink.BL/1.0.0": {
+      "type": "project",
+      "path": "../ResLink.BL/ResLink.BL.csproj",
+      "msbuildProject": "../ResLink.BL/ResLink.BL.csproj"
+    },
+    "ResLink.DAL/1.0.0": {
+      "type": "project",
+      "path": "../ResLink.DAL/ResLink.DAL.csproj",
+      "msbuildProject": "../ResLink.DAL/ResLink.DAL.csproj"
+    },
+    "ResLink.DL/1.0.0": {
+      "type": "project",
+      "path": "../ResLink.DL/ResLink.DL.csproj",
+      "msbuildProject": "../ResLink.DL/ResLink.DL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Radzen.Blazor >= 2.18.10"
+      "Radzen.Blazor >= 2.18.10",
+      "ResLink.BL >= 1.0.0",
+      "ResLink.DAL >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -553,7 +601,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj": {
+              "projectPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj"
+            },
+            "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj": {
+              "projectPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -592,5 +647,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.Web\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

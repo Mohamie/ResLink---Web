@@ -82,6 +82,20 @@ using Radzen.Blazor;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\_Imports.razor"
+using ResLink.BL.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\_Imports.razor"
+using ResLink.DAL.Repositories;
+
+#line default
+#line hidden
+#nullable disable
     public partial class SurveyPrompt : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

@@ -24,24 +24,24 @@ namespace ResLink.DAL.Repositories
         }
 
 
-        public static IEnumerable<Complaint> getComplaints()
+        public static async Task<IEnumerable<Complaint>> getComplaints()
         {
-            return instance.db.GetItems<Complaint>();
+            return await instance.db.GetItems<Complaint>();
         }
 
-        public static Complaint GetComplaintById(string id)
+        public static async Task<Complaint> GetComplaintById(string id)
         {
-            return instance.db.GetItem<Complaint>(id);
+            return await instance.db.GetItem<Complaint>(id);
         }
 
-        public static void SaveComplaint(Complaint item)
+        public static async Task SaveComplaint(Complaint item)
         {
-            instance.db.SaveItem<Complaint>(item);
+           await instance.db.SaveItem<Complaint>(item);
         }
 
-        public static void DeleteComplaint(string objectId)
+        public static async Task DeleteComplaint(string objectId)
         {
-            instance.db.DeleteItem<Complaint>(objectId);
+            await instance.db.DeleteItem<Complaint>(objectId);
         }
 
     }

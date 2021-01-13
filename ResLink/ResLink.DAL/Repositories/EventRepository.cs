@@ -24,24 +24,24 @@ namespace ResLink.DAL.Repositories
         }
 
 
-        public static IEnumerable<Event> GetEvents()
+        public static async Task<IEnumerable<Event>> GetEvents()
         {
-            return instance.db.GetItems<Event>();
+            return await instance.db.GetItems<Event>();
         }
 
-        public static Event GetEventById(string id)
+        public static async Task<Event> GetEventById(string id)
         {
-            return instance.db.GetItem<Event>(id);
+            return await instance.db.GetItem<Event>(id);
         }
 
-        public static void SaveEvent(Event item)
+        public static async Task SaveEvent(Event item)
         {
-            instance.db.SaveItem<Event>(item);
+            await instance.db.SaveItem<Event>(item);
         }
 
-        public static void DeleteEvent(string objectId)
+        public static async Task DeleteEvent(string objectId)
         {
-            instance.db.DeleteItem<Event>(objectId);
+           await instance.db.DeleteItem<Event>(objectId);
         }
     }
 }
