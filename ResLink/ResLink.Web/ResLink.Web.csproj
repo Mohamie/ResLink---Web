@@ -8,4 +8,9 @@
     <PackageReference Include="Radzen.Blazor" Version="2.18.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ResLink.BL\ResLink.BL.csproj" />
+    <ProjectReference Include="..\ResLink.DAL\ResLink.DAL.csproj" />
+  </ItemGroup>
+
 </Project>

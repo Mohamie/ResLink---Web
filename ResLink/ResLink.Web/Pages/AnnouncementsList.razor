@@ -1,0 +1,29 @@
+﻿
+<h3 class="text-muted">Announcements List</h3>
+
+@if (announcements != null)
+{
+    <RadzenGrid class="shadow mt-3" AllowFiltering="true" AllowPaging="true" PageSize="4"
+                AllowSorting="true" Data="@announcements" TItem="Announcement" ColumnWidth="200px">
+        <Columns>
+            <RadzenGridColumn TItem="Announcement" Property="AnnouncementTitle" Title="Title" />
+            <RadzenGridColumn TItem="Announcement" Property="AnnouncementDescription" Title="Description" />
+        </Columns>
+    </RadzenGrid>
+
+}
+else
+{
+    <div class="text-muted">No Announcements To Show</div>
+}
+
+
+@code {
+
+    List<Announcement> announcements = new List<Announcement>();
+
+    protected override void OnInitialized()
+    {
+       // announcements = AnnouncementRepository.GetAnnouncements().ToList();
+    }
+}

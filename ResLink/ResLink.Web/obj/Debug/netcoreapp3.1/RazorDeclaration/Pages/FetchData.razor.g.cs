@@ -84,6 +84,20 @@ using Radzen.Blazor;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink\ResLink.Web\_Imports.razor"
+using ResLink.BL.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink\ResLink.Web\_Imports.razor"
+using ResLink.DAL.Repositories;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 3 "C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink\ResLink.Web\Pages\FetchData.razor"
 using ResLink.Web.Data;
 

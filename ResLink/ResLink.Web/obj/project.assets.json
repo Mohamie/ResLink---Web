@@ -171,6 +171,37 @@
         "runtime": {
           "lib/netcoreapp2.1/System.Linq.Dynamic.Core.dll": {}
         }
+      },
+      "ResLink.BL/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ResLink.BL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResLink.BL.dll": {}
+        }
+      },
+      "ResLink.DAL/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "ResLink.BL": "1.0.0",
+          "ResLink.DL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ResLink.DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResLink.DAL.dll": {}
+        }
+      },
+      "ResLink.DL/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ResLink.DL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResLink.DL.dll": {}
+        }
       }
     }
   },
@@ -515,11 +546,28 @@
         "system.linq.dynamic.core.1.2.2.nupkg.sha512",
         "system.linq.dynamic.core.nuspec"
       ]
+    },
+    "ResLink.BL/1.0.0": {
+      "type": "project",
+      "path": "../ResLink.BL/ResLink.BL.csproj",
+      "msbuildProject": "../ResLink.BL/ResLink.BL.csproj"
+    },
+    "ResLink.DAL/1.0.0": {
+      "type": "project",
+      "path": "../ResLink.DAL/ResLink.DAL.csproj",
+      "msbuildProject": "../ResLink.DAL/ResLink.DAL.csproj"
+    },
+    "ResLink.DL/1.0.0": {
+      "type": "project",
+      "path": "../ResLink.DL/ResLink.DL.csproj",
+      "msbuildProject": "../ResLink.DL/ResLink.DL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Radzen.Blazor >= 2.18.10"
+      "Radzen.Blazor >= 2.18.10",
+      "ResLink.BL >= 1.0.0",
+      "ResLink.DAL >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -547,7 +595,14 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj": {
+              "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj"
+            },
+            "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj": {
+              "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

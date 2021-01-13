@@ -4,6 +4,48 @@
     "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.Web\\ResLink.Web.csproj": {}
   },
   "projects": {
+    "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj",
+        "projectName": "ResLink.BL",
+        "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj",
+        "projectName": "ResLink.DAL",
+        "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj": {
+                "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj"
+              },
+              "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DL\\ResLink.DL.csproj": {
+                "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DL\\ResLink.DL.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DL\\ResLink.DL.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DL\\ResLink.DL.csproj",
+        "projectName": "ResLink.DL",
+        "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DL\\ResLink.DL.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.Web\\ResLink.Web.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -26,7 +68,14 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj": {
+                "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.BL\\ResLink.BL.csproj"
+              },
+              "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj": {
+                "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink\\ResLink.DAL\\ResLink.DAL.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
