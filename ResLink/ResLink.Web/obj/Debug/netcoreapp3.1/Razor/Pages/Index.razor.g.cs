@@ -93,6 +93,13 @@ using ResLink.DAL.Repositories;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 13 "C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\_Imports.razor"
+using ResLink.Web.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {

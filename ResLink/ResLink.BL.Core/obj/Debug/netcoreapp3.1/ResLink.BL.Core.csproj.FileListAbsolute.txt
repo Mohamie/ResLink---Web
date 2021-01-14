@@ -1,0 +1,9 @@
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.BL.Core\bin\Debug\netcoreapp3.1\ResLink.BL.Core.deps.json
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.BL.Core\bin\Debug\netcoreapp3.1\ResLink.BL.Core.dll
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.BL.Core\bin\Debug\netcoreapp3.1\ResLink.BL.Core.pdb
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.BL.Core\obj\Debug\netcoreapp3.1\ResLink.BL.Core.AssemblyInfoInputs.cache
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.BL.Core\obj\Debug\netcoreapp3.1\ResLink.BL.Core.AssemblyInfo.cs
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.BL.Core\obj\Debug\netcoreapp3.1\ResLink.BL.Core.csproj.CoreCompileInputs.cache
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.BL.Core\obj\Debug\netcoreapp3.1\ResLink.BL.Core.dll
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.BL.Core\obj\Debug\netcoreapp3.1\ResLink.BL.Core.pdb
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.BL.Core\obj\Debug\netcoreapp3.1\ResLink.BL.Core.csprojAssemblyReference.cache

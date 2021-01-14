@@ -92,9 +92,7 @@ C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink-
 C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\bin\Debug\netcoreapp3.1\Backendless.dll
 C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\bin\Debug\netcoreapp3.1\ResLink.BL.pdb
 C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\bin\Debug\netcoreapp3.1\ResLink.DAL.pdb
-C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\bin\Debug\netcoreapp3.1\ResLink.DAL.dll.config
 C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\bin\Debug\netcoreapp3.1\ResLink.DL.pdb
-C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\bin\Debug\netcoreapp3.1\ResLink.DL.dll.config
 C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\ResLink.Web.dll
 C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\ResLink.Web.TagHelpers.input.cache
 C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\ResLink.Web.TagHelpers.output.cache
@@ -128,3 +126,8 @@ C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink-
 C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\ResLink.Web.dll
 C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\ResLink.Web.pdb
 C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\ResLink.Web.genruntimeconfig.cache
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\bin\Debug\netcoreapp3.1\EngineIoClientDotNet.dll
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\bin\Debug\netcoreapp3.1\SocketIoClientDotNet.dll
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\bin\Debug\netcoreapp3.1\SuperSocket.ClientEngine.dll
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.Web\bin\Debug\netcoreapp3.1\WebSocket4Net.dll

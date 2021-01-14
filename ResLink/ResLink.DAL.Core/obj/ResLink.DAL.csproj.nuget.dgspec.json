@@ -1,0 +1,201 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\ResLink.DAL.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.BL.Core\\ResLink.BL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.BL.Core\\ResLink.BL.csproj",
+        "projectName": "ResLink.BL",
+        "projectPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.BL.Core\\ResLink.BL.csproj",
+        "packagesPath": "C:\\Users\\mohau\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.BL.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\mohau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Backendless.NET": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\ResLink.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\ResLink.DAL.csproj",
+        "projectName": "ResLink.DAL",
+        "projectPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\ResLink.DAL.csproj",
+        "packagesPath": "C:\\Users\\mohau\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\mohau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.BL.Core\\ResLink.BL.csproj": {
+                "projectPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.BL.Core\\ResLink.BL.csproj"
+              },
+              "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DL.Core\\ResLink.DL.csproj": {
+                "projectPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DL.Core\\ResLink.DL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DL.Core\\ResLink.DL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DL.Core\\ResLink.DL.csproj",
+        "projectName": "ResLink.DL",
+        "projectPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DL.Core\\ResLink.DL.csproj",
+        "packagesPath": "C:\\Users\\mohau\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mohau\\Documents\\IT\\3rd Year\\WIL\\Phase 3\\ResLink Web App GitHub\\ResLink---Web\\ResLink\\ResLink.DL.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\mohau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Backendless.NET": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

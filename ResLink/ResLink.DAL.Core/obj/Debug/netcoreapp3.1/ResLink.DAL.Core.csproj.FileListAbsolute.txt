@@ -1,0 +1,14 @@
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.Core.csprojAssemblyReference.cache
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.Core.AssemblyInfoInputs.cache
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.Core.AssemblyInfo.cs
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.Core.csproj.CoreCompileInputs.cache
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.DAL.Core.deps.json
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.DAL.Core.dll
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.DAL.Core.pdb
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.BL.Core.dll
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.DL.Core.dll
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.BL.Core.pdb
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.DL.Core.pdb
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.Core.csproj.CopyComplete
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.Core.dll
+C:\Users\mohau\Documents\IT\3rd Year\WIL\Phase 3\ResLink Web App GitHub\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.Core.pdb

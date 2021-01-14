@@ -22,8 +22,8 @@ else
 
     List<Announcement> announcements = new List<Announcement>();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-       // announcements = AnnouncementRepository.GetAnnouncements().ToList();
+       announcements = await AnnouncementRepository.GetAnnouncements() as List<Announcement>;
     }
 }
