@@ -1,0 +1,32 @@
+﻿@page "/announcements"
+@inject DialogService DialogService
+
+
+<RadzenButton class="my-4" Text="Add Announcement" Icon="add_circle_outline" Click="(() => AddAnnouncement())" />
+
+
+@if (announcement == null)
+{
+    <AnnouncementsList />
+
+}
+else
+{
+    <AnnouncementsList Announcement="announcement" />
+}
+
+@code
+{
+    Announcement announcement;
+
+    async Task AddAnnouncement()
+    {
+        announcement = await DialogService.OpenAsync<AddAnnouncementPage>("Add Announcement");
+
+        if(announcement != null)
+        {
+            await AnnouncementRepository.SaveAnnouncement(announcement);
+        }
+
+    }
+}

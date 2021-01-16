@@ -1,0 +1,68 @@
+﻿@inject DialogService DialogService
+
+<EditForm class="form-group" Model="_event" OnValidSubmit="OnSubmit">
+
+    <div class="row" style="margin-bottom: 16px">
+        <div class="col-3">
+            <RadzenLabel Text="Title" />
+        </div>
+        <div class="col">
+            <RadzenTextBox class="form-control" @bind-Value="@_event.EventTitle" Name="EventTitle" />
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 16px">
+        <div class="col-3">
+            <RadzenLabel Text="Start Date" />
+        </div>
+        <div class="col">
+            <RadzenDatePicker @bind-Value="@_event.EventStartTime" ShowTime="true" />
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 16px">
+        <div class="col-3">
+            <RadzenLabel Text="End Time" />
+        </div>
+        <div class="col">
+            <RadzenDatePicker @bind-Value="@_event.EventEndTime" ShowTime="true" />
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 16px">
+        <div class="col-3">
+            <RadzenLabel Text="Event Description" />
+        </div>
+        <div class="col">
+            <RadzenTextArea class="form-control" Style="min-height: 80px;" @bind-Value="@_event.EventDescription"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-6">
+            <RadzenButton ButtonType="ButtonType.Submit" Text="Save" />
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</EditForm>
+
+
+@code {
+
+    [Parameter]
+    public DateTime EventStartTime { get; set; }
+
+    [Parameter]
+    public DateTime EventEndTime { get; set; }
+
+
+    Event _event = new Event();
+
+    protected override void OnParametersSet()
+    {
+        _event.EventStartTime = EventStartTime;        
+        _event.EventEndTime = EventEndTime;        
+    }
+
+    private void OnSubmit()
+    {
+        DialogService.Close(_event);
+    }
+}

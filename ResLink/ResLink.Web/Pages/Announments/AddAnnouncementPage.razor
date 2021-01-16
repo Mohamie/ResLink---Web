@@ -1,0 +1,34 @@
+﻿@inject DialogService DialogService
+
+<EditForm class="form-group" Model="announcement" OnValidSubmit="OnSubmit">
+
+        <RadzenLabel Text="Title"/>
+        <RadzenTextBox class="form-control my-3" Placeholder="Announcement Title" @bind-Value="announcement.AnnouncementTitle"/>
+  
+        <RadzenLabel class="mb-3" Text="Description" />
+        <RadzenHtmlEditor @bind-Value=@announcement.AnnouncementDescription style="height: 500px; margin-bottom: 1rem;" UploadUrl="upload/image">
+            <RadzenHtmlEditorUndo />
+            <RadzenHtmlEditorRedo />
+            <RadzenHtmlEditorSeparator />
+            <RadzenHtmlEditorBold />
+            <RadzenHtmlEditorItalic />
+            <RadzenHtmlEditorUnderline />
+            <RadzenHtmlEditorStrikeThrough />
+            <RadzenHtmlEditorSeparator />
+            <RadzenHtmlEditorColor />
+            <RadzenHtmlEditorBackground />
+            <RadzenHtmlEditorRemoveFormat />
+        </RadzenHtmlEditor>
+
+        <RadzenButton ButtonType="ButtonType.Submit" ButtonStyle="ButtonStyle.Success" Text="Save"/>
+</EditForm>
+
+@code {
+
+    Announcement announcement = new Announcement();
+
+    private void OnSubmit()
+    {
+        DialogService.Close(announcement);
+    }
+}

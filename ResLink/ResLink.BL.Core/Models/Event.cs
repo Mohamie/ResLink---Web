@@ -9,13 +9,22 @@ namespace ResLink.BL.Models
 {
     public class Event
     {
-        [SetClientClassMemberName("objectID")]
-        public int ObjectID { get; set; }
+        [SetClientClassMemberName("objectId")]
+        public string objectId { get; set; }
+
+        [SetClientClassMemberName("eventTitle")]
+        public string EventTitle { get; set; }
 
         [SetClientClassMemberName("eventDescription")]
         public string EventDescription { get; set; }
 
-        [SetClientClassMemberName("eventTitle")]
-        public string EventTitle { get; set; }
+        [SetClientClassMemberName("eventStartTime")]
+        public DateTime EventStartTime { get; set; }
+
+        [SetClientClassMemberName("eventEndTime")]
+        public DateTime EventEndTime { get; set; }
+
+
+
     }
 }

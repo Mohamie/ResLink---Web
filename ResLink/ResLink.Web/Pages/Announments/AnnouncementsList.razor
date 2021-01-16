@@ -1,0 +1,38 @@
+﻿
+<h3 class="text-muted">Announcements List</h3>
+
+
+<RadzenGrid class="shadow mt-3" AllowFiltering="true" AllowPaging="true" PageSize="5"
+            AllowSorting="true" Data="@announcements" TItem="Announcement" ColumnWidth="200px">
+    <Columns>
+        <RadzenGridColumn TItem="Announcement" Property="AnnouncementTitle" Title="Title" />
+        <RadzenGridColumn TItem="Announcement" Property="AnnouncementDescription" Title="Description" />
+    </Columns>
+</RadzenGrid>
+
+
+
+@code {
+
+    List<Announcement> announcements = new List<Announcement>();
+
+    [Parameter]
+    public Announcement Announcement { get; set; }
+
+    Announcement newAnnouncement;
+
+    protected override async Task OnInitializedAsync()
+    {
+        announcements = await AnnouncementRepository.GetAnnouncements() as List<Announcement>;
+    }
+
+    protected override void OnParametersSet()
+    {
+        newAnnouncement = Announcement;
+
+        if(newAnnouncement != null)
+        {
+            announcements.Add(newAnnouncement);
+        }
+    }
+}

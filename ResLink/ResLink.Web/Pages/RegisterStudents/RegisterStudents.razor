@@ -1,0 +1,19 @@
+﻿@page "/manager/register"
+@inject DialogService DialogService
+
+<RadzenButton Text="Register Admin" Icon="admin_panel_settings" Click="(() => AddUser(GenderViewModel.Male, StudentRoleViewModel.HouseCommittee))"/>
+<AdminList/>
+
+<RadzenButton Text="Register Student" Icon="group_add" Click="(() => AddUser(GenderViewModel.Male, StudentRoleViewModel.Regular))" />
+<InmatesList/>
+
+
+@code 
+{
+    Student student;
+
+    private async Task AddUser(GenderViewModel gender, StudentRoleViewModel role)
+    {
+        student = await DialogService.OpenAsync<RegisterStudentPage>("Register Student", new Dictionary<string, object> { { "Gender", gender }, { "Role", role } });
+    }
+}

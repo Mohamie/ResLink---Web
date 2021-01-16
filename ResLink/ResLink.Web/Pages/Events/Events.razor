@@ -1,0 +1,86 @@
+﻿@page "/events"
+@inject DialogService DialogService
+
+
+<RadzenButton class="mb-3" Text="Add Event" Icon="add_circle_outline" Click="( () => AddNewEvent())"/>
+
+<div class="row">
+    <div class="col-12">
+        <RadzenScheduler @ref=@scheduler style="height: 768px;" TItem="Event" Data=@eventList StartProperty="EventStartTime" EndProperty="EventEndTime"
+                         TextProperty="EventTitle" SelectedIndex="2" 
+                         SlotSelect=@OnSlotSelect AppointmentSelect=@OnEventSelect>
+            <RadzenDayView />
+            <RadzenWeekView />
+            <RadzenMonthView />
+        </RadzenScheduler>
+    </div>
+</div>
+
+@code {
+
+    RadzenScheduler<Event> scheduler;
+
+    Dictionary<DateTime, string> _events = new Dictionary<DateTime, string>();
+
+    IList<Event> eventList;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        eventList = await EventRepository.GetEvents() as List<Event>;
+    }
+
+
+    async Task OnSlotSelect(SchedulerSlotSelectEventArgs args)
+    {
+
+       @* Event data = await DialogService.OpenAsync<AddEventPage>("Add Event",
+            new Dictionary<string, object> { { "EventStartTime", args.Start }, { "EventEndTime", args.End } });
+
+        if (data != null)
+        {
+            eventList.Add(data);
+
+            await EventRepository.SaveEvent(data);
+
+            // Either call the Reload method or reassign the Data property of the Scheduler
+            await scheduler.Reload();
+        }*@
+
+        await AddNewEvent(args);
+    }
+
+    async Task AddNewEvent(SchedulerSlotSelectEventArgs args = null)
+    {
+
+        DateTime date = new DateTime();
+
+        Event data = await DialogService.OpenAsync<AddEventPage>("Add Event",
+            new Dictionary<string, object> { { "EventStartTime", (args != null) ? args.Start :  date.Date}, { "EventEndTime", (args != null) ?  args.End : date.Date } });
+
+        if (data != null)
+        {
+            eventList.Add(data);
+
+            await EventRepository.SaveEvent(data);
+
+            // Either call the Reload method or reassign the Data property of the Scheduler
+            await scheduler.Reload();
+        }
+    }
+
+    async Task OnEventSelect(SchedulerAppointmentSelectEventArgs<Event> args)
+    {
+
+        Event editedEvent = await DialogService.OpenAsync<EditEventPage>("Edit Event", new Dictionary<string, object> { { "Event", args.Data } });
+
+        if(editedEvent != null)
+        {
+            await EventRepository.SaveEvent(editedEvent);
+        }
+
+        await scheduler.Reload();
+    }
+
+
+}

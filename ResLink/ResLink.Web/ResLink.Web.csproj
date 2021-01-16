@@ -13,4 +13,8 @@
     <ProjectReference Include="..\ResLink.DAL.Core\ResLink.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Complaints\" />
+  </ItemGroup>
+
 </Project>
