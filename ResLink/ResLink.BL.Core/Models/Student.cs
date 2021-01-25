@@ -13,7 +13,7 @@ namespace ResLink.BL.Models
     public class Student
     {
         [SetClientClassMemberName("objectId")]
-        public int ObjectID { get; set; }
+        public string ObjectID { get; set; }
 
 
         [SetClientClassMemberName("fullNames")]

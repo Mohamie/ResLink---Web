@@ -11,7 +11,7 @@ namespace ResLink.BL.Models
 {
     public class Gender
     {
-        [SetClientClassMemberName("objectID")]
+        [SetClientClassMemberName("objectId")]
         public string ObjectID { get; set; }
 
         [SetClientClassMemberName("genderID")]
