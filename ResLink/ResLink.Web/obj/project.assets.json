@@ -1233,7 +1233,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Backendless.NET": "6.0.2"
+          "Backendless.NET": "6.0.2",
+          "ResLink.BL": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ResLink.DL.dll": {}

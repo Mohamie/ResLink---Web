@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ResLink.BL.Core\ResLink.BL.csproj" />
     <ProjectReference Include="..\ResLink.DAL.Core\ResLink.DAL.csproj" />
+    <ProjectReference Include="..\ResLink.DL.Core\ResLink.DL.csproj" />
   </ItemGroup>
 
 </Project>

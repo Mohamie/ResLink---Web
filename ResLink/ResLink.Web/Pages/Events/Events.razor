@@ -34,19 +34,6 @@
     async Task OnSlotSelect(SchedulerSlotSelectEventArgs args)
     {
 
-       @* Event data = await DialogService.OpenAsync<AddEventPage>("Add Event",
-            new Dictionary<string, object> { { "EventStartTime", args.Start }, { "EventEndTime", args.End } });
-
-        if (data != null)
-        {
-            eventList.Add(data);
-
-            await EventRepository.SaveEvent(data);
-
-            // Either call the Reload method or reassign the Data property of the Scheduler
-            await scheduler.Reload();
-        }*@
-
         await AddNewEvent(args);
     }
 

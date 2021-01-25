@@ -1,5 +1,6 @@
 ﻿@page "/auth/login"
 @layout AuthLayout
+@inject BackendlessService backendlessService
 
 
 <h1 class="text-muted text-center display-2">Welcome To ResLink</h1>
@@ -15,7 +16,7 @@
                 <RadzenLabel Text="Password"/>
                 <RadzenPassword @bind-Value="user.Password"  class="my-2"/>
 
-                <RadzenButton class="my-2" Text="Login" ButtonStyle="Radzen.ButtonStyle.Success" />
+                <RadzenButton class="my-2" Text="Login" ButtonStyle="Radzen.ButtonStyle.Success" ButtonType="ButtonType.Submit"/>
 
             </RadzenCard>
 
@@ -28,15 +29,22 @@
 {
     public class User
     {
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string Password { get; set; }
 
     }
 
     User user = new User();
 
-    private void LoginUser()
+    private async Task LoginUser()
     {
+        BackendlessUser backendlessUser = await ResLinkUserLogin.LoginUser(user.Email, user.Password);
 
+        if(backendlessUser != null)
+        {
+
+        }
     }
 }

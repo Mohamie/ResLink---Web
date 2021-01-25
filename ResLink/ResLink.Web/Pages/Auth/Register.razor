@@ -1,5 +1,6 @@
 ﻿@page "/"
 @layout AuthLayout
+@inject BackendlessService backendlessService
 
 <h3 class="mt-5">Register Your Residence</h3>
 
@@ -71,23 +72,39 @@
 
     protected override void OnInitialized()
     {
-        
+
     }
 
-    private void RegisterResidence()
+    private async Task RegisterResidence()
     {
         ResidenceManager residenceManager = new ResidenceManager();
 
         residenceManager.ManagerFirstName = residence.ManagerFirstName;
         residenceManager.ManagerLastName = residence.ManagerLastName;
+
+        BackendlessUser managerAccount = new BackendlessUser();
+        managerAccount.Email = residence.Email;
+        managerAccount.Password = residence.Password;
+
+        residenceManager.ManagerAccount = managerAccount;
+
+        BackendlessUser savedManager = await ResLinkUserRegistration.RegisterManagerAccount(residenceManager);
         
-        residenceManager.ManagerAccount.Email = residence.Email;
-        residenceManager.ManagerAccount.SetProperty("userRole", Convert.ToInt32(residence.ManagerRole));
 
-        Residence newResidence = new Residence();
+        if(savedManager != null)
+        {
+            Residence newResidence = new Residence();
+            newResidence.ResidenceName = residence.ResidenceName;
 
-        newResidence.ResidenceName = residence.ResidenceName;
-        newResidence.ResidenceGender = residence.ResidenceGender;
+            newResidence = await ResidenceRepository.SaveResidence(newResidence);
+
+            if(newResidence != null)
+            {
+                object[] children = new object[] { savedManager };
+                await Backendless.Data.Of<Residence>().SetRelationAsync(newResidence, "residenceManager", children);
+            }
+        }
+
     }
 
 }

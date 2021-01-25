@@ -589,7 +589,8 @@
       },
       "ResLink.DL/1.0.0": {
         "dependencies": {
-          "Backendless.NET": "6.0.2"
+          "Backendless.NET": "6.0.2",
+          "ResLink.BL": "1.0.0"
         },
         "runtime": {
           "ResLink.DL.dll": {}

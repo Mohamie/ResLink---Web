@@ -1019,6 +1019,19 @@
         "runtime": {
           "lib/netstandard1.3/WebSocket4Net.dll": {}
         }
+      },
+      "ResLink.BL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Backendless.NET": "6.0.2"
+        },
+        "compile": {
+          "bin/placeholder/ResLink.BL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResLink.BL.dll": {}
+        }
       }
     }
   },
@@ -3694,11 +3707,17 @@
         "websocket4net.0.15.2.nupkg.sha512",
         "websocket4net.nuspec"
       ]
+    },
+    "ResLink.BL/1.0.0": {
+      "type": "project",
+      "path": "../ResLink.BL.Core/ResLink.BL.csproj",
+      "msbuildProject": "../ResLink.BL.Core/ResLink.BL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Backendless.NET >= 6.0.2"
+      "Backendless.NET >= 6.0.2",
+      "ResLink.BL >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3726,7 +3745,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.BL.Core\\ResLink.BL.csproj": {
+              "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.BL.Core\\ResLink.BL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

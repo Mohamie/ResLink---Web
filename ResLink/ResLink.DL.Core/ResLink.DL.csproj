@@ -8,4 +8,8 @@
     <PackageReference Include="Backendless.NET" Version="6.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ResLink.BL.Core\ResLink.BL.csproj" />
+  </ItemGroup>
+
 </Project>

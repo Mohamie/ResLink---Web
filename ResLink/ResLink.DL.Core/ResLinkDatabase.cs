@@ -28,5 +28,10 @@ namespace ResLink.DL
         {
             await Backendless.Data.Of<T>().RemoveAsync($"objectId = '{objectId}'");
         }
+
+        public async Task SetRelation<T>(T parentObject, string relationColumnName, object[] children)
+        {
+            await Backendless.Data.Of<T>().SetRelationAsync(parentObject, relationColumnName, children);
+        }       
     }
 }

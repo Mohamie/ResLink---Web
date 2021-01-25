@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v3.1": {
       "ResLink.DL/1.0.0": {
         "dependencies": {
-          "Backendless.NET": "6.0.2"
+          "Backendless.NET": "6.0.2",
+          "ResLink.BL": "1.0.0"
         },
         "runtime": {
           "ResLink.DL.dll": {}
@@ -577,6 +578,14 @@
             "fileVersion": "0.15.2.11"
           }
         }
+      },
+      "ResLink.BL/1.0.0": {
+        "dependencies": {
+          "Backendless.NET": "6.0.2"
+        },
+        "runtime": {
+          "ResLink.BL.dll": {}
+        }
       }
     }
   },
@@ -1040,6 +1049,11 @@
       "sha512": "sha512-xu6NiIDP6BEwO8cgXLUdWI8teB/TxVjzMjMYE7hcP93+MpZdxzDzz1cTFxU4OWVP0NESchcQO5LkiJ/wgB03AQ==",
       "path": "websocket4net/0.15.2",
       "hashPath": "websocket4net.0.15.2.nupkg.sha512"
+    },
+    "ResLink.BL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

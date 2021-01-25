@@ -143,7 +143,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.BL.Core\\ResLink.BL.csproj": {
+                "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.BL.Core\\ResLink.BL.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -207,6 +211,9 @@
               },
               "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\ResLink.DAL.csproj": {
                 "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\ResLink.DAL.csproj"
+              },
+              "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.DL.Core\\ResLink.DL.csproj": {
+                "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.DL.Core\\ResLink.DL.csproj"
               }
             }
           }

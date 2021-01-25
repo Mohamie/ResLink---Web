@@ -9,9 +9,9 @@ namespace ResLink.DL
 {
     public class ResLinkUserLogin
     {
-        public static BackendlessUser LoginUser(string email, string password)
+        public static async  Task<BackendlessUser> LoginUser(string email, string password)
         {
-            return Backendless.UserService.Login(email, password);
+            return await Backendless.UserService.LoginAsync(email, password);
         }
     }
 }
