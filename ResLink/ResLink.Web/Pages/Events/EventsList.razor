@@ -14,7 +14,11 @@
 
     List<Event> events = new List<Event>();
 
-   
 
-   
+    protected override async Task OnInitializedAsync()
+    {
+        events = await EventRepository.GetEvents() as List<Event>;
+    }
+
+
 }

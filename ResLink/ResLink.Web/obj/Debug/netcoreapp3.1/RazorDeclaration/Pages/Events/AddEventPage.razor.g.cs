@@ -118,6 +118,27 @@ using ResLink.Web.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 16 "C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.Web\_Imports.razor"
+using ResLink.Web.Pages.Announments;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.Web\_Imports.razor"
+using ResLink.Web.Pages.Events;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.Web\_Imports.razor"
+using ResLink.Web.Pages.RegisterStudents;
+
+#line default
+#line hidden
+#nullable disable
     public partial class AddEventPage : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

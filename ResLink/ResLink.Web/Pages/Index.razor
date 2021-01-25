@@ -1,7 +1,84 @@
-﻿@page "/"
+﻿@page "/home"
 
-<h1>Hello, world!</h1>
+<div class="row">
+    <div class="col-md-6 col-xl-3 mb-4">
+        <div class="card shadow border-left-primary py-2">
+            <div class="card-body">
+                <div class="row align-items-center no-gutters">
+                    <div class="col mr-2">
+                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Announcements</span></div>
+                        <div class="text-dark font-weight-bold h5 mb-0"><span>@announcementsCount</span></div>
+                    </div>
+                    <div class="col-auto"><span class="oi oi-bell" aria-hidden="true"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-3 mb-4">
+        <div class="card shadow border-left-success py-2">
+            <div class="card-body">
+                <div class="row align-items-center no-gutters">
+                    <div class="col mr-2">
+                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Events </span></div>
+                        <div class="text-dark font-weight-bold h5 mb-0"><span>@eventsCount</span></div>
+                    </div>
+                    <div class="col-auto"><span class="oi oi-calendar" aria-hidden="true"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-3 mb-4">
+        <div class="card shadow border-left-info py-2">
+            <div class="card-body">
+                <div class="row align-items-center no-gutters">
+                    <div class="col mr-2">
+                        <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>Registered Student</span></div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span>0</span></div>
+                            </div>
+                     
+                        </div>
+                    </div>
+                    <div class="col-auto"><span class="oi oi-people" aria-hidden="true"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-3 mb-4">
+        <div class="card shadow border-left-warning py-2">
+            <div class="card-body">
+                <div class="row align-items-center no-gutters">
+                    <div class="col mr-2">
+                        <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Registred Admins</span></div>
+                        <div class="text-dark font-weight-bold h5 mb-0"><span>0</span></div>
+                    </div>
+                    <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-Welcome to your new app.
+<div class="my-2">
+    <AnnouncementsList />
+</div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div class="my-3">
+    <EventsList />
+</div>
+
+@code{ 
+
+    int announcementsCount;
+    int eventsCount;
+    int complaintsCount;
+
+    protected override async Task OnInitializedAsync()
+    {
+        announcementsCount = (await AnnouncementRepository.GetAnnouncements() as List<Announcement>).Count;
+        eventsCount = (await EventRepository.GetEvents() as List<Event>).Count;
+    }
+
+
+}

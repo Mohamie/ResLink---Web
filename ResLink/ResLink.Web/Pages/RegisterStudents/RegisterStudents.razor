@@ -10,10 +10,12 @@
 
 @code 
 {
-    Student student;
+    Student student; 
 
     private async Task AddUser(GenderViewModel gender, StudentRoleViewModel role)
     {
         student = await DialogService.OpenAsync<RegisterStudentPage>("Register Student", new Dictionary<string, object> { { "Gender", gender }, { "Role", role } });
+
+
     }
 }

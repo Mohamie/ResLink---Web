@@ -1,37 +1,53 @@
-﻿@page "/auth/register"
+﻿@page "/"
 @layout AuthLayout
-
-
 
 <h3 class="mt-5">Register Your Residence</h3>
 
 <div class="row">
     <div class="col-7">
-        <EditForm Model="@residence" OnValidSubmit="RegisterResidence">
+        <EditForm class="form-group" Model="@residence" OnValidSubmit="RegisterResidence">
+            <DataAnnotationsValidator/>
+     
 
             <RadzenCard>
                 <label>Residence Name</label>
-                <RadzenTextBox class="my-2"></RadzenTextBox>
+                <InputText class="form-control my-2" @bind-Value="residence.ResidenceName" />
+                <ValidationMessage For="(() => residence.ResidenceName)" />
 
                 <label>Residence Gender</label>
-                <RadzenTextBox></RadzenTextBox>
+                <InputSelect class="custom-select my-2" @bind-Value="residence.ResidenceGender">
+                    @foreach (var gender in Enum.GetValues(typeof(GenderViewModel)))
+                    {
+                        <option value="@gender">@gender</option>
+                    }
+                </InputSelect>
 
                 <label>Manager First Name</label>
-                <RadzenTextBox class="my-2"></RadzenTextBox>
+                <InputText class="form-control my-2" @bind-Value="residence.ManagerFirstName" />
+                <ValidationMessage For="(() => residence.ManagerFirstName)" />
 
                 <label>Manager Last Name</label>
-                <RadzenTextBox class="my-2"></RadzenTextBox>
+                <InputText class="form-control my-2" @bind-Value="residence.ManagerLastName" />
+                <ValidationMessage For="(() => residence.ManagerLastName)" />
+
+                <label>Role</label>
+                <InputText disabled class="custom-select my-2" @bind-Value="@managerRoleId" />
+
 
                 <label>Manager Email</label>
-                <RadzenTextBox class="my-2"></RadzenTextBox>
+                <InputText class="form-control my-2" type="email" @bind-Value="residence.Email" />
+                <ValidationMessage For="(() => residence.Email)" />
 
                 <label>Password</label>
-                <RadzenTextBox class="my-2"></RadzenTextBox>
+                <InputText class="form-control my-2" type="password" @bind-Value="residence.Password" />
+                <ValidationMessage For="(() => residence.Password)" />
 
                 <label>Confirm Password</label>
-                <RadzenTextBox class="my-2"></RadzenTextBox>
+                <InputText class="form-control my-2" type="password" @bind-Value="residence.ConfirmPassword" />
+                <ValidationMessage For="(() => residence.ConfirmPassword)" />
 
-                <RadzenButton class="my-2" Text="Register" ButtonStyle="Radzen.ButtonStyle.Success" />
+
+                <RadzenButton class="my-2" Text="Register" Icon="note_add" ButtonStyle="Radzen.ButtonStyle.Success" ButtonType="ButtonType.Submit" />
 
             </RadzenCard>
 
@@ -50,15 +66,28 @@
 
 @code {
 
-    Residence residence = new Residence();
+    ResidenceViewModel residence = new ResidenceViewModel();
+    string managerRoleId = StudentRoleViewModel.Manager.ToString();
 
-    private void RegisterResidence()
+    protected override void OnInitialized()
     {
         
     }
 
+    private void RegisterResidence()
+    {
+        ResidenceManager residenceManager = new ResidenceManager();
 
+        residenceManager.ManagerFirstName = residence.ManagerFirstName;
+        residenceManager.ManagerLastName = residence.ManagerLastName;
+        
+        residenceManager.ManagerAccount.Email = residence.Email;
+        residenceManager.ManagerAccount.SetProperty("userRole", Convert.ToInt32(residence.ManagerRole));
 
+        Residence newResidence = new Residence();
 
+        newResidence.ResidenceName = residence.ResidenceName;
+        newResidence.ResidenceGender = residence.ResidenceGender;
+    }
 
 }
