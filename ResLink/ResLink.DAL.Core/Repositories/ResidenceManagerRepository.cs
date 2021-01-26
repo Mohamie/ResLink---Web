@@ -41,5 +41,10 @@ namespace ResLink.DAL.Repositories
         {
             await instance.db.DeleteItem<ResidenceManager>(objectId);
         }
+
+        public async Task SetRelation<ResidenceManager>(ResidenceManager parentObject, string relationColumnName, object[] children)
+        {
+            await instance.db.SetRelation<ResidenceManager>(parentObject, relationColumnName, children);
+        }
     }
 }
