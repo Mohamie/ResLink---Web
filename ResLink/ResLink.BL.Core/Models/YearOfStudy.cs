@@ -9,8 +9,8 @@ namespace ResLink.BL.Models
 {
     public class YearOfStudy
     {
-        [SetClientClassMemberName("objectID")]
-        public int ObjectID { get; set; }
+        [SetClientClassMemberName("objectId")]
+        public string ObjectID { get; set; }
 
         [SetClientClassMemberName("yearID")]
         public int YearID { get; set; }

@@ -9,8 +9,8 @@ namespace ResLink.BL.Models
 {
     public class HCRole
     {
-        [SetClientClassMemberName("objectID")]
-        public int ObjectID { get; set; }
+        [SetClientClassMemberName("objectId")]
+        public string ObjectID { get; set; }
 
         [SetClientClassMemberName("hcRole")]
         public string HcRole { get; set; }

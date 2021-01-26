@@ -9,8 +9,8 @@ namespace ResLink.BL.Models
 {
     public class Meeting
     {
-        [SetClientClassMemberName("objectID")]
-        public int ObjectID { get; set; }
+        [SetClientClassMemberName("objectId")]
+        public string ObjectID { get; set; }
 
         [SetClientClassMemberName("meetingTitle")]
         public string MeetingTitle { get; set; }

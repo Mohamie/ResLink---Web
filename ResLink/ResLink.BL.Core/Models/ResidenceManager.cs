@@ -10,8 +10,8 @@ namespace ResLink.BL.Models
 {
     public class ResidenceManager
     {
-        [SetClientClassMemberName("objectID")]
-        public int ObjectID { get; set; }
+        [SetClientClassMemberName("objectId")]
+        public string ObjectID { get; set; }
 
         [SetClientClassMemberName("managerFirstName")]
         public string ManagerFirstName { get; set; }
