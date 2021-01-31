@@ -70,5 +70,12 @@
     "C:\\Users\\user-pc\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\user-pc\\.nuget\\packages\\websocket4net\\0.15.2\\websocket4net.0.15.2.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.BL.Core\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
