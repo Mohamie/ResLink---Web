@@ -45,5 +45,8 @@ namespace ResLink.DAL.Repositories
             await instance.db.DeleteItem<Gender>(objectId);
         }
 
+
+
+
     }
 }

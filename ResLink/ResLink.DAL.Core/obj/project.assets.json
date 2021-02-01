@@ -3740,20 +3740,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user-pc\\.nuget\\packages\\": {}
+    "C:\\Users\\mohau\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\ResLink.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\mohau\\Desktop\\ResLink Web\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\ResLink.DAL.csproj",
       "projectName": "ResLink.DAL",
-      "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\ResLink.DAL.csproj",
-      "packagesPath": "C:\\Users\\user-pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\obj\\",
+      "projectPath": "C:\\Users\\mohau\\Desktop\\ResLink Web\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\ResLink.DAL.csproj",
+      "packagesPath": "C:\\Users\\mohau\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mohau\\Desktop\\ResLink Web\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\user-pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\mohau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -3764,12 +3769,13 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.BL.Core\\ResLink.BL.csproj": {
-              "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.BL.Core\\ResLink.BL.csproj"
+            "C:\\Users\\mohau\\Desktop\\ResLink Web\\ResLink---Web\\ResLink\\ResLink.BL.Core\\ResLink.BL.csproj": {
+              "projectPath": "C:\\Users\\mohau\\Desktop\\ResLink Web\\ResLink---Web\\ResLink\\ResLink.BL.Core\\ResLink.BL.csproj"
             },
-            "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.DL.Core\\ResLink.DL.csproj": {
-              "projectPath": "C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.DL.Core\\ResLink.DL.csproj"
+            "C:\\Users\\mohau\\Desktop\\ResLink Web\\ResLink---Web\\ResLink\\ResLink.DL.Core\\ResLink.DL.csproj": {
+              "projectPath": "C:\\Users\\mohau\\Desktop\\ResLink Web\\ResLink---Web\\ResLink\\ResLink.DL.Core\\ResLink.DL.csproj"
             }
           }
         }
@@ -3782,6 +3788,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -3797,16 +3804,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\user-pc\\Documents\\Academics\\WIL\\Projects\\ResLink---Web\\ResLink---Web\\ResLink\\ResLink.DAL.Core\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

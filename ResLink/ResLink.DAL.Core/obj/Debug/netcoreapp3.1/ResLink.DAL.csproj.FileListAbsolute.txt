@@ -26,3 +26,17 @@ C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\Re
 C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.csproj.CopyComplete
 C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.dll
 C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.pdb
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.DAL.deps.json
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.DAL.dll
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.DAL.pdb
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.BL.dll
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.DL.dll
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.BL.pdb
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\bin\Debug\netcoreapp3.1\ResLink.DL.pdb
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.csprojAssemblyReference.cache
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.AssemblyInfoInputs.cache
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.AssemblyInfo.cs
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.csproj.CoreCompileInputs.cache
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.csproj.CopyComplete
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.dll
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DAL.Core\obj\Debug\netcoreapp3.1\ResLink.DAL.pdb

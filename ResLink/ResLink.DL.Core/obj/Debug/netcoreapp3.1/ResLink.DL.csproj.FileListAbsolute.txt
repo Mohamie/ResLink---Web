@@ -19,3 +19,15 @@ C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\Re
 C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.DL.Core\bin\Debug\netcoreapp3.1\ResLink.BL.dll
 C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.DL.Core\bin\Debug\netcoreapp3.1\ResLink.BL.pdb
 C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.DL.Core\obj\Debug\netcoreapp3.1\ResLink.DL.csproj.CopyComplete
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DL.Core\bin\Debug\netcoreapp3.1\ResLink.DL.deps.json
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DL.Core\bin\Debug\netcoreapp3.1\ResLink.DL.dll
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DL.Core\bin\Debug\netcoreapp3.1\ResLink.DL.pdb
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DL.Core\bin\Debug\netcoreapp3.1\ResLink.BL.dll
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DL.Core\bin\Debug\netcoreapp3.1\ResLink.BL.pdb
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DL.Core\obj\Debug\netcoreapp3.1\ResLink.DL.csprojAssemblyReference.cache
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DL.Core\obj\Debug\netcoreapp3.1\ResLink.DL.AssemblyInfoInputs.cache
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DL.Core\obj\Debug\netcoreapp3.1\ResLink.DL.AssemblyInfo.cs
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DL.Core\obj\Debug\netcoreapp3.1\ResLink.DL.csproj.CoreCompileInputs.cache
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DL.Core\obj\Debug\netcoreapp3.1\ResLink.DL.csproj.CopyComplete
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DL.Core\obj\Debug\netcoreapp3.1\ResLink.DL.dll
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.DL.Core\obj\Debug\netcoreapp3.1\ResLink.DL.pdb
