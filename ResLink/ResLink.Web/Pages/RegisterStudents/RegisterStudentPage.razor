@@ -41,9 +41,9 @@
         <RadzenLabel Text="House Committee Role: "/>
         <InputSelect class="custom-select" @bind-Value="studentView.HCRole">
 
-            @foreach (HCRoleViewModel hcRole in Enum.GetValues(typeof(HCRoleViewModel)))
+            @foreach (var role in HCRoles)
                 {
-                <option value="@hcRole"> @hcRole </option>
+                <option value="@role.HcRoleID"> @role.HcRole</option>
                 }
 
         </InputSelect>
@@ -73,12 +73,15 @@
     [Parameter]
     public StudentRoleViewModel Role { get; set; }
 
+    [Parameter]
+    public List<HCRole> HCRoles { get; set; }
+
 
     Student student = new Student();
 
     protected override void OnInitialized()
     {
-        studentView.Gender = Gender;
+        //studentView.Gender = GenderViewModel.Male;
         studentView.Role = Role;
     }
 
