@@ -13,7 +13,7 @@ namespace ResLink.BL.Models
         public string ObjectID { get; set; }
 
         [SetClientClassMemberName("hcRole")]
-        public string HcRole { get; set; }
+        public string HcRoleName { get; set; }
 
         [SetClientClassMemberName("hcRoleID")]
         public int HcRoleID { get; set; }
