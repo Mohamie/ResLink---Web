@@ -16,22 +16,15 @@
     <RadzenTextBox class="form-control my-2" @bind-Value="studentView.LastName" />
 
     <RadzenLabel Text="Gender" />
-    <InputSelect disabled class="custom-select my-2" @bind-Value="studentView.Gender">
-
-    @foreach (GenderViewModel gender in Enum.GetValues(typeof(GenderViewModel)))
-    {
-        <option value="@gender"> @gender </option>
-    }
-
-    </InputSelect>
+    <RadzenDropDown class="form-control my-2" @bind-Value="studentView.Gender" Data="Genders" TValue="Gender" TextProperty="GenderName" ValueProperty="Gender" AllowClear="false"/>
 
     <RadzenLabel Text="Role" />
     <InputSelect disabled class="custom-select my-2" @bind-Value="studentView.Role">
 
         @foreach (StudentRoleViewModel role in Enum.GetValues(typeof(StudentRoleViewModel)))
-    {
-    <option value="@role"> @role </option>
-}
+        {
+            <option value="@role"> @role </option>
+        }
 
     </InputSelect>
 
@@ -39,14 +32,7 @@
     @if (studentView.Role == StudentRoleViewModel.HouseCommittee)
     {
         <RadzenLabel Text="House Committee Role: "/>
-        <InputSelect class="custom-select" @bind-Value="studentView.HCRole">
-
-            @foreach (var role in HCRoles)
-                {
-                <option value="@role.HcRoleID">@role.HcRoleName</option>
-                }
-
-        </InputSelect>
+        <RadzenDropDown class="form-control my-2"  @bind-Value="studentView.HCRole" Data="HCRoles" TValue="HCRole" TextProperty="HcRoleName" ValueProperty="HCRole" AllowClear="false" AllowFiltering="true"/>
 
     }
 
@@ -68,7 +54,8 @@
     StudentViewModel studentView = new StudentViewModel();
     
     [Parameter]
-    public GenderViewModel Gender { get; set; }
+    public List<Gender> Genders { get; set; }
+
     
     [Parameter]
     public StudentRoleViewModel Role { get; set; }
@@ -77,7 +64,6 @@
     public List<HCRole> HCRoles { get; set; }
 
 
-    Student student = new Student();
 
     protected override void OnInitialized()
     {
@@ -87,6 +73,6 @@
 
     private void OnSubmit()
     {
-        DialogService.Close(student);
+        DialogService.Close(studentView);
     }
 }

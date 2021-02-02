@@ -12,6 +12,7 @@ namespace ResLink.Web.ViewModels
         [Required]
         [RegularExpression(@"([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])", ErrorMessage = "The student number should be 9 digits long")]
         public string StudentNumber { get; set; }
+ 
 
         [Required]
         public string FirstNames { get; set; }

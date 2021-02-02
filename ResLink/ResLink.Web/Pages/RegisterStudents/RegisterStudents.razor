@@ -1,23 +1,111 @@
 ﻿@page "/manager/register"
 @inject DialogService DialogService
 
-<RadzenButton Text="Register Admin" Icon="admin_panel_settings" Click="(() => AddUser(GenderViewModel.Male, StudentRoleViewModel.HouseCommittee))"/>
+<RadzenButton Disabled="@isDataLoaded" Text="Register Admin" Icon="admin_panel_settings" Click="(() => AddUser(StudentRoleViewModel.HouseCommittee))"/>
 <AdminList/>
 
-<RadzenButton Text="Register Student" Icon="group_add" Click="(() => AddUser(GenderViewModel.Male, StudentRoleViewModel.Regular))" />
+<RadzenButton Disabled="@isDataLoaded" Text="Register Student" Icon="group_add" Click="(() => AddUser(StudentRoleViewModel.Regular))" />
 <InmatesList/>
 
 
 @code 
 {
-    Student student;
+    StudentViewModel studentViewModel;
 
     public List<HCRole> HCRoles { get; set; }
+    public List<Gender> StudentGender { get; set; }
 
+    bool isDataLoaded = true;
 
-
-    private async Task AddUser(GenderViewModel gender, StudentRoleViewModel role)
+    protected override async Task OnInitializedAsync()
     {
-        student = await DialogService.OpenAsync<RegisterStudentPage>("Register Student", new Dictionary<string, object> { { "Gender", gender }, { "Role", role } });
+        HCRoles = (await HCRoleRepository.GetHCRoles()).ToList();
+        StudentGender = (await GenderRepository.GetGender()).ToList();
+        isDataLoaded = false;
+    }
+
+
+    private async Task AddUser(StudentRoleViewModel role)
+    {
+
+        studentViewModel = await DialogService.OpenAsync<RegisterStudentPage>("Register Student", new Dictionary<string, object> { { "Genders", StudentGender }, { "Role", role }, { "HCRoles", HCRoles } });
+
+        if(studentViewModel != null)
+        {
+            try
+            {
+                BackendlessUser studentAccount = null;
+                Student student = new Student();
+
+                //Create Student Account using email and password
+                if (role == StudentRoleViewModel.HouseCommittee)
+                {
+                    studentAccount = await ResLinkUserRegistration.RegisterUserAccount(studentViewModel.Email, studentViewModel.Password, 2);
+                }
+
+                if (role == StudentRoleViewModel.Regular)
+                {
+                    studentAccount = await ResLinkUserRegistration.RegisterUserAccount(studentViewModel.Email, studentViewModel.Password, 1);
+                }
+
+
+                //Save student details in student 
+                student.StudentNumber = Convert.ToInt32(studentViewModel.StudentNumber);
+                student.FullNames = studentViewModel.FirstNames;
+                student.LastName = studentViewModel.LastName;
+
+                student = await StudentRepository.SaveStudent(student);
+
+                if (student != null)
+                {
+                    //SetRelation for studentAccount and gender
+
+                    //set studentAccount
+                    object[] studentAccountChild = new object[] { studentAccount };
+                    await StudentRepository.SetRelation(student, "studentAccount", studentAccountChild);
+
+                    //set gender
+                    object[] genderChild = new object[] { studentViewModel.Gender };
+                    await StudentRepository.SetRelation(student, "gender", genderChild);
+
+
+                    //Set HouseCommitte
+                    if (role == StudentRoleViewModel.HouseCommittee)
+                    {
+                        HouseCommittee houseCommittee = new HouseCommittee();
+
+                        //save to obtain objectId
+                        houseCommittee = await HouseCommitteeRepository.SaveHouseCommittee(houseCommittee);
+
+                        //set student
+                        object[] studentChild = new object[] { student };
+                        await HouseCommitteeRepository.SetRelation(houseCommittee, "student", studentChild);
+
+                        //set HCRole
+                        object[] hcRoleChild = new object[] { studentViewModel.HCRole };
+                        await HouseCommitteeRepository.SetRelation(houseCommittee, "hcRole", hcRoleChild);
+
+                    }
+
+
+                }
+
+
+
+
+
+
+
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+
+
+
+
     }
 }
