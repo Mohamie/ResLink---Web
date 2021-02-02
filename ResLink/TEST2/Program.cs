@@ -25,8 +25,8 @@ namespace CoreLibrary
             user.SetProperty("residenceEmail", "loggies@gmail.com");
             user.SetProperty("userRole", 2);
 
-            BackendlessUser savedUser = await Register(user);
-            Console.WriteLine($"Registered Email: {savedUser.Email}"); 
+          /*  //BackendlessUser savedUser = await Register(user);
+            Console.WriteLine($"Registered Email: {savedUser.Email}"); */
             Console.ReadKey();
         }
 
@@ -70,14 +70,14 @@ namespace CoreLibrary
             }
         }
 
-        private static async Task<BackendlessUser> Register(BackendlessUser user)
+        /*private static async Task<BackendlessUser> Register(BackendlessUser user)
         {
             ResidenceManager residenceManager = new ResidenceManager();
             residenceManager.ManagerAccount = user;
 
             
             return await ResLinkUserRegistration.RegisterManagerAccount(residenceManager);
-        }
+        }*/
 
        
     }

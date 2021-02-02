@@ -11,7 +11,7 @@ namespace ResLink.BL.Models
     public class HouseCommittee
     {
         [SetClientClassMemberName("objectId")]
-        public string ObjectID { get; set; }
+        public string objectId { get; set; }
 
         [SetClientClassMemberName("hcAccount")]
         public BackendlessUser HcAccount { get; set; }

@@ -6,46 +6,41 @@
 
 <div class="row">
     <div class="col-7">
-        <EditForm class="form-group" Model="@residence" OnValidSubmit="RegisterResidence">
+        <EditForm class="form-group" Model="@residenceViewModel" OnValidSubmit="RegisterResidence">
             <DataAnnotationsValidator/>
      
 
             <RadzenCard>
                 <label>Residence Name</label>
-                <InputText class="form-control my-2" @bind-Value="residence.ResidenceName" />
-                <ValidationMessage For="(() => residence.ResidenceName)" />
+                <InputText class="form-control my-2" @bind-Value="residenceViewModel.ResidenceName" />
+                <ValidationMessage For="(() => residenceViewModel.ResidenceName)" />
 
                 <label>Residence Gender</label>
-                <InputSelect class="custom-select my-2" @bind-Value="residence.ResidenceGender">
-                    @foreach (var gender in Enum.GetValues(typeof(GenderViewModel)))
-                    {
-                        <option value="@gender">@gender</option>
-                    }
-                </InputSelect>
-
+                <RadzenDropDown class="form-control my-2" Data="residenceViewModel.ResidenceGender" TValue="Gender" ValueProperty="Gender" TextProperty="GenderName" AllowClear="false" @bind-Value="residenceViewModel.Gender"/>
+    
                 <label>Manager First Name</label>
-                <InputText class="form-control my-2" @bind-Value="residence.ManagerFirstName" />
-                <ValidationMessage For="(() => residence.ManagerFirstName)" />
+                <InputText class="form-control my-2" @bind-Value="residenceViewModel.ManagerFirstName" />
+                <ValidationMessage For="(() => residenceViewModel.ManagerFirstName)" />
 
                 <label>Manager Last Name</label>
-                <InputText class="form-control my-2" @bind-Value="residence.ManagerLastName" />
-                <ValidationMessage For="(() => residence.ManagerLastName)" />
+                <InputText class="form-control my-2" @bind-Value="residenceViewModel.ManagerLastName" />
+                <ValidationMessage For="(() => residenceViewModel.ManagerLastName)" />
 
                 <label>Role</label>
                 <InputText disabled class="custom-select my-2" @bind-Value="@managerRoleId" />
 
 
                 <label>Manager Email</label>
-                <InputText class="form-control my-2" type="email" @bind-Value="residence.Email" />
-                <ValidationMessage For="(() => residence.Email)" />
+                <InputText class="form-control my-2" type="email" @bind-Value="residenceViewModel.Email" />
+                <ValidationMessage For="(() => residenceViewModel.Email)" />
 
                 <label>Password</label>
-                <InputText class="form-control my-2" type="password" @bind-Value="residence.Password" />
-                <ValidationMessage For="(() => residence.Password)" />
+                <InputText class="form-control my-2" type="password" @bind-Value="residenceViewModel.Password" />
+                <ValidationMessage For="(() => residenceViewModel.Password)" />
 
                 <label>Confirm Password</label>
-                <InputText class="form-control my-2" type="password" @bind-Value="residence.ConfirmPassword" />
-                <ValidationMessage For="(() => residence.ConfirmPassword)" />
+                <InputText class="form-control my-2" type="password" @bind-Value="residenceViewModel.ConfirmPassword" />
+                <ValidationMessage For="(() => residenceViewModel.ConfirmPassword)" />
 
 
                 <RadzenButton class="my-2" Text="Register" Icon="note_add" ButtonStyle="Radzen.ButtonStyle.Success" ButtonType="ButtonType.Submit" />
@@ -62,47 +57,72 @@
 
     
 
-
-
-
 @code {
 
-    ResidenceViewModel residence = new ResidenceViewModel();
+    ResidenceViewModel residenceViewModel = new ResidenceViewModel();
     string managerRoleId = StudentRoleViewModel.Manager.ToString();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-
+        residenceViewModel.ResidenceGender = (await GenderRepository.GetGender()).ToList();
+        residenceViewModel.Gender = residenceViewModel.ResidenceGender[0];
     }
 
     private async Task RegisterResidence()
     {
-        ResidenceManager residenceManager = new ResidenceManager();
 
-        residenceManager.ManagerFirstName = residence.ManagerFirstName;
-        residenceManager.ManagerLastName = residence.ManagerLastName;
+        //Save Manager User Account Details
+        BackendlessUser savedMangerAccount = await ResLinkUserRegistration.RegisterUserAccount(residenceViewModel.Email, residenceViewModel.Password, 1);
 
-        BackendlessUser managerAccount = new BackendlessUser();
-        managerAccount.Email = residence.Email;
-        managerAccount.Password = residence.Password;
 
-        residenceManager.ManagerAccount = managerAccount;
-
-        BackendlessUser savedManager = await ResLinkUserRegistration.RegisterManagerAccount(residenceManager);
-        
-
-        if(savedManager != null)
+        //check if user was successfully created
+        if(savedMangerAccount != null)
         {
-            Residence newResidence = new Residence();
-            newResidence.ResidenceName = residence.ResidenceName;
+            //Save ResidenceManger to db
+            ResidenceManager residenceManager = new ResidenceManager();
 
-            newResidence = await ResidenceRepository.SaveResidence(newResidence);
+            residenceManager.ManagerFirstName = residenceViewModel.ManagerFirstName;
+            residenceManager.ManagerLastName = residenceViewModel.ManagerLastName;
 
-            if(newResidence != null)
+            residenceManager = await ResidenceManagerRepository.SaveResidenceManager(residenceManager);
+
+            if(residenceManager != null)
             {
-                object[] children = new object[] { savedManager };
-                await Backendless.Data.Of<Residence>().SetRelationAsync(newResidence, "residenceManager", children);
+
+                try
+                {
+                    //relationship between Residence and ManagerAccount, meant to log SuperUser
+                    object[] managerChild = new Object[] { savedMangerAccount };
+                    await ResidenceManagerRepository.SetRelation(residenceManager, "managerAccount", managerChild);
+
+
+                    //since Manager will be saved in db, create a residence to link a manager to
+                    Residence newResidence = new Residence();
+                    newResidence.ResidenceName = residenceViewModel.ResidenceName;
+
+                    newResidence = await ResidenceRepository.SaveResidence(newResidence);
+
+                    //check if residence was successfully inserted
+                    if (newResidence != null)
+                    {
+                        //relationship between Residence and Gender, gender in which residence occupy
+                        object[] residenceGenderChild = new object[] { residenceViewModel.Gender };
+                        await ResidenceRepository.SetRelation(newResidence, "residenceGender", residenceGenderChild);
+
+                        //relationship between Residence and Manager, residence has a manager
+                        object[] resManagerChild = new object[] { residenceManager };
+                        await ResidenceRepository.SetRelation(newResidence, "residenceManager", resManagerChild);
+
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error: " + e.Message);
+                }
             }
+
+
         }
 
     }

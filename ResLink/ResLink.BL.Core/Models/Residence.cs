@@ -10,7 +10,7 @@ namespace ResLink.BL.Models
     public class Residence
     {
         [SetClientClassMemberName("objectId")]
-        public string ObjectId { get; set; }
+        public string objectId { get; set; }
 
         [SetClientClassMemberName("residenceName")]
         public string ResidenceName { get; set; }

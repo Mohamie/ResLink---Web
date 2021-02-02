@@ -10,7 +10,7 @@ namespace ResLink.BL.Models
     public class HCRole
     {
         [SetClientClassMemberName("objectId")]
-        public string ObjectID { get; set; }
+        public string objectId { get; set; }
 
         [SetClientClassMemberName("hcRole")]
         public string HcRoleName { get; set; }
