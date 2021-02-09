@@ -13,14 +13,26 @@
     StudentViewModel studentViewModel;
 
     public List<HCRole> HCRoles { get; set; }
-    public List<Gender> StudentGender { get; set; }
+    public Gender StudentGender { get; set; }
+    public Residence Residence { get; set; }
 
+
+    BackendlessUser currentLoggedUser;
     bool isDataLoaded = true;
 
     protected override async Task OnInitializedAsync()
     {
         HCRoles = (await HCRoleRepository.GetHCRoles()).ToList();
-        StudentGender = (await GenderRepository.GetGender()).ToList();
+
+        //Get Currently Logged User
+        currentLoggedUser = Backendless.UserService.CurrentUser;
+        currentLoggedUser = await UserAccountRepository.GetRelations(currentLoggedUser.ObjectId);
+
+        var res = currentLoggedUser.GetProperty("residence");
+
+        StudentGender = (res as Residence).ResidenceGender;
+
+
         isDataLoaded = false;
     }
 
@@ -28,7 +40,7 @@
     private async Task AddUser(StudentRoleViewModel role)
     {
 
-        studentViewModel = await DialogService.OpenAsync<RegisterStudentPage>("Register Student", new Dictionary<string, object> { { "Genders", StudentGender }, { "Role", role }, { "HCRoles", HCRoles } });
+        studentViewModel = await DialogService.OpenAsync<RegisterStudentPage>("Register Student", new Dictionary<string, object> { { "Gender", StudentGender }, { "Role", role }, { "HCRoles", HCRoles } });
 
         if(studentViewModel != null)
         {
@@ -89,12 +101,6 @@
 
 
                 }
-
-
-
-
-
-
 
             }
             catch (Exception e)

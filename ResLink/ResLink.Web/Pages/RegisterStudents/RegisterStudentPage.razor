@@ -16,18 +16,15 @@
     <RadzenTextBox class="form-control my-2" @bind-Value="studentView.LastName" />
 
     <RadzenLabel Text="Gender" />
-    <RadzenDropDown class="form-control my-2" @bind-Value="studentView.Gender" Data="Genders" TValue="Gender" TextProperty="GenderName" ValueProperty="Gender" AllowClear="false"/>
+    <InputSelect disabled class="form-control my-2" @bind-Value="studentView.Gender">
+        <option value="@studentView.Gender">@studentView.Gender.GenderName</option>
+    </InputSelect>
 
     <RadzenLabel Text="Role" />
     <InputSelect disabled class="custom-select my-2" @bind-Value="studentView.Role">
-
-        @foreach (StudentRoleViewModel role in Enum.GetValues(typeof(StudentRoleViewModel)))
-        {
-            <option value="@role"> @role </option>
-        }
-
+        <option value="@studentView.Role">@studentView.Role</option>
     </InputSelect>
-
+   
 
     @if (studentView.Role == StudentRoleViewModel.HouseCommittee)
     {
@@ -54,7 +51,7 @@
     StudentViewModel studentView = new StudentViewModel();
     
     [Parameter]
-    public List<Gender> Genders { get; set; }
+    public Gender Gender { get; set; }
 
     
     [Parameter]
@@ -67,7 +64,7 @@
 
     protected override void OnInitialized()
     {
-        //studentView.Gender = GenderViewModel.Male;
+        studentView.Gender = Gender;
         studentView.Role = Role;
     }
 

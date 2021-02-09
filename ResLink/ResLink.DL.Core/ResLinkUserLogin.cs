@@ -13,5 +13,10 @@ namespace ResLink.DL
         {
             return await Backendless.UserService.LoginAsync(email, password);
         }
+        
+        public static async Task LogoutUser()
+        {
+            await Backendless.UserService.LogoutAsync();
+        }
     }
 }

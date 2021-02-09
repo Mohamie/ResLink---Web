@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BackendlessAPI;
+using BackendlessAPI.Persistence;
 
 namespace ResLink.DL
 {
     public class ResLinkDatabase
     {
+
+        DataQueryBuilder queryBuilder = DataQueryBuilder.Create();
+
         public async Task<IEnumerable<T>> GetItems<T>()
         {
             return await Backendless.Data.Of<T>().FindAsync();

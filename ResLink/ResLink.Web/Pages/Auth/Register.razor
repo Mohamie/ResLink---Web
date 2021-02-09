@@ -1,6 +1,7 @@
-﻿@page "/"
+﻿@page "/auth/register"
 @layout AuthLayout
 @inject BackendlessService backendlessService
+@inject NavigationManager navManager 
 
 <h3 class="mt-5">Register Your Residence</h3>
 
@@ -91,7 +92,7 @@
 
                 try
                 {
-                    //relationship between Residence and ManagerAccount, meant to log SuperUser
+                    //relationship between ResidenceManager and ManagerAccount, meant to log SuperUser
                     object[] managerChild = new Object[] { savedMangerAccount };
                     await ResidenceManagerRepository.SetRelation(residenceManager, "managerAccount", managerChild);
 
@@ -113,6 +114,14 @@
                         object[] resManagerChild = new object[] { residenceManager };
                         await ResidenceRepository.SetRelation(newResidence, "residenceManager", resManagerChild);
 
+                        //finally create a relationship between ManagerAccount and residence
+                        object[] resEnrolled = new object[] { newResidence };
+                        await UserAccountRepository.SetRelation(savedMangerAccount, "residence", resEnrolled);
+
+                        //clear fields
+                        residenceViewModel = null;
+                        //navigate to login page
+                        navManager.NavigateTo("/auth/login");
                     }
 
                 }

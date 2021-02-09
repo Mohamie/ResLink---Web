@@ -1,6 +1,8 @@
-﻿@page "/auth/login"
+﻿@page "/"
 @layout AuthLayout
 @inject BackendlessService backendlessService
+@inject NavigationManager navManager
+@inject NotificationService NotificationService 
 
 
 <h1 class="text-muted text-center display-2">Welcome To ResLink</h1>
@@ -40,11 +42,23 @@
 
     private async Task LoginUser()
     {
-        BackendlessUser backendlessUser = await ResLinkUserLogin.LoginUser(user.Email, user.Password);
-
-        if(backendlessUser != null)
+        BackendlessUser backendlessUser = null;
+        try
         {
+            backendlessUser = await ResLinkUserLogin.LoginUser(user.Email, user.Password);
 
+            if (backendlessUser != null)
+            {
+                navManager.NavigateTo("/home");
+            }
         }
+        catch (Exception e)
+        {
+            NotificationMessage message = new NotificationMessage { Severity = NotificationSeverity.Info,
+                Detail = e.Message,
+                Duration = 4000 };
+        }
+
+
     }
 }
