@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResLink.BL.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -27,7 +28,9 @@ namespace ResLink.Web.ViewModels
         public string ConfirmPassword { get; set; }
         
         [Required]
-        public GenderViewModel ResidenceGender { get; set; }
+        public List<Gender> ResidenceGender { get; set; }
+
+        public Gender Gender { get; set; }
 
         public StudentRoleViewModel ManagerRole { get { return StudentRoleViewModel.Manager; } set { ManagerRole = value; } }
 

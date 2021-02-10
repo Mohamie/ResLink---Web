@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResLink.BL.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace ResLink.Web.ViewModels
         [Required]
         [RegularExpression(@"([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])", ErrorMessage = "The student number should be 9 digits long")]
         public string StudentNumber { get; set; }
+ 
 
         [Required]
         public string FirstNames { get; set; }
@@ -18,7 +20,7 @@ namespace ResLink.Web.ViewModels
         [Required]
         public string LastName { get; set; }
         
-        public GenderViewModel Gender { get; set; }
+       // public GenderViewModel Gender { get; set; }
 
         [Required]
         [EmailAddress]
@@ -29,7 +31,11 @@ namespace ResLink.Web.ViewModels
         
         public StudentRoleViewModel Role{ get; set; }
         
-        public HCRoleViewModel HCRole{ get; set; }
+        //public HCRoleViewModel HCRole{ get; set; }
+
+        public HCRole HCRole { get; set; }
+
+        public Gender Gender { get; set; }
 
 
 

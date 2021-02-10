@@ -10,7 +10,7 @@ namespace ResLink.BL.Models
     public class Complaint
     {
         [SetClientClassMemberName("objectId")]
-        public string ObjectID { get; set; }
+        public string objectId { get; set; }
 
         [SetClientClassMemberName("complaintTitle")]
         public string ComplaintTitle { get; set; }

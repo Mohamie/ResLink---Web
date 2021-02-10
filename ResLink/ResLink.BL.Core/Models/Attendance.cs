@@ -10,7 +10,7 @@ namespace ResLink.BL.Models
     public class Attendance
     {
         [SetClientClassMemberName("objectId")]
-        public string ObjectID { get; set; }
+        public string objectId { get; set; }
 
         [SetClientClassMemberName("student")]
         public List<Student> Student { get; set; }

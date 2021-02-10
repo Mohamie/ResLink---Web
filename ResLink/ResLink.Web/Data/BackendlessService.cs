@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BackendlessAPI;
+using ResLink.BL.Models;
 
 namespace ResLink.Web.Data
 {
@@ -14,6 +15,10 @@ namespace ResLink.Web.Data
         public BackendlessService()
         {
             Backendless.InitApp(APPLICATIONID, APIKEY);
+
+            Backendless.Data.MapTableToType("Residence", typeof(Residence));
+            Backendless.Data.MapTableToType("Gender", typeof(Gender));
+
         }
     }
 }

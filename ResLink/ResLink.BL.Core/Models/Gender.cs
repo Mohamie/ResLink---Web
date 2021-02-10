@@ -12,14 +12,12 @@ namespace ResLink.BL.Models
     public class Gender
     {
         [SetClientClassMemberName("objectId")]
-        public string ObjectID { get; set; }
+        public string objectId { get; set; }
 
         [SetClientClassMemberName("genderID")]
-        public string  GenderID { get; set; }
+        public int GenderID { get; set; }
 
         [SetClientClassMemberName("genderName")]
         public string GenderName { get; set; }
-
-
     }
 }
