@@ -1,0 +1,45 @@
+﻿
+<div class="container">
+
+    <table class="table table-bordered table-striped table-hover table-info">
+        <thead>
+            <tr>
+                <th rowspan="3">Announcement Title</th>
+            </tr>
+            
+            <tr>
+                <th rowspan="3">Announcement Category</th>
+            </tr>
+            
+            <tr>
+                <th rowspan="3">Announcement Description</th>
+            </tr>
+
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td rowspan="5">@Announcement.AnnouncementTitle</td>
+            </tr>
+
+            <tr>
+                <td rowspan="5">Category to be implemented</td>
+            </tr>
+            
+            <tr>
+                <td>@Announcement.AnnouncementDescription</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
+
+@code {
+
+    [Parameter]
+    public Announcement Announcement { get; set; }
+
+}

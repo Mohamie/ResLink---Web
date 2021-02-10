@@ -46,6 +46,8 @@
 
 @code {
 
+    //Todo: Create EventViewModel for this layout, Add Validations 
+
     [Parameter]
     public DateTime EventStartTime { get; set; }
 
@@ -57,8 +59,8 @@
 
     protected override void OnParametersSet()
     {
-        _event.EventStartTime = EventStartTime;        
-        _event.EventEndTime = EventEndTime;        
+        _event.EventStartTime = EventStartTime;
+        _event.EventEndTime = EventEndTime;
     }
 
     private void OnSubmit()

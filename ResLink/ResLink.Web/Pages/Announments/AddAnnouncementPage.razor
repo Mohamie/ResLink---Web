@@ -7,6 +7,16 @@
     <RadzenLabel Text="Title"/>
     <RadzenTextBox class="form-control my-3" Placeholder="Announcement Title" @bind-Value="announcement.AnnouncementTitle"/>
   
+    <RadzenLabel Text="Category"/>
+    
+   @* <InputSelect class="form-control my-3" @bind-Value="categories">
+
+        @foreach(var category in categories)
+        {
+            <option>@category</option>
+        }
+    </InputSelect>*@
+
     <RadzenLabel class="mb-3" Text="Description" />
     <InputTextArea class="form-control my-3" @bind-Value="announcement.AnnouncementDescription" placeholder="Announcement Message" style="height:500px; margin-bottom:1rem"/>
 
@@ -16,6 +26,27 @@
 @code {
 
     Announcement announcement = new Announcement();
+
+    [Parameter]
+    public Announcement Announcement { get; set; }
+
+    List<String> categories;
+
+    protected override void OnInitialized()
+    {
+        categories = new List<string>();
+        categories.Add("Meeting");
+        categories.Add("Fund Raising");
+        categories.Add("Social");
+        categories.Add("Domestic");
+        categories.Add("Other");
+    }
+
+    protected override void OnParametersSet()
+    {
+        announcement = Announcement;
+    }
+
 
     private void OnSubmit()
     {

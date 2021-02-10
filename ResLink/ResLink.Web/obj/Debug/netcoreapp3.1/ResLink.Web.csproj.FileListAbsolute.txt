@@ -336,3 +336,5 @@ C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.Web\obj\Debug\n
 C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\ResLink.Web.genruntimeconfig.cache
 C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Auth\Logout.razor.g.cs
 C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Auth\Logout.razor.g.cs
+C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Announments\AnnouncementDetailsPage.razor.g.cs
+C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Announments\AnnouncementDetailsPage.razor.g.cs

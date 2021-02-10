@@ -9,12 +9,14 @@
 
 @code
 {
+    //Create a ViewModel for Announcements
     Announcement announcement;
 
     async Task AddAnnouncement()
     {
         announcement = await DialogService.OpenAsync<AddAnnouncementPage>("Add Announcement");
 
+        //Todo: Extract data from ViewModel to Model, add relationships like category, severity and authur of the announcement
         if (announcement != null)
         {
             await AnnouncementRepository.SaveAnnouncement(announcement);
