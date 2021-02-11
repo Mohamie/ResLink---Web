@@ -1,4 +1,5 @@
-﻿using ResLink.BL.Models;
+﻿using BackendlessAPI.Persistence;
+using ResLink.BL.Models;
 using ResLink.DL;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ namespace ResLink.DAL.Repositories
         private ResLinkDatabase db = null;
         protected static HouseCommitteeRepository instance;
 
+        private static DataQueryBuilder queryBuilder;
+
         static HouseCommitteeRepository()
         {
             instance = new HouseCommitteeRepository();
@@ -20,16 +23,25 @@ namespace ResLink.DAL.Repositories
         protected HouseCommitteeRepository()
         {
             db = new ResLinkDatabase();
+            queryBuilder = DataQueryBuilder.Create();
         }
 
         public static async Task<IEnumerable<HouseCommittee>> GetHouseCommittee()
         {
-            return await instance.db.GetItems<HouseCommittee>();
+            queryBuilder.AddRelated("student");
+            queryBuilder.AddRelated("student.studentAccount");
+            queryBuilder.AddRelated("student.studentAccount.residence");
+            queryBuilder.AddRelated("hc.hcRole");
+            return await instance.db.GetItems<HouseCommittee>(queryBuilder);
         }
 
         public static async Task<HouseCommittee> GetHouseCommitteeById(string id)
         {
-            return await instance.db.GetItem<HouseCommittee>(id);
+            queryBuilder.AddRelated("student");
+            queryBuilder.AddRelated("student.studentAccount");
+            queryBuilder.AddRelated("student.studentAccount.residence");
+            queryBuilder.AddRelated("hc.hcRole");
+            return await instance.db.GetItem<HouseCommittee>(id, queryBuilder);
         }
 
         public static async Task<HouseCommittee> SaveHouseCommittee(HouseCommittee item)
