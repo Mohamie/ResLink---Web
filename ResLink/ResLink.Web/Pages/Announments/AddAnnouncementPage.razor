@@ -1,55 +1,41 @@
 ﻿@inject DialogService DialogService
 
-<EditForm class="form-group" Model="announcement" OnValidSubmit="OnSubmit">
-        
-    <DataAnnotationsValidator/>
+<EditForm class="form-group" Model="announcementViewModel" OnValidSubmit="OnSubmit">
 
-    <RadzenLabel Text="Title"/>
-    <RadzenTextBox class="form-control my-3" Placeholder="Announcement Title" @bind-Value="announcement.AnnouncementTitle"/>
-  
-    <RadzenLabel Text="Category"/>
+    <DataAnnotationsValidator />
+
+    <RadzenLabel Text="Title" />
+    <RadzenTextBox class="form-control my-3" Placeholder="Announcement Title" @bind-Value="announcementViewModel.AnnouncementTitle" />
+    <ValidationMessage For="(() => announcementViewModel.AnnouncementTitle)" />
     
-   @* <InputSelect class="form-control my-3" @bind-Value="categories">
-
-        @foreach(var category in categories)
-        {
-            <option>@category</option>
-        }
-    </InputSelect>*@
+    <RadzenLabel Text="Alert Severity" />
+    <RadzenDropDown class="form-control my-3" Data="AlertSeverities" @bind-Value="announcementViewModel.AnnouncementSeverity" TValue="AlertSeverity" TextProperty="SeverityTitle" ValueProperty="AlertSeverity" AllowFiltering="false"/>
+    
 
     <RadzenLabel class="mb-3" Text="Description" />
-    <InputTextArea class="form-control my-3" @bind-Value="announcement.AnnouncementDescription" placeholder="Announcement Message" style="height:500px; margin-bottom:1rem"/>
+    <InputTextArea class="form-control my-3" @bind-Value="announcementViewModel.AnnouncementDescription" placeholder="Announcement Message" style="height:350px; margin-bottom:1rem" />
+    <ValidationMessage For="(() => announcementViewModel.AnnouncementDescription)" />
 
-    <RadzenButton ButtonType="ButtonType.Submit" ButtonStyle="ButtonStyle.Success" Text="Save"/>
+    <RadzenButton class="my-2" ButtonType="ButtonType.Submit" ButtonStyle="ButtonStyle.Success" Text="Save Announcement" />
 </EditForm>
 
 @code {
 
-    Announcement announcement = new Announcement();
+
+    AnnouncementViewModel announcementViewModel = new AnnouncementViewModel();
+    
 
     [Parameter]
-    public Announcement Announcement { get; set; }
-
-    List<String> categories;
-
-    protected override void OnInitialized()
-    {
-        categories = new List<string>();
-        categories.Add("Meeting");
-        categories.Add("Fund Raising");
-        categories.Add("Social");
-        categories.Add("Domestic");
-        categories.Add("Other");
-    }
+    public List<AlertSeverity> AlertSeverities { get; set; }
 
     protected override void OnParametersSet()
     {
-        announcement = Announcement;
+        announcementViewModel.AnnouncementSeverity = AlertSeverities[0];
     }
 
 
     private void OnSubmit()
     {
-        DialogService.Close(announcement);
+        DialogService.Close(announcementViewModel);
     }
 }

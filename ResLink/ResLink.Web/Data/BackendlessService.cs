@@ -18,6 +18,8 @@ namespace ResLink.Web.Data
 
             Backendless.Data.MapTableToType("Residence", typeof(Residence));
             Backendless.Data.MapTableToType("Gender", typeof(Gender));
+            Backendless.Data.MapTableToType("Announcement", typeof(Announcement));
+            Backendless.Data.MapTableToType("Event", typeof(Event));
 
         }
     }

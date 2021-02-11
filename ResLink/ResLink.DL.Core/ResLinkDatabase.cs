@@ -13,14 +13,14 @@ namespace ResLink.DL
 
         DataQueryBuilder queryBuilder = DataQueryBuilder.Create();
 
-        public async Task<IEnumerable<T>> GetItems<T>()
+        public async Task<IEnumerable<T>> GetItems<T>(DataQueryBuilder queryBuilder = null)
         {
-            return await Backendless.Data.Of<T>().FindAsync();
+            return await Backendless.Data.Of<T>().FindAsync(queryBuilder);
         }
 
-        public async Task<T> GetItem<T>(string id)
+        public async Task<T> GetItem<T>(string id, DataQueryBuilder queryBuilder = null)
         {
-            return await Backendless.Data.Of<T>().FindByIdAsync(id);
+            return await Backendless.Data.Of<T>().FindByIdAsync(id, queryBuilder);
         }
 
         public async Task<T> SaveItem<T>( T item )

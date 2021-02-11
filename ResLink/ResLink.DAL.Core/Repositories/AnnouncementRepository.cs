@@ -1,4 +1,5 @@
-﻿using ResLink.BL.Models;
+﻿using BackendlessAPI.Persistence;
+using ResLink.BL.Models;
 using ResLink.DL;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace ResLink.DAL.Repositories
         private ResLinkDatabase db = null;
         protected static AnnouncementRepository instance;
 
+        private static DataQueryBuilder queryBuilder;
+
         static AnnouncementRepository()
         {
             instance = new AnnouncementRepository();
@@ -21,11 +24,14 @@ namespace ResLink.DAL.Repositories
         protected AnnouncementRepository()
         {
             db = new ResLinkDatabase();
+            queryBuilder = DataQueryBuilder.Create();
         }
 
 
         public static async Task<IEnumerable<Announcement>> GetAnnouncements()
         {
+            queryBuilder.AddRelated("hc.student");
+            queryBuilder.AddRelated("hc.hcRole");
             return await instance.db.GetItems<Announcement>();
         }
 
