@@ -26,6 +26,7 @@ namespace ResLink.DAL.Repositories
 
         public static async Task<IEnumerable<Complaint>> getComplaints()
         {
+
             return await instance.db.GetItems<Complaint>();
         }
 
