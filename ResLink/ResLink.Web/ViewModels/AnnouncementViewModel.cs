@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 ﻿using System;
+=======
+﻿using ResLink.BL.Models;
+using System;
+>>>>>>> 128f951df458f3e953548bd07cf765b6eec41e9c
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,11 +19,8 @@ namespace ResLink.Web.ViewModels
 
         [Required]
         public string AnnouncementDescription { get; set; }
-        [Required]
-        public string AnnouncementCategory { get; set; }
-
-        [Required]
-        public string AnnouncementAlertSeverity { get; set; }
+       
+        public AlertSeverity AnnouncementSeverity { get; set; }
 
     }
 }

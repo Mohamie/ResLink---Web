@@ -167,7 +167,7 @@ using System.ComponentModel.DataAnnotations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 15 "C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.Web\Pages\Announments\AnnouncementsList.razor"
+#line 45 "C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.Web\Pages\Announments\AnnouncementsList.razor"
        
 
     List<Announcement> announcements = new List<Announcement>();
@@ -182,11 +182,21 @@ using System.ComponentModel.DataAnnotations;
         announcements = await AnnouncementRepository.GetAnnouncements() as List<Announcement>;
     }
 
+    private async Task Edit(Announcement announcement)
+    {
+        await DialogService.OpenAsync<AddAnnouncementPage>("Edit Announcement", new Dictionary<string, object> { { "Announcement", announcement } });
+    }
+
+    private async Task Details(Announcement announcement)
+    {
+        await DialogService.OpenAsync<AnnouncementDetailsPage>("Announcement Details", new Dictionary<string, object> { { "Announcement", announcement } });
+    }
+
     protected override void OnParametersSet()
     {
         newAnnouncement = Announcement;
 
-        if(newAnnouncement != null)
+        if (newAnnouncement != null)
         {
             announcements.Add(newAnnouncement);
         }
@@ -195,6 +205,7 @@ using System.ComponentModel.DataAnnotations;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private DialogService DialogService { get; set; }
     }
 }
 #pragma warning restore 1591

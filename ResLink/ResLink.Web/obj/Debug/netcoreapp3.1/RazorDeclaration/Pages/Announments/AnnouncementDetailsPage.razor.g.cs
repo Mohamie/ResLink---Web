@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ResLink.Web.Pages.Events
+namespace ResLink.Web.Pages.Announments
 {
     #line hidden
     using System;
@@ -159,7 +159,7 @@ using System.ComponentModel.DataAnnotations;
 #line default
 #line hidden
 #nullable disable
-    public partial class AddEventPage : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class AnnouncementDetailsPage : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -167,35 +167,16 @@ using System.ComponentModel.DataAnnotations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 47 "C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.Web\Pages\Events\AddEventPage.razor"
+#line 40 "C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.Web\Pages\Announments\AnnouncementDetailsPage.razor"
        
 
-    //Todo: Create EventViewModel for this layout, Add Validations 
-
     [Parameter]
-    public DateTime EventStartTime { get; set; }
+    public Announcement Announcement { get; set; }
 
-    [Parameter]
-    public DateTime EventEndTime { get; set; }
-
-
-    Event _event = new Event();
-
-    protected override void OnParametersSet()
-    {
-        _event.EventStartTime = EventStartTime;
-        _event.EventEndTime = EventEndTime;
-    }
-
-    private void OnSubmit()
-    {
-        DialogService.Close(_event);
-    }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private DialogService DialogService { get; set; }
     }
 }
 #pragma warning restore 1591

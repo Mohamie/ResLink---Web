@@ -167,8 +167,10 @@ using System.ComponentModel.DataAnnotations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 47 "C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.Web\Pages\Events\EditEventPage.razor"
+#line 49 "C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.Web\Pages\Events\EditEventPage.razor"
        
+
+    //Todo: Create EventViewModel for this layout, Add Validations 
 
     [Parameter]
     public Event Event { get; set; }

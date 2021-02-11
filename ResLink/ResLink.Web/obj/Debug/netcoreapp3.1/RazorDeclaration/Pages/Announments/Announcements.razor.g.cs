@@ -170,15 +170,26 @@ using System.ComponentModel.DataAnnotations;
 #nullable restore
 #line 11 "C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.Web\Pages\Announments\Announcements.razor"
  
-    Announcement announcement;
+    //Create a ViewModel for Announcements
+    AnnouncementViewModel announcementViewModel;
+
+    public List<AlertSeverity> AlertSeverities{ get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        AlertSeverities = (await AlertSeverityRepository.GetAlertSeverities()).ToList();
+    }
 
     async Task AddAnnouncement()
     {
-        announcement = await DialogService.OpenAsync<AddAnnouncementPage>("Add Announcement");
+        announcementViewModel = await DialogService.OpenAsync<AddAnnouncementPage>("Add Announcement", new Dictionary<string, object> { { "AlertSeverities", AlertSeverities } });
 
-        if (announcement != null)
+        //Todo: Extract data from ViewModel to Model, add relationships like category, severity and authur of the announcement
+        if (announcementViewModel != null)
         {
-            await AnnouncementRepository.SaveAnnouncement(announcement);
+
+
+            //await AnnouncementRepository.SaveAnnouncement(announcement);
 
             NotificationMessage message = new NotificationMessage { Severity = NotificationSeverity.Success, Summary = "Announcement:", Detail = "Added Successfuly", Duration = 4000 };
 

@@ -1,4 +1,5 @@
-﻿
+﻿@inject DialogService DialogService
+
 <h3 class="text-muted">Announcements List</h3>
 
 
@@ -7,6 +8,35 @@
     <Columns>
         <RadzenGridColumn TItem="Announcement" Property="AnnouncementTitle" Title="Title" />
         <RadzenGridColumn TItem="Announcement" Property="AnnouncementDescription" Title="Description" />
+
+        <RadzenGridColumn TItem="Announcement" Context="announcement" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+
+            <Template Context="announcement">
+
+                <RadzenButton Icon="visibility" Size="ButtonSize.Small" Click="((args) => Details(announcement))" />
+
+            </Template>
+
+        </RadzenGridColumn>
+        <RadzenGridColumn TItem="Announcement" Context="announcement" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+
+            <Template Context="announcement">
+
+                <RadzenButton Icon="edit" Size="ButtonSize.Small" Click="((args) => Edit(announcement))" />
+
+            </Template>
+
+        </RadzenGridColumn>
+
+        <RadzenGridColumn TItem="Announcement" Context="announcement" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+
+            <Template Context="announcement">
+
+                <RadzenButton Icon="delete_forever" Size="ButtonSize.Small" Click="((args) => Edit(announcement))" />
+
+            </Template>
+
+        </RadzenGridColumn>
     </Columns>
 </RadzenGrid>
 
@@ -26,11 +56,21 @@
         announcements = await AnnouncementRepository.GetAnnouncements() as List<Announcement>;
     }
 
+    private async Task Edit(Announcement announcement)
+    {
+        await DialogService.OpenAsync<AddAnnouncementPage>("Edit Announcement", new Dictionary<string, object> { { "Announcement", announcement } });
+    }
+
+    private async Task Details(Announcement announcement)
+    {
+        await DialogService.OpenAsync<AnnouncementDetailsPage>("Announcement Details", new Dictionary<string, object> { { "Announcement", announcement } });
+    }
+
     protected override void OnParametersSet()
     {
         newAnnouncement = Announcement;
 
-        if(newAnnouncement != null)
+        if (newAnnouncement != null)
         {
             announcements.Add(newAnnouncement);
         }

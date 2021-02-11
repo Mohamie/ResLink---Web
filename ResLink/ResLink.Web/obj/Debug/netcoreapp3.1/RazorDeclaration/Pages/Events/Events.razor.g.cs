@@ -195,9 +195,11 @@ using System.ComponentModel.DataAnnotations;
 
         DateTime date = new DateTime();
 
+        //This should be a ViewModel
         Event data = await DialogService.OpenAsync<AddEventPage>("Add Event",
             new Dictionary<string, object> { { "EventStartTime", (args != null) ? args.Start :  date.Date}, { "EventEndTime", (args != null) ?  args.End : date.Date } });
 
+        //Todo: Extract ViewModel to Model, save data and add relationships, event category and authur of the event
         if (data != null)
         {
             eventList.Add(data);
@@ -212,9 +214,13 @@ using System.ComponentModel.DataAnnotations;
     async Task OnEventSelect(SchedulerAppointmentSelectEventArgs<Event> args)
     {
 
+        //Consider code reusability for this one
+
+        //This should be a ViewModel
         Event editedEvent = await DialogService.OpenAsync<EditEventPage>("Edit Event", new Dictionary<string, object> { { "Event", args.Data } });
 
-        if(editedEvent != null)
+        //Todo: Extract ViewModel to Model, save data and add relationships, event category and authur of the event
+        if (editedEvent != null)
         {
             await EventRepository.SaveEvent(editedEvent);
         }

@@ -167,14 +167,25 @@ using System.ComponentModel.DataAnnotations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 16 "C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.Web\Pages\Announments\AddAnnouncementPage.razor"
+#line 22 "C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.Web\Pages\Announments\AddAnnouncementPage.razor"
        
 
-    Announcement announcement = new Announcement();
+
+    AnnouncementViewModel announcementViewModel = new AnnouncementViewModel();
+    
+
+    [Parameter]
+    public List<AlertSeverity> AlertSeverities { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        announcementViewModel.AnnouncementSeverity = AlertSeverities[0];
+    }
+
 
     private void OnSubmit()
     {
-        DialogService.Close(announcement);
+        DialogService.Close(announcementViewModel);
     }
 
 #line default

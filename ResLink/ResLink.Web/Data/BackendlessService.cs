@@ -19,6 +19,7 @@ namespace ResLink.Web.Data
             Backendless.Data.MapTableToType("Residence", typeof(Residence));
             Backendless.Data.MapTableToType("Gender", typeof(Gender));
             Backendless.Data.MapTableToType("Announcement", typeof(Announcement));
+<<<<<<< HEAD
             Backendless.Data.MapTableToType("Attendance", typeof(Attendance));
             Backendless.Data.MapTableToType("Complaint", typeof(Complaint));
             Backendless.Data.MapTableToType("HCRole", typeof(HCRole));
@@ -27,6 +28,9 @@ namespace ResLink.Web.Data
             Backendless.Data.MapTableToType("ResidenceManager", typeof(ResidenceManager));
             Backendless.Data.MapTableToType("Student", typeof(Student));
 
+=======
+            Backendless.Data.MapTableToType("Event", typeof(Event));
+>>>>>>> 128f951df458f3e953548bd07cf765b6eec41e9c
 
         }
     }
