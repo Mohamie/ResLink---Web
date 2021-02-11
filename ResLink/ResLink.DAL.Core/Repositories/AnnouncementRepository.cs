@@ -32,12 +32,14 @@ namespace ResLink.DAL.Repositories
         {
             queryBuilder.AddRelated("hc.student");
             queryBuilder.AddRelated("hc.hcRole");
-            return await instance.db.GetItems<Announcement>();
+            return await instance.db.GetItems<Announcement>(queryBuilder);
         }
 
         public static async Task<Announcement> GetAnnouncementById(string id)
         {
-            return await instance.db.GetItem<Announcement>(id);
+            queryBuilder.AddRelated("hc.student");
+            queryBuilder.AddRelated("hc.hcRole");
+            return await instance.db.GetItem<Announcement>(id, queryBuilder);
         }
 
         public static async Task SaveAnnouncement(Announcement item)

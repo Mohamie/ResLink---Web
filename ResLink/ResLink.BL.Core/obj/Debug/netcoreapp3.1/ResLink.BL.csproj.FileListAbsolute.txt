@@ -24,3 +24,4 @@ C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.BL.Core\obj\Deb
 C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.BL.Core\obj\Debug\netcoreapp3.1\ResLink.BL.csproj.CoreCompileInputs.cache
 C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.BL.Core\obj\Debug\netcoreapp3.1\ResLink.BL.dll
 C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.BL.Core\obj\Debug\netcoreapp3.1\ResLink.BL.pdb
+C:\Users\mohau\Desktop\ResLink Web\ResLink---Web\ResLink\ResLink.BL.Core\obj\Debug\netcoreapp3.1\ResLink.BL.csprojAssemblyReference.cache

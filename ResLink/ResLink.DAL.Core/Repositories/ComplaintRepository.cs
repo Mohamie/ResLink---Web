@@ -1,4 +1,5 @@
-﻿using ResLink.BL.Models;
+﻿using BackendlessAPI.Persistence;
+using ResLink.BL.Models;
 using ResLink.DL;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace ResLink.DAL.Repositories
         private ResLinkDatabase db = null;
         protected static ComplaintRepository instance;
 
+        private static DataQueryBuilder queryBuilder;
+
         static ComplaintRepository()
         {
             instance = new ComplaintRepository();
@@ -21,18 +24,20 @@ namespace ResLink.DAL.Repositories
         protected ComplaintRepository()
         {
             db = new ResLinkDatabase();
+            queryBuilder = DataQueryBuilder.Create();
         }
 
-
+       
         public static async Task<IEnumerable<Complaint>> getComplaints()
         {
-
-            return await instance.db.GetItems<Complaint>();
+            queryBuilder.AddRelated("student");
+            return await instance.db.GetItems<Complaint>(queryBuilder);
         }
 
         public static async Task<Complaint> GetComplaintById(string id)
         {
-            return await instance.db.GetItem<Complaint>(id);
+            queryBuilder.AddRelated("student");
+            return await instance.db.GetItem<Complaint>(id, queryBuilder);
         }
 
         public static async Task SaveComplaint(Complaint item)

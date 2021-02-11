@@ -1,4 +1,5 @@
-﻿using ResLink.BL.Models;
+﻿using BackendlessAPI.Persistence;
+using ResLink.BL.Models;
 using ResLink.DL;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace ResLink.DAL.Repositories
         private ResLinkDatabase db = null;
         protected static EventRepository instance;
 
+        private static DataQueryBuilder queryBuilder;
+
         static EventRepository()
         {
             instance = new EventRepository();
@@ -21,17 +24,22 @@ namespace ResLink.DAL.Repositories
         protected EventRepository()
         {
             db = new ResLinkDatabase();
+            queryBuilder = DataQueryBuilder.Create();
         }
 
 
         public static async Task<IEnumerable<Event>> GetEvents()
         {
-            return await instance.db.GetItems<Event>();
+            queryBuilder.AddRelated("hc.student");
+            queryBuilder.AddRelated("hc.hcRole");
+            return await instance.db.GetItems<Event>(queryBuilder);
         }
 
         public static async Task<Event> GetEventById(string id)
         {
-            return await instance.db.GetItem<Event>(id);
+            queryBuilder.AddRelated("hc.student");
+            queryBuilder.AddRelated("hc.hcRole");
+            return await instance.db.GetItem<Event>(id, queryBuilder);
         }
 
         public static async Task SaveEvent(Event item)
