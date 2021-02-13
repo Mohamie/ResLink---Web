@@ -5,34 +5,44 @@
 <RadzenButton class="my-4" Text="Add Announcement" Icon="add_circle_outline" Click="(() => AddAnnouncement())" />
 
 
-<AnnouncementsList/>
+<AnnouncementsList IsDisplayOnly="false"/>
 
 @code
 {
     //Create a ViewModel for Announcements
     AnnouncementViewModel announcementViewModel;
 
-    public List<AlertSeverity> AlertSeverities{ get; set; }
-
-    protected async override Task OnInitializedAsync()
-    {
-        AlertSeverities = (await AlertSeverityRepository.GetAlertSeverities()).ToList();
-    }
 
     async Task AddAnnouncement()
     {
-        announcementViewModel = await DialogService.OpenAsync<AddAnnouncementPage>("Add Announcement", new Dictionary<string, object> { { "AlertSeverities", AlertSeverities } });
+        announcementViewModel = await DialogService.OpenAsync<AddAnnouncementPage>("Add Announcement");
+
 
         //Todo: Extract data from ViewModel to Model, add relationships like category, severity and authur of the announcement
         if (announcementViewModel != null)
         {
 
+            //Annoucement object to save to database
+            Announcement announcement = new Announcement();
 
-            //await AnnouncementRepository.SaveAnnouncement(announcement);
+            announcement.AnnouncementTitle = announcementViewModel.AnnouncementTitle;
+            announcement.AnnouncementDescription = announcementViewModel.AnnouncementDescription;
 
-            NotificationMessage message = new NotificationMessage { Severity = NotificationSeverity.Success, Summary = "Announcement:", Detail = "Added Successfuly", Duration = 4000 };
 
-            NotificationService.Notify(message);
+            announcement = await AnnouncementRepository.SaveAnnouncement(announcement);
+
+            //if its saved and retrived
+            if(announcement != null)
+            {
+                object[] childObject = new object[] { await UserAccountRepository.GetLoggedHouseCommittee()};
+                await AnnouncementRepository.SetRelation(announcement, "hc", childObject);
+
+                NotificationMessage message = new NotificationMessage { Severity = NotificationSeverity.Success, Summary = "Announcement:", Detail = "Added Successfuly", Duration = 4000 };
+
+                NotificationService.Notify(message);
+            }
+
+
         }
 
     }

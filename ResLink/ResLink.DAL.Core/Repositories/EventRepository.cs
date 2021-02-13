@@ -42,9 +42,9 @@ namespace ResLink.DAL.Repositories
             return await instance.db.GetItem<Event>(id, queryBuilder);
         }
 
-        public static async Task SaveEvent(Event item)
+        public static async Task<Event> SaveEvent(Event item)
         {
-            await instance.db.SaveItem<Event>(item);
+            return await instance.db.SaveItem<Event>(item);
         }
 
         public static async Task DeleteEvent(string objectId)

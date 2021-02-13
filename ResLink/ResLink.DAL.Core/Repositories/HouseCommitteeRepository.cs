@@ -31,17 +31,18 @@ namespace ResLink.DAL.Repositories
             queryBuilder.AddRelated("student");
             queryBuilder.AddRelated("student.studentAccount");
             queryBuilder.AddRelated("student.studentAccount.residence");
-            queryBuilder.AddRelated("hc.hcRole");
+            queryBuilder.AddRelated("hcRole");
             return await instance.db.GetItems<HouseCommittee>(queryBuilder);
         }
 
-        public static async Task<HouseCommittee> GetHouseCommitteeById(string id)
+        internal static async Task<IEnumerable<HouseCommittee>> GetHouseCommitteeByClause(string whereClause)
         {
+            queryBuilder.SetWhereClause(whereClause);
             queryBuilder.AddRelated("student");
             queryBuilder.AddRelated("student.studentAccount");
             queryBuilder.AddRelated("student.studentAccount.residence");
-            queryBuilder.AddRelated("hc.hcRole");
-            return await instance.db.GetItem<HouseCommittee>(id, queryBuilder);
+            queryBuilder.AddRelated("hcRole");
+            return await instance.db.GetItems<HouseCommittee>(queryBuilder);
         }
 
         public static async Task<HouseCommittee> SaveHouseCommittee(HouseCommittee item)

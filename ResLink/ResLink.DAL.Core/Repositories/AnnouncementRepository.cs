@@ -30,6 +30,8 @@ namespace ResLink.DAL.Repositories
 
         public static async Task<IEnumerable<Announcement>> GetAnnouncements()
         {
+            queryBuilder.SetPageSize(100).SetOffset(0);
+            queryBuilder.AddRelated("hc");
             queryBuilder.AddRelated("hc.student");
             queryBuilder.AddRelated("hc.hcRole");
             return await instance.db.GetItems<Announcement>(queryBuilder);
@@ -42,9 +44,9 @@ namespace ResLink.DAL.Repositories
             return await instance.db.GetItem<Announcement>(id, queryBuilder);
         }
 
-        public static async Task SaveAnnouncement(Announcement item)
+        public static async Task<Announcement> SaveAnnouncement(Announcement item)
         {
-            await instance.db.SaveItem<Announcement>(item);
+            return await instance.db.SaveItem<Announcement>(item);
         }
 
         public static async Task DeleteAnnouncement( string objectId)
@@ -56,5 +58,11 @@ namespace ResLink.DAL.Repositories
         {
             await instance.db.SetRelation<Announcement>(parentObject, relationColumnName, children);
         }
+
+       /* public static async Task LoadRelations()
+        {
+            LoadRelationsQueryBuilder<HouseCommittee> loadRelationsQueryBuilder = LoadRelationsQueryBuilder<HouseCommittee>.Create();
+            loadRelationsQueryBuilder.
+        }*/
     }
 }

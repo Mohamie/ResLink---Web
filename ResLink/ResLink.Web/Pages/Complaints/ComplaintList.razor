@@ -1,0 +1,47 @@
+﻿@inject DialogService DialogService
+
+
+<RadzenGrid class="shadow mt-3" AllowFiltering="true" AllowPaging="true" PageSize="10"
+            AllowSorting="true" Data="@complaints" TItem="Complaint" ColumnWidth="200px">
+    <Columns>
+        <RadzenGridColumn TItem="Complaint" Property="ComplaintTitle" Title="Title" />
+        <RadzenGridColumn TItem="Complaint" Property="ComplaintDescription" Title="Description" />
+        <RadzenGridColumn TItem="Complaint" Property="Student.FullNames" Title="Complaint From" />
+
+        <RadzenGridColumn TItem="Complaint" Context="complaint" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+
+            <Template Context="complaint">
+
+                <RadzenButton Icon="published_with_changes" Size="ButtonSize.Medium" />
+
+            </Template>
+
+        </RadzenGridColumn>
+
+        <RadzenGridColumn TItem="Complaint" Context="complaint" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+
+            <Template Context="complaint">
+
+                <RadzenButton Icon="visibility" Size="ButtonSize.Medium" Click="(() => Details(complaint))" />
+
+            </Template>
+
+        </RadzenGridColumn>
+    </Columns>
+
+</RadzenGrid>
+
+@code
+{
+    List<Complaint> complaints;
+
+    protected async override Task OnInitializedAsync()
+    {
+        complaints = (await ComplaintRepository.getComplaints()).ToList();
+    }
+
+    async Task Details(Complaint complaint)
+    {
+        await DialogService.OpenAsync<ComplaintDetails>("Complaint Details", new Dictionary<string, object> { { "Complaint", complaint } }, new DialogOptions() { Width = "700px", Height = "800px" });
+    }
+}

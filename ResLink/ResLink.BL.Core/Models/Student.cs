@@ -36,6 +36,12 @@ namespace ResLink.BL.Models
         [SetClientClassMemberName("gender")]
         public Gender Gender { get; set; }
 
+        [SetClientClassMemberName("phoneNumber")]
+        public string PhoneNumber { get; set; }
+
+
+        [SetClientClassMemberName("roomNumber")]
+        public int RoomNumber { get; set; }
 
     }
 }

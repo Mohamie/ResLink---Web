@@ -1,41 +1,49 @@
 ﻿
-<div class="container">
+<table class="table table-striped table-bordered table-dark">
+    <tr>
+        <th>HC Name</th>
+        <td>@Announcement.HouseCommittee.Student.FullNames @Announcement.HouseCommittee.Student.LastName</td>
+    </tr>
 
-    <table class="table table-bordered table-striped table-hover table-info">
-        <thead>
-            <tr>
-                <th rowspan="3">Announcement Title</th>
-            </tr>
-            
-            <tr>
-                <th rowspan="3">Announcement Category</th>
-            </tr>
-            
-            <tr>
-                <th rowspan="3">Announcement Description</th>
-            </tr>
+    <tr>
+        <th>HC Role</th>
+        <td>@Announcement.HouseCommittee.HcRole.HcRoleName</td>
+    </tr>
 
 
-        </thead>
+    <tr>
+        <th>HC's Room No</th>
+        <td>@Announcement.HouseCommittee.Student.RoomNumber </td>
+    </tr>
 
-        <tbody>
+    <tr>
+        <th>HC's PhoneNumber</th>
+        <td>@Announcement.HouseCommittee.Student.PhoneNumber </td>
+    </tr>
 
-            <tr>
-                <td rowspan="5">@Announcement.AnnouncementTitle</td>
-            </tr>
+    <tr>
+        <th>Announcement Category</th>
+        <td class="text-danger">Not Yet Implemented</td>
+    </tr>
 
-            <tr>
-                <td rowspan="5">Category to be implemented</td>
-            </tr>
-            
-            <tr>
-                <td>@Announcement.AnnouncementDescription</td>
-            </tr>
+    <tr>
+        <th>Date Created</th>
+        <td>@Announcement.GetDateCreated</td>
+    </tr>
 
-        </tbody>
-    </table>
 
-</div>
+    <tr>
+        <th>Announcement Title</th>
+        <td>@Announcement.AnnouncementTitle</td>
+    </tr>
+
+    <tr>
+        <th>Announcement Description</th>
+        <td>@Announcement.AnnouncementDescription</td>
+    </tr>
+
+</table>
+
 
 @code {
 

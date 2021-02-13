@@ -1,5 +1,6 @@
 ﻿using BackendlessAPI;
 using BackendlessAPI.Persistence;
+using ResLink.BL.Models;
 using ResLink.DL;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace ResLink.DAL.Repositories
         private ResLinkDatabase db = null;
         protected static UserAccountRepository instance;
 
+        DataQueryBuilder queryBuilder;
+
         static UserAccountRepository()
         {
             instance = new UserAccountRepository();
@@ -21,6 +24,7 @@ namespace ResLink.DAL.Repositories
         protected UserAccountRepository()
         {
             db = new ResLinkDatabase();
+            queryBuilder = DataQueryBuilder.Create();
         }
 
 
@@ -33,15 +37,21 @@ namespace ResLink.DAL.Repositories
         {
             return await instance.db.GetItem<BackendlessUser>(id);
         }
-
-        /*public static async Task SaveBackendlessUser(BackendlessUser item)
+       
+        public static async Task<BackendlessUser> GetCurrentlyLoggedAccount()
         {
-            await instance.db.SaveItem<BackendlessUser>(item);
+            return await GetRelations((Backendless.UserService.CurrentUser).ObjectId);
         }
-*/
-        public static async Task DeleteBackendlessUser(string objectId)
+
+        public static async Task<HouseCommittee> GetLoggedHouseCommittee()
         {
-            await instance.db.DeleteItem<BackendlessUser>(objectId);
+            string accountObjectId = (await GetCurrentlyLoggedAccount()).ObjectId;
+
+            string whereClause = $"objectId in (HouseCommittee[student.studentAccount.objectId = '{accountObjectId}'].objectId)";
+
+            List<HouseCommittee> hcList = await HouseCommitteeRepository.GetHouseCommitteeByClause(whereClause) as List<HouseCommittee>;
+
+            return hcList[0];
         }
 
         public static async Task SetRelation<BackendlessUser>(BackendlessUser parentObject, string relationColumnName, object[] children)
@@ -57,5 +67,7 @@ namespace ResLink.DAL.Repositories
 
             return await Backendless.Data.Of<BackendlessUser>().FindByIdAsync(objectId, relations);
         }
+
+        
     }
 }

@@ -11,8 +11,21 @@
 </div>
 
 <div class="main">
-    <div class="top-row px-4 sticky-top shadow">
-       <ResLink.Web.Pages.Auth.Logout/>
+    <div class="top-row px-5 sticky-top shadow">
+       
+        <div class="m-4">
+            <RadzenProfileMenu>
+                <Template>
+                    <RadzenGravatar Email="user@example.com"/>
+                </Template>
+                <ChildContent>
+                    <RadzenProfileMenuItem Text="Your Profile" Icon="account_circle" />
+                    <RadzenProfileMenuItem Text="Residence Enrolled" Icon="home" />
+                    <RadzenProfileMenuItem Text="Sign out" Icon="logout" Path="logout"/>
+                </ChildContent>
+
+            </RadzenProfileMenu>
+        </div>
     </div>
 
     <div class="content px-4">

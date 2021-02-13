@@ -1,13 +1,17 @@
 ﻿@inject DialogService DialogService
+@inject NotificationService NotificationService
 
-<EditForm class="form-group" Model="_event" OnValidSubmit="OnSubmit">
+<EditForm class="form-group" Model="eventView" OnValidSubmit="OnValidSubmit" OnInvalidSubmit="OnInvalidSubmit">
+    
+    <DataAnnotationsValidator/>
 
     <div class="row" style="margin-bottom: 16px">
         <div class="col-3">
             <RadzenLabel Text="Title" />
         </div>
         <div class="col">
-            <RadzenTextBox class="form-control" @bind-Value="@_event.EventTitle" Name="EventTitle" />
+            <RadzenTextBox class="form-control" @bind-Value="@eventView.EventTitle" Name="EventTitle" />
+            <ValidationMessage For="() => eventView.EventTitle"/>
         </div>
     </div>
     <div class="row" style="margin-bottom: 16px">
@@ -15,7 +19,8 @@
             <RadzenLabel Text="Start Date" />
         </div>
         <div class="col">
-            <RadzenDatePicker @bind-Value="@_event.EventStartTime" ShowTime="true" />
+            <RadzenDatePicker Name="StartDate" @bind-Value="@eventView.StartDate" ShowTime="true" />
+            
         </div>
     </div>
     <div class="row" style="margin-bottom: 16px">
@@ -23,7 +28,7 @@
             <RadzenLabel Text="End Time" />
         </div>
         <div class="col">
-            <RadzenDatePicker @bind-Value="@_event.EventEndTime" ShowTime="true" />
+            <RadzenDatePicker Name="EndDate" @bind-Value="@eventView.EndDate" ShowTime="true" />
         </div>
     </div>
     <div class="row" style="margin-bottom: 16px">
@@ -31,13 +36,14 @@
             <RadzenLabel Text="Event Description" />
         </div>
         <div class="col">
-            <RadzenTextArea class="form-control" Style="min-height: 80px;" @bind-Value="@_event.EventDescription"/>
+            <RadzenTextArea class="form-control" Style="min-height: 80px;" @bind-Value="@eventView.EventDescription" />
+            <ValidationMessage For="() => eventView.EventDescription" />
         </div>
     </div>
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-6">
-            <RadzenButton ButtonType="ButtonType.Submit" Text="Save" />
+            <RadzenButton ButtonType="ButtonType.Submit" Text="Add Event" />
         </div>
         <div class="col-md-3"></div>
     </div>
@@ -46,7 +52,7 @@
 
 @code {
 
-    //Todo: Create EventViewModel for this layout, Add Validations 
+    EventViewModel eventView = new EventViewModel();
 
     [Parameter]
     public DateTime EventStartTime { get; set; }
@@ -55,16 +61,43 @@
     public DateTime EventEndTime { get; set; }
 
 
-    Event _event = new Event();
 
     protected override void OnParametersSet()
     {
-        _event.EventStartTime = EventStartTime;
-        _event.EventEndTime = EventEndTime;
+        eventView.StartDate = EventStartTime;
+        eventView.EndDate = EventEndTime;
     }
 
-    private void OnSubmit()
+
+    private void OnValidSubmit()
     {
-        DialogService.Close(_event);
+        if(!IsValidDate())
+        {
+            return;
+        }
+
+
+        DialogService.Close(eventView);
+    }
+
+    private void OnInvalidSubmit()
+    {
+        IsValidDate();
+    }
+
+    private bool IsValidDate()
+    {
+        bool isValid = true;
+
+        if (eventView.StartDate == DateTime.MinValue || eventView.EndDate == DateTime.MinValue)
+        {
+            NotificationMessage message = new NotificationMessage { Severity = NotificationSeverity.Warning, Summary = "Date:", Detail = "Enter Start and End Date", Duration = 5000 };
+
+            NotificationService.Notify(message);
+
+            isValid = false;
+        }
+
+        return isValid;
     }
 }

@@ -13,9 +13,6 @@ namespace ResLink.BL.Models
         [SetClientClassMemberName("objectId")]
         public string objectId { get; set; }
 
-        [SetClientClassMemberName("hcAccount")]
-        public BackendlessUser HcAccount { get; set; }
-
         [SetClientClassMemberName("hcRole")]
         public HCRole HcRole { get; set; }
 

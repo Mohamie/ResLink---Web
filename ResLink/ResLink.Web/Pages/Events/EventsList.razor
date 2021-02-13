@@ -1,12 +1,25 @@
-﻿<h3 class="text-muted">Events List</h3>
+﻿@inject DialogService DialogService
 
-<RadzenGrid class="shadow mt-3" AllowFiltering="true" AllowPaging="true" PageSize="4"
+<h3 class="text-muted">Events List</h3>
+
+<RadzenGrid class="shadow m-1" AllowFiltering="true" AllowPaging="true" PageSize="10"
             AllowSorting="true" Data="@events" TItem="Event" ColumnWidth="200px">
     <Columns>
         <RadzenGridColumn TItem="Event" Property="EventTitle" Title="Title" />
         <RadzenGridColumn TItem="Event" Property="EventDescription" Title="Description" />
-        <RadzenGridColumn TItem="Event" Property="EventTitle" Title="Date Scheduled" />
-        <RadzenGridColumn TItem="Event" Property="EventTitle" Title="Venue" />
+        <RadzenGridColumn TItem="Event" Property="EventStartTime" Title="Date Scheduled" />
+        <RadzenGridColumn TItem="Event" Property="Coordinator.Student.FullNames" Title="Coordinator" />
+
+        <RadzenGridColumn TItem="Event" Context="_event" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+
+            <Template Context="_event">
+
+                <RadzenButton Icon="visibility" Size="ButtonSize.Medium" Click="((args) => Details(_event))" />
+
+            </Template>
+
+        </RadzenGridColumn>
+
     </Columns>
 </RadzenGrid>
 
@@ -20,5 +33,9 @@
         events = await EventRepository.GetEvents() as List<Event>;
     }
 
+    private async Task Details(Event _event)
+    {
+        await DialogService.OpenAsync<EventDetailsPage>("Event Details", new Dictionary<string, object> { { "Event", _event } });
+    }
 
 }

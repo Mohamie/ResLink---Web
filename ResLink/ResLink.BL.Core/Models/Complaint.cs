@@ -12,6 +12,11 @@ namespace ResLink.BL.Models
         [SetClientClassMemberName("objectId")]
         public string objectId { get; set; }
 
+        [SetClientClassMemberName("created")]
+        private DateTime DateCreated { get; set; }
+
+        public string GetDateCreated { get { return DateCreated.ToString("dd MMMM yyyy"); } }
+
         [SetClientClassMemberName("complaintTitle")]
         public string ComplaintTitle { get; set; }
 
@@ -20,5 +25,10 @@ namespace ResLink.BL.Models
 
         [SetClientClassMemberName("complaintVote")]
         public int ComplaintVote { get; set; }
+
+        [SetClientClassMemberName("student")]
+        public Student Student { get; set; }
+
+
     }
 }

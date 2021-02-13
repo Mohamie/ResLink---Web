@@ -8,9 +8,6 @@
     <RadzenTextBox class="form-control my-3" Placeholder="Announcement Title" @bind-Value="announcementViewModel.AnnouncementTitle" />
     <ValidationMessage For="(() => announcementViewModel.AnnouncementTitle)" />
     
-    <RadzenLabel Text="Alert Severity" />
-    <RadzenDropDown class="form-control my-3" Data="AlertSeverities" @bind-Value="announcementViewModel.AnnouncementSeverity" TValue="AlertSeverity" TextProperty="SeverityTitle" ValueProperty="AlertSeverity" AllowFiltering="false"/>
-    
 
     <RadzenLabel class="mb-3" Text="Description" />
     <InputTextArea class="form-control my-3" @bind-Value="announcementViewModel.AnnouncementDescription" placeholder="Announcement Message" style="height:350px; margin-bottom:1rem" />
@@ -24,15 +21,6 @@
 
     AnnouncementViewModel announcementViewModel = new AnnouncementViewModel();
     
-
-    [Parameter]
-    public List<AlertSeverity> AlertSeverities { get; set; }
-
-    protected override void OnParametersSet()
-    {
-        announcementViewModel.AnnouncementSeverity = AlertSeverities[0];
-    }
-
 
     private void OnSubmit()
     {

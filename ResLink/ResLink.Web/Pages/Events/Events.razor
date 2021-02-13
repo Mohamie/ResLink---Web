@@ -1,20 +1,26 @@
 ﻿@page "/events"
 @inject DialogService DialogService
+@inject NotificationService NotificationService
 
-
-<RadzenButton class="mb-3" Text="Add Event" Icon="add_circle_outline" Click="( () => AddNewEvent())"/>
+<RadzenButton class="mb-3" Text="Add Event" Icon="add_circle_outline" Click="( () => AddNewEvent())" />
 
 <div class="row">
-    <div class="col-12">
+    <div class="col-5">
         <RadzenScheduler @ref=@scheduler style="height: 768px;" TItem="Event" Data=@eventList StartProperty="EventStartTime" EndProperty="EventEndTime"
-                         TextProperty="EventTitle" SelectedIndex="2" 
+                         TextProperty="EventTitle" SelectedIndex="2"
                          SlotSelect=@OnSlotSelect AppointmentSelect=@OnEventSelect>
             <RadzenDayView />
             <RadzenWeekView />
             <RadzenMonthView />
         </RadzenScheduler>
     </div>
+    <div class="col-7">
+        <EventsList />
+    </div>
+
 </div>
+
+
 
 @code {
 
@@ -43,15 +49,42 @@
         DateTime date = new DateTime();
 
         //This should be a ViewModel
-        Event data = await DialogService.OpenAsync<AddEventPage>("Add Event",
-            new Dictionary<string, object> { { "EventStartTime", (args != null) ? args.Start :  date.Date}, { "EventEndTime", (args != null) ?  args.End : date.Date } });
+        EventViewModel eventViewModel = await DialogService.OpenAsync<AddEventPage>("Add Event",
+            new Dictionary<string, object> { { "EventStartTime", (args != null) ? args.Start : date.Date }, { "EventEndTime", (args != null) ? args.End : date.Date } });
 
         //Todo: Extract ViewModel to Model, save data and add relationships, event category and authur of the event
-        if (data != null)
+        if (eventViewModel != null)
         {
-            eventList.Add(data);
+            //Convert ViewModel to Model
+            Event _event = new Event(); //Data Model
 
-            await EventRepository.SaveEvent(data);
+            _event.EventTitle = eventViewModel.EventTitle;
+            _event.EventDescription = eventViewModel.EventDescription;
+            _event.EventStartTime = eventViewModel.StartDate;
+            _event.EventEndTime = eventViewModel.EndDate;
+
+            //Save Model(Event) to db
+            _event = await EventRepository.SaveEvent(_event);
+
+
+            // check if Model was saved, if so, create a relationship between HC and Event(the authur of the event)
+            if (_event != null)
+            {
+                object[] childObject = new object[] { await UserAccountRepository.GetLoggedHouseCommittee() };
+                await EventRepository.SetRelation(_event, "hc", childObject);
+
+                NotificationMessage message = new NotificationMessage { Severity = NotificationSeverity.Success, Summary = "Event:", Detail = "Added Successfuly", Duration = 4000 };
+
+                NotificationService.Notify(message);
+            }
+
+
+
+
+
+            //eventList.Add(data);
+
+            //await EventRepository.SaveEvent(data);
 
             // Either call the Reload method or reassign the Data property of the Scheduler
             await scheduler.Reload();

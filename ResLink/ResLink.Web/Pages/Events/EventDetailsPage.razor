@@ -1,0 +1,62 @@
+﻿<table class="table table-striped table-bordered table-dark">
+    <tr>
+        <th>HC Name</th>
+        <td>@Event.Coordinator.Student.FullNames @Event.Coordinator.Student.LastName</td>
+    </tr>
+
+    <tr>
+        <th>HC Role</th>
+        <td>@Event.Coordinator.HcRole.HcRoleName</td>
+    </tr>
+
+
+    <tr>
+        <th>HC's Room No</th>
+        <td>@Event.Coordinator.Student.RoomNumber </td>
+    </tr>
+
+    <tr>
+        <th>HC's PhoneNumber</th>
+        <td>@Event.Coordinator.Student.PhoneNumber </td>
+    </tr>
+
+    <tr>
+        <th>Event Category</th>
+        <td class="text-danger">Not Yet Implemented</td>
+    </tr>
+
+    <tr>
+        <th>Date Created</th>
+        <td>@Event.DateCreated</td>
+    </tr>
+
+
+    <tr>
+        <th>Event Title</th>
+        <td class="text-success">@Event.EventTitle</td>
+    </tr>
+    
+    <tr>
+        <th>Event Start Date</th>
+        <td class="text-warning">@Event.EventStartTime</td>
+    </tr>
+    
+    <tr>
+        <th>Event End Date</th>
+        <td class="text-warning">@Event.EventEndTime</td>
+    </tr>
+
+    <tr>
+        <th>Event Description</th>
+        <td class="text-info">@Event.EventDescription</td>
+    </tr>
+
+</table>
+
+
+@code {
+
+    [Parameter]
+    public Event Event { get; set; }
+
+}

@@ -3,40 +3,51 @@
 <h3 class="text-muted">Announcements List</h3>
 
 
-<RadzenGrid class="shadow mt-3" AllowFiltering="true" AllowPaging="true" PageSize="5"
+<RadzenGrid class="shadow m-1" AllowFiltering="true" AllowPaging="true" PageSize="displayPages"
             AllowSorting="true" Data="@announcements" TItem="Announcement" ColumnWidth="200px">
     <Columns>
-        <RadzenGridColumn TItem="Announcement" Property="AnnouncementTitle" Title="Title" />
-        <RadzenGridColumn TItem="Announcement" Property="AnnouncementDescription" Title="Description" />
+        <RadzenGridColumn Width="200px" TItem="Announcement" Property="HouseCommittee.HcRole.HcRoleName" Title="HC Role" />
+        <RadzenGridColumn TItem="Announcement" Property="AnnouncementTitle" Title="Announcement Title" />
+        <RadzenGridColumn Width="200px" TItem="Announcement" Property="HouseCommittee.Student.FullNames" Title="Authur Name" />
+        <RadzenGridColumn TItem="Announcement" Property="DateCreated" Title="Date Announced" />
+
+        @if (!IsDisplayOnly)
+        {
+
+            <RadzenGridColumn TItem="Announcement" Property="AnnouncementDescription" Title="Description" />
+
+            <RadzenGridColumn TItem="Announcement" Context="announcement" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+
+                <Template Context="announcement">
+
+                    <RadzenButton Icon="edit" Size="ButtonSize.Medium" Click="((args) => Edit(announcement))" />
+
+                </Template>
+
+            </RadzenGridColumn>
+
+            <RadzenGridColumn TItem="Announcement" Context="announcement" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+
+                <Template Context="announcement">
+
+                    <RadzenButton Icon="delete_forever" Size="ButtonSize.Medium" Click="((args) => Edit(announcement))" />
+
+                </Template>
+
+            </RadzenGridColumn>
+        }
+
 
         <RadzenGridColumn TItem="Announcement" Context="announcement" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
 
             <Template Context="announcement">
 
-                <RadzenButton Icon="visibility" Size="ButtonSize.Small" Click="((args) => Details(announcement))" />
-
-            </Template>
-
-        </RadzenGridColumn>
-        <RadzenGridColumn TItem="Announcement" Context="announcement" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
-
-            <Template Context="announcement">
-
-                <RadzenButton Icon="edit" Size="ButtonSize.Small" Click="((args) => Edit(announcement))" />
+                <RadzenButton Icon="visibility" Size="ButtonSize.Medium" Click="((args) => Details(announcement))" />
 
             </Template>
 
         </RadzenGridColumn>
 
-        <RadzenGridColumn TItem="Announcement" Context="announcement" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
-
-            <Template Context="announcement">
-
-                <RadzenButton Icon="delete_forever" Size="ButtonSize.Small" Click="((args) => Edit(announcement))" />
-
-            </Template>
-
-        </RadzenGridColumn>
     </Columns>
 </RadzenGrid>
 
@@ -48,6 +59,11 @@
 
     [Parameter]
     public Announcement Announcement { get; set; }
+
+    [Parameter]
+    public bool IsDisplayOnly { get; set; }
+
+    private int displayPages = 10;
 
     Announcement newAnnouncement;
 
@@ -63,11 +79,19 @@
 
     private async Task Details(Announcement announcement)
     {
-        await DialogService.OpenAsync<AnnouncementDetailsPage>("Announcement Details", new Dictionary<string, object> { { "Announcement", announcement } });
+        await DialogService.OpenAsync<AnnouncementDetailsPage>("Announcement Details", new Dictionary<string, object> { { "Announcement", announcement } }, new DialogOptions() { Width = "700px", Height = "800px" });
     }
 
     protected override void OnParametersSet()
     {
+
+        //Show minimized pages if True
+        if (IsDisplayOnly)
+        {
+            displayPages = 5;
+        }
+
+        //To be refactored
         newAnnouncement = Announcement;
 
         if (newAnnouncement != null)
