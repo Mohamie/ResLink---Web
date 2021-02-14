@@ -30,6 +30,12 @@ namespace ResLink.DAL.Repositories
        
         public static async Task<IEnumerable<Complaint>> getComplaints()
         {
+            var user = await UserAccountRepository.GetRelations((await UserAccountRepository.GetCurrentlyLoggedAccount()).ObjectId);
+            var loggedResidence = user.GetProperty("residence") as Residence;
+
+            string whereClause = $"objectId in (Complaint[student.studentAccount.residence.objectId = '{loggedResidence.objectId}'].objectId)";
+
+            queryBuilder.SetWhereClause(whereClause);
             queryBuilder.AddRelated("student");
             return await instance.db.GetItems<Complaint>(queryBuilder);
         }

@@ -39,8 +39,10 @@ namespace ResLink.DAL.Repositories
         {
             queryBuilder.SetWhereClause(whereClause);
             queryBuilder.AddRelated("student");
+            queryBuilder.AddRelated("student.gender");
             queryBuilder.AddRelated("student.studentAccount");
             queryBuilder.AddRelated("student.studentAccount.residence");
+            queryBuilder.AddRelated("student.studentAccount.residence.residenceManager");
             queryBuilder.AddRelated("hcRole");
             return await instance.db.GetItems<HouseCommittee>(queryBuilder);
         }

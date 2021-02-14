@@ -30,10 +30,18 @@ namespace ResLink.DAL.Repositories
 
         public static async Task<IEnumerable<Announcement>> GetAnnouncements()
         {
+
+            var user = await UserAccountRepository.GetRelations((await UserAccountRepository.GetCurrentlyLoggedAccount()).ObjectId);
+            var loggedResidence = user.GetProperty("residence") as Residence;
+            
+            string whereClause = $"objectId in (Announcement[hc.student.studentAccount.residence.objectId = '{loggedResidence.objectId}'].objectId)";
+            
+            queryBuilder.SetWhereClause(whereClause);
             queryBuilder.SetPageSize(100).SetOffset(0);
             queryBuilder.AddRelated("hc");
             queryBuilder.AddRelated("hc.student");
             queryBuilder.AddRelated("hc.hcRole");
+
             return await instance.db.GetItems<Announcement>(queryBuilder);
         }
 

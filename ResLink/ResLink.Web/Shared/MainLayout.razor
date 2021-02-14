@@ -1,5 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @inject BackendlessService BS
+@inject DialogService DialogService
+@inject NavigationManager NavigationManager
 
 <RadzenDialog />
 <RadzenNotification />
@@ -14,17 +16,30 @@
     <div class="top-row px-5 sticky-top shadow">
        
         <div class="m-4">
-            <RadzenProfileMenu>
-                <Template>
-                    <RadzenGravatar Email="user@example.com"/>
-                </Template>
-                <ChildContent>
-                    <RadzenProfileMenuItem Text="Your Profile" Icon="account_circle" />
-                    <RadzenProfileMenuItem Text="Residence Enrolled" Icon="home" />
-                    <RadzenProfileMenuItem Text="Sign out" Icon="logout" Path="logout"/>
-                </ChildContent>
+            @* <RadzenProfileMenu>
+            <Template>
+                <RadzenGravatar Email="user@example.com"/>
+            </Template>
+            <ChildContent>
+                <RadzenProfileMenuItem Text="Your Profile" Icon="account_circle">
 
-            </RadzenProfileMenu>
+                </RadzenProfileMenuItem>
+                <RadzenProfileMenuItem Text="Residence Enrolled" Icon="home" />
+                <RadzenProfileMenuItem Text="Sign out" Icon="logout" Path="logout"/>
+            </ChildContent>
+
+        </RadzenProfileMenu>*@
+
+            @if (LoggedUser != null)
+            {
+                <RadzenSplitButton Click=@(args => OnClick(args)) Text="@(LoggedUser.Student.FullNames + " " + LoggedUser.Student.LastName)" Icon="account_circle" Style="margin-bottom: 20px;">
+                    <ChildContent>
+                        <RadzenSplitButtonItem Text="View Profile" Value="1" Icon="account_circle" />
+                        <RadzenSplitButtonItem Text="Logout" Value="2" Icon="logout" />
+                    </ChildContent>
+                </RadzenSplitButton>
+
+            }
         </div>
     </div>
 
@@ -32,3 +47,34 @@
         @Body
     </div>
 </div>
+
+@code{ 
+
+
+    public HouseCommittee LoggedUser { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        LoggedUser = await UserAccountRepository.GetLoggedHouseCommittee();
+    }
+
+
+    private async Task OnClick(RadzenSplitButtonItem item)
+    {
+        if(item != null)
+        {
+            //View profile
+            if(item.Value == "1")
+            {
+                await DialogService.OpenAsync<UserProfile>("User Profile", new Dictionary<string, object> { { "HCProfile", LoggedUser } });
+            }
+
+            //Logout
+            if(item.Value == "2")
+            {
+                NavigationManager.NavigateTo("/logout");       
+            }
+        }
+    }
+
+}

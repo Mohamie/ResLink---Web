@@ -1,0 +1,58 @@
+﻿
+<table class="table table-striped table-bordered table-dark">
+
+    <tr>
+        <th>Student Names</th>
+        <td class="text-success">@HCProfile.Student.FullNames @HCProfile.Student.LastName</td>
+    </tr>
+
+    <tr>
+        <th>Student Number</th>
+        <td class="text-success">@HCProfile.Student.StudentNumber</td>
+    </tr>
+
+    <tr>
+        <th>Student Role (Admin)</th>
+        <td class="text-success">@HCProfile.HcRole.HcRoleName</td>
+    </tr>
+
+    <tr>
+        <th>Student's Gender</th>
+        <td class="text-success">@HCProfile.Student.Gender.GenderName</td>
+    </tr>
+
+    <tr>
+        <th>Student Email</th>
+        <td class="text-success">@HCProfile.Student.StudentAccount.Email</td>
+    </tr>
+
+
+    <tr>
+        <th>Student's PhoneNumber</th>
+        <td class="text-success">@HCProfile.Student.PhoneNumber</td>
+    </tr>
+
+    <tr>
+        <th>Student's Room Number</th>
+        <td class="text-success">@HCProfile.Student.PhoneNumber</td>
+    </tr>
+
+    <tr>
+        <th>Residence</th>
+        <td class="text-info">@((HCProfile.Student.StudentAccount.GetProperty("residence") as Residence).ResidenceName)</td>
+    </tr>
+    
+    <tr>
+        <th>Residence Manager</th>
+        <td class="text-info">@((HCProfile.Student.StudentAccount.GetProperty("residence") as Residence).ResidenceManager.ManagerFirstName) @((HCProfile.Student.StudentAccount.GetProperty("residence") as Residence).ResidenceManager.ManagerLastName)</td>
+    </tr>
+
+
+</table>
+
+@code {
+
+    [Parameter]
+    public HouseCommittee HCProfile { get; set; }
+
+}
