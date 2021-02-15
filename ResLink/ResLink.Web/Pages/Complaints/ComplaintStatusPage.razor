@@ -1,0 +1,51 @@
+﻿@inject DialogService DialogService
+
+<EditForm Model="EditComplaint" OnValidSubmit="OnSubmit">
+
+    <table class="table table-striped table-borderless table-light">
+
+        <tr>
+            <th>Complaint Status</th>
+            <td>
+                <RadzenDropDown class="form-control" Data="ComplaintStatuses" TValue="ComplaintStatus" TextProperty="StatusName" ValueProperty="ComplaintStatus" @bind-Value="@EditComplaint.ComplaintStatus" />
+            </td>
+
+        </tr>
+
+        <tr>
+            <th>Complaint Title</th>
+            <td>@EditComplaint.ComplaintTitle</td>
+        </tr>
+
+        <tr>
+            <th>Complaint Description</th>
+            <td>@EditComplaint.ComplaintDescription</td>
+        </tr>
+
+    </table>
+
+
+    <RadzenButton Text="Change Status" ButtonType="ButtonType.Submit" />
+
+</EditForm>
+
+
+@code
+{
+
+    [Parameter]
+    public Complaint EditComplaint { get; set; }
+
+    [Parameter]
+    public List<ComplaintStatus> ComplaintStatuses { get; set; }
+
+    protected override void OnParametersSet()
+    {
+
+    }
+
+    private void OnSubmit()
+    {
+        DialogService.Close(EditComplaint);
+    }
+}

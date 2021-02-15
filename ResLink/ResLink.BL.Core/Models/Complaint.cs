@@ -22,12 +22,14 @@ namespace ResLink.BL.Models
 
         [SetClientClassMemberName("complaintDescription")]
         public string ComplaintDescription { get; set; }
-
-        [SetClientClassMemberName("complaintVote")]
-        public int ComplaintVote { get; set; }
+        
 
         [SetClientClassMemberName("student")]
         public Student Student { get; set; }
+        
+        [SetClientClassMemberName("complaintStatus")]
+        public ComplaintStatus ComplaintStatus { get; set; }
+
 
 
     }

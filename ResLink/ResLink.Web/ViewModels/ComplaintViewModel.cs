@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResLink.BL.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,10 +14,11 @@ namespace ResLink.Web.ViewModels
 
         [Required]
         public string ComplaintDescription { get; set; }
+        
         [Required]
         public string ComplaintCategory { get; set; }
 
-        [Required]
-        public string ComplaintAlertSeverity { get; set; }
+        public List<ComplaintStatus> ComplaintStatuses { get; set; }
+
     }
 }

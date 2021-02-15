@@ -16,7 +16,7 @@ namespace ResLink.Web.ViewModels
 
         [Required]
         public string AnnouncementDescription { get; set; }
-       
+
         public AlertSeverity AnnouncementSeverity { get; set; }
 
     }

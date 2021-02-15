@@ -1,4 +1,5 @@
 ﻿@inject DialogService DialogService
+@inject NotificationService NotificationService
 
 
 <RadzenGrid class="shadow mt-3" AllowFiltering="true" AllowPaging="true" PageSize="10"
@@ -12,7 +13,7 @@
 
             <Template Context="complaint">
 
-                <RadzenButton Icon="published_with_changes" Size="ButtonSize.Medium" />
+                <RadzenButton Icon="published_with_changes" Size="ButtonSize.Medium" Click="(() => ChangeStatus(complaint))"/>
 
             </Template>
 
@@ -34,14 +35,34 @@
 @code
 {
     List<Complaint> complaints;
+    List<ComplaintStatus> complaintStatuses;
 
     protected async override Task OnInitializedAsync()
     {
         complaints = (await ComplaintRepository.getComplaints()).ToList();
+        complaintStatuses = (await ComplaintStatusRepository.GetComplaintStatus()).ToList();
     }
 
     async Task Details(Complaint complaint)
     {
         await DialogService.OpenAsync<ComplaintDetails>("Complaint Details", new Dictionary<string, object> { { "Complaint", complaint } }, new DialogOptions() { Width = "700px", Height = "800px" });
+    }
+
+    async Task ChangeStatus(Complaint complaint)
+    {
+        Complaint editComplaint = await DialogService.OpenAsync<ComplaintStatusPage>("Complaint Status", new Dictionary<string, object> { { "EditComplaint", complaint }, { "ComplaintStatuses", complaintStatuses } });
+
+        if(editComplaint != null)
+        {
+            //Make An Update here
+            object[] childObject = new object[] { editComplaint.ComplaintStatus };
+            await ComplaintRepository.SetRelation(editComplaint, "complaintStatus", childObject);
+
+
+            NotificationMessage message = new NotificationMessage { Severity = NotificationSeverity.Success, Summary = "Complaint:", Detail = "Status Changed", Duration = 4000 };
+
+            NotificationService.Notify(message);
+
+        }
     }
 }

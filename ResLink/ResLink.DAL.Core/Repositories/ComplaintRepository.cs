@@ -37,6 +37,7 @@ namespace ResLink.DAL.Repositories
 
             queryBuilder.SetWhereClause(whereClause);
             queryBuilder.AddRelated("student");
+            queryBuilder.AddRelated("complaintStatus");
             return await instance.db.GetItems<Complaint>(queryBuilder);
         }
 
@@ -46,9 +47,9 @@ namespace ResLink.DAL.Repositories
             return await instance.db.GetItem<Complaint>(id, queryBuilder);
         }
 
-        public static async Task SaveComplaint(Complaint item)
+        public static async Task<Complaint> SaveComplaint(Complaint item)
         {
-           await instance.db.SaveItem<Complaint>(item);
+           return await instance.db.SaveItem<Complaint>(item);
         }
 
         public static async Task DeleteComplaint(string objectId)

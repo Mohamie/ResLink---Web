@@ -350,3 +350,5 @@ C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\Re
 C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Events\EventDetailsPage.razor.g.cs
 C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Profile\UserProfile.razor.g.cs
 C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Profile\UserProfile.razor.g.cs
+C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Complaints\ComplaintStatusPage.razor.g.cs
+C:\Users\user-pc\Documents\Academics\WIL\Projects\ResLink---Web\ResLink---Web\ResLink\ResLink.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Complaints\ComplaintStatusPage.razor.g.cs

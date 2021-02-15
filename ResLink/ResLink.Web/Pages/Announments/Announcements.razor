@@ -27,6 +27,10 @@
 
             announcement.AnnouncementTitle = announcementViewModel.AnnouncementTitle;
             announcement.AnnouncementDescription = announcementViewModel.AnnouncementDescription;
+            announcement.DateCreated = DateTime.Now;
+            var loggedAccount = (await UserAccountRepository.GetLoggedHouseCommittee()).Student.StudentAccount;
+
+            announcement.ResidenceID = (loggedAccount.GetProperty("residence") as Residence).objectId;
 
 
             announcement = await AnnouncementRepository.SaveAnnouncement(announcement);

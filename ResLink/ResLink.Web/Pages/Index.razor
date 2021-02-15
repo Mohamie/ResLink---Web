@@ -1,4 +1,5 @@
 ﻿@page "/home"
+@inject BackendlessService backendlessService
 
 <div class="row">
     <div class="col-md-6 col-xl-3 mb-4">
@@ -37,7 +38,7 @@
                             <div class="col-auto">
                                 <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span>0</span></div>
                             </div>
-                     
+
                         </div>
                     </div>
                     <div class="col-auto"><span class="oi oi-people" aria-hidden="true"></span></div>
@@ -67,7 +68,7 @@
 <EventsList />
 
 
-@code{ 
+@code{
 
     int announcementsCount;
     int eventsCount;

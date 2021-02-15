@@ -23,7 +23,7 @@
 
     <tr>
         <th>Complaint Status</th>
-        <td class="text-danger">Not Yet Implemented</td>
+        <td class="@statusColor">@((Complaint.ComplaintStatus != null ) ? Complaint.ComplaintStatus.StatusName : "Not Populated" )</td>
     </tr>
 
 
@@ -43,5 +43,25 @@
 @code {
     [Parameter]
     public Complaint Complaint { get; set; }
+
+    string statusColor = "text-info";
+
+    protected override void OnParametersSet()
+    {
+        //Check if there is a Complaint has relationship with Status, still to be refactored
+        if(Complaint.ComplaintStatus != null)
+        {
+            if (Complaint.ComplaintStatus.StatusID == 1)//Pending
+            {
+                statusColor = "text-warning";
+            }
+
+            if (Complaint.ComplaintStatus.StatusID == 2)//Resolved
+            {
+                statusColor = "text-success";
+            }
+        }
+    }
+
 
 }
