@@ -1,0 +1,23 @@
+Data Layer:
+===========
+The data layer is typically the lowest level layer of an application. Typically it consists 
+of data persistence/retreival code. In this particular application, it contains  three classes:
+ - ResLinkDatabase.cs
+ - ResLinkUserLogin.cs
+ - ResLinkUserRegistration.cs
+
+ResLinkDatabase
+------------
+ResLinkDatabase builds on the Backendless Cloud Database. It contains methods for retreival and persistance, all based on
+the Backendless ORM.
+
+ResLinkUserLogin
+------------
+ResLinkUserLogin builds on the Backendless Cloud UserService. It contains method for logging in and out the user, all based on
+the Backendless ORM.
+
+ResLinkUserRegistration
+------------
+ResLinkUserRegistration builds on the Backendless Cloud UserService. It contains method for registering a user, all based on
+the Backendless ORM.
+
