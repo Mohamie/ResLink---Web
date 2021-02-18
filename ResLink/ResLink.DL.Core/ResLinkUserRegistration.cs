@@ -10,13 +10,11 @@ namespace ResLink.DL
 {
     public class ResLinkUserRegistration
     {
-        public static async Task<BackendlessUser> RegisterUserAccount(string email, string password, int roleID)
+        public static async Task<BackendlessUser> RegisterUserAccount(string email, string password)
         {
             BackendlessUser user = new BackendlessUser();
             user.Email = email;
             user.Password = password;
-            user.SetProperty("residenceEmail", "res@test.com");
-            user.SetProperty("userRole", roleID);
 
             return await Backendless.UserService.RegisterAsync(user);
         }

@@ -19,8 +19,14 @@ namespace ResLink.Web.ViewModels
 
         [Required]
         public string LastName { get; set; }
-        
-       // public GenderViewModel Gender { get; set; }
+
+        [Required]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        public int RoomNumber { get; set; }
+
+        // public GenderViewModel Gender { get; set; }
 
         [Required]
         [EmailAddress]

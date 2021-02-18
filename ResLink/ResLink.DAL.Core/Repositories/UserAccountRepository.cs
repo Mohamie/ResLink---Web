@@ -40,7 +40,8 @@ namespace ResLink.DAL.Repositories
        
         public static async Task<BackendlessUser> GetCurrentlyLoggedAccount()
         {
-            return await GetRelations((Backendless.UserService.CurrentUser).ObjectId);
+            var account = await GetRelations((Backendless.UserService.CurrentUser).ObjectId);
+            return account;
         }
 
         public static async Task<HouseCommittee> GetLoggedHouseCommittee()
@@ -50,6 +51,17 @@ namespace ResLink.DAL.Repositories
             string whereClause = $"objectId in (HouseCommittee[student.studentAccount.objectId = '{accountObjectId}'].objectId)";
 
             List<HouseCommittee> hcList = await HouseCommitteeRepository.GetHouseCommitteeByClause(whereClause) as List<HouseCommittee>;
+
+            return hcList[0];
+        }
+        
+        public static async Task<ResidenceManager> GetLoggedManager()
+        {
+            string accountObjectId = (await GetCurrentlyLoggedAccount()).ObjectId;
+
+            string whereClause = $"objectId in (ResidenceManager[managerAccount.objectId = '{accountObjectId}'].objectId)";
+
+            List<ResidenceManager> hcList = await ResidenceManagerRepository.GetResidenceManagerByClause(whereClause) as List<ResidenceManager>;
 
             return hcList[0];
         }
@@ -64,8 +76,10 @@ namespace ResLink.DAL.Repositories
             IList<string> relations = new List<string>();
             relations.Add("residence");
             relations.Add("residence.residenceGender");
+            relations.Add("userRole");
 
-            return await Backendless.Data.Of<BackendlessUser>().FindByIdAsync(objectId, relations);
+            var user = await Backendless.Data.Of<BackendlessUser>().FindByIdAsync(objectId, relations);
+            return user;
         }
 
         

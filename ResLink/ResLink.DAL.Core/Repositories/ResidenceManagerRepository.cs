@@ -1,4 +1,5 @@
-﻿using ResLink.BL.Models;
+﻿using BackendlessAPI.Persistence;
+using ResLink.BL.Models;
 using ResLink.DL;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,16 @@ namespace ResLink.DAL.Repositories
         protected ResidenceManagerRepository()
         {
             db = new ResLinkDatabase();
+        }
+
+        internal static async Task<IEnumerable<ResidenceManager>> GetResidenceManagerByClause(string whereClause)
+        {
+            DataQueryBuilder queryBuilder = DataQueryBuilder.Create();
+            queryBuilder.SetWhereClause(whereClause);
+            queryBuilder.AddRelated("managerAccount");
+            queryBuilder.AddRelated("managerAccount.residence");
+            queryBuilder.AddRelated("managerAccount.userRole");
+            return await instance.db.GetItems<ResidenceManager>(queryBuilder);
         }
 
         public static async Task<IEnumerable<ResidenceManager>> GetResidenceManager()

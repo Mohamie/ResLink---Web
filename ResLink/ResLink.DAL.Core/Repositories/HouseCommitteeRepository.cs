@@ -47,6 +47,18 @@ namespace ResLink.DAL.Repositories
             return await instance.db.GetItems<HouseCommittee>(queryBuilder);
         }
 
+        public static async Task<IEnumerable<HouseCommittee>> GetHouseCommittees()
+        {
+            var user = await UserAccountRepository.GetRelations((await UserAccountRepository.GetCurrentlyLoggedAccount()).ObjectId);
+            var loggedResidence = user.GetProperty("residence") as Residence;
+
+            string whereClause = $"objectId in (HouseCommittee[student.studentAccount.residence.objectId = '{loggedResidence.objectId}'].objectId)";
+
+            queryBuilder.SetWhereClause(whereClause);
+            return await instance.db.GetItems<HouseCommittee>(queryBuilder);
+
+        }
+
         public static async Task<HouseCommittee> SaveHouseCommittee(HouseCommittee item)
         {
             return await instance.db.SaveItem<HouseCommittee>(item);

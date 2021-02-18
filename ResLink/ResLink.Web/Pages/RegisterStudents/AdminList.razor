@@ -4,17 +4,36 @@
 <h3 class="text-muted ">House Committe List</h3>
 
 <RadzenGrid class="shadow my-3" AllowFiltering="true" AllowPaging="true" PageSize="5"
-            AllowSorting="true" Data="@students" TItem="Student" ColumnWidth="200px">
+            AllowSorting="true" Data="@HouseCommittees" TItem="HouseCommittee" ColumnWidth="200px">
     <Columns>
-        <RadzenGridColumn TItem="Student" Property="StudentNumber" Title="Student Number" />
-        <RadzenGridColumn TItem="Student" Property="FirstNames" Title="First Name" />
-        <RadzenGridColumn TItem="Student" Property="LastName" Title="Last Name" />
+        <RadzenGridColumn TItem="HouseCommittee" Property="Student.StudentNumber" Title="Student Number" />
+        <RadzenGridColumn TItem="HouseCommittee" Property="Student.FirstNames" Title="First Name" />
+        <RadzenGridColumn TItem="HouseCommittee" Property="Student.LastName" Title="Last Name" />
+        <RadzenGridColumn TItem="HouseCommittee" Property="Student.Gender" Title="Gender" />
+        <RadzenGridColumn TItem="HouseCommittee" Property="Student.PhoneNumber" Title="Phone Number" />
+        <RadzenGridColumn TItem="HouseCommittee" Property="Student.RoomNumber" Title="Room Number" />
+        <RadzenGridColumn TItem="HouseCommittee" Property="HcRole.HcRoleName" Title="Role" />
     </Columns>
 </RadzenGrid>
 
 @code {
 
-    List<Student> students = new List<Student>();
+    List<HouseCommittee> HouseCommittees = new List<HouseCommittee>();
+    public Residence Residence { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        //Get Currently Logged User
+        var account = await UserAccountRepository.GetCurrentlyLoggedAccount();
+
+        var residence = (Residence)account.GetProperty("residence");
+
+        Residence = residence;
+
+        HouseCommittees = (await HouseCommitteeRepository.GetHouseCommittees()).ToList();
+
+    }
 
 
 }

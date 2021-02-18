@@ -58,6 +58,8 @@
             object[] childObject = new object[] { editComplaint.ComplaintStatus };
             await ComplaintRepository.SetRelation(editComplaint, "complaintStatus", childObject);
 
+            object[] childResovler = new object[] { await UserAccountRepository.GetLoggedHouseCommittee() };
+            await ComplaintRepository.SetRelation(editComplaint, "resolver", childResovler);
 
             NotificationMessage message = new NotificationMessage { Severity = NotificationSeverity.Success, Summary = "Complaint:", Detail = "Status Changed", Duration = 4000 };
 

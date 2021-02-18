@@ -1,4 +1,5 @@
 ﻿using ResLink.BL.Models;
+using ResLink.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -31,6 +32,12 @@ namespace ResLink.Web.ViewModels
         public List<Gender> ResidenceGender { get; set; }
 
         public Gender Gender { get; set; }
+
+        public async Task<UserRole> GetManagerRole()
+        {
+            return await UserRoleRepository.GetManagerRole();
+        }
+
 
         public StudentRoleViewModel ManagerRole { get { return StudentRoleViewModel.Manager; } set { ManagerRole = value; } }
 

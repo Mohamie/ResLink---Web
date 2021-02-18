@@ -28,6 +28,7 @@ namespace ResLink.Web.Data
             Backendless.Data.MapTableToType("Student", typeof(Student));
             Backendless.Data.MapTableToType("Event", typeof(Event));
             Backendless.Data.MapTableToType("ComplaintStatus", typeof(ComplaintStatus));
+            Backendless.Data.MapTableToType("UserRole", typeof(UserRole));
 
         }
     }

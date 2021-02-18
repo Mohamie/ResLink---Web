@@ -14,11 +14,17 @@
 
     <RadzenLabel Text="Last Name" />
     <RadzenTextBox class="form-control my-2" @bind-Value="studentView.LastName" />
-
+    
     <RadzenLabel Text="Gender" />
     <InputSelect disabled class="form-control my-2" @bind-Value="studentView.Gender">
         <option value="@studentView.Gender">@studentView.Gender.GenderName</option>
     </InputSelect>
+
+    <RadzenLabel Text="Phone Number" />
+    <RadzenTextBox class="form-control my-2" @bind-Value="studentView.PhoneNumber" />
+    
+    <RadzenLabel Text="Room Number" />
+    <InputNumber class="form-control my-2" @bind-Value="studentView.RoomNumber" />
 
     <RadzenLabel Text="Role" />
     <InputSelect disabled class="custom-select my-2" @bind-Value="studentView.Role">

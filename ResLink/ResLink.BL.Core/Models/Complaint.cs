@@ -31,6 +31,9 @@ namespace ResLink.BL.Models
         public ComplaintStatus ComplaintStatus { get; set; }
 
 
+        [SetClientClassMemberName("resolver")]
+        public HouseCommittee Resolver { get; set; }
+
 
     }
 }

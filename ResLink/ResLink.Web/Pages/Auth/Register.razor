@@ -44,7 +44,7 @@
                 <ValidationMessage For="(() => residenceViewModel.ConfirmPassword)" />
 
 
-                <RadzenButton class="my-2" Text="Register" Icon="note_add" ButtonStyle="Radzen.ButtonStyle.Success" ButtonType="ButtonType.Submit" />
+                <RadzenButton class="my-2" Disabled="isLoading" Text="Register" Icon="note_add" ButtonStyle="Radzen.ButtonStyle.Success" ButtonType="ButtonType.Submit" />
 
             </RadzenCard>
 
@@ -52,7 +52,7 @@
 
     </div>
     <div class="col-5">
-        <RadzenLink class="text-primary" href="/auth/login" Text="Back To Login"/>
+        <RadzenLink class="text-primary" disabled="@isLoading" href="/auth/login" Text="Back To Login"/>
     </div>
 </div>
 
@@ -63,17 +63,22 @@
     ResidenceViewModel residenceViewModel = new ResidenceViewModel();
     string managerRoleId = StudentRoleViewModel.Manager.ToString();
 
+    bool isLoading = false;
+
     protected override async Task OnInitializedAsync()
     {
         residenceViewModel.ResidenceGender = (await GenderRepository.GetGender()).ToList();
+
+
         residenceViewModel.Gender = residenceViewModel.ResidenceGender[0];
     }
 
     private async Task RegisterResidence()
     {
+        isLoading = true;
 
         //Save Manager User Account Details
-        BackendlessUser savedMangerAccount = await ResLinkUserRegistration.RegisterUserAccount(residenceViewModel.Email, residenceViewModel.Password, 1);
+        BackendlessUser savedMangerAccount = await ResLinkUserRegistration.RegisterUserAccount(residenceViewModel.Email, residenceViewModel.Password);
 
 
         //check if user was successfully created
@@ -118,10 +123,14 @@
                         object[] resEnrolled = new object[] { newResidence };
                         await UserAccountRepository.SetRelation(savedMangerAccount, "residence", resEnrolled);
 
+                        object[] userRole = new object[] { await residenceViewModel.GetManagerRole() };
+                        await UserAccountRepository.SetRelation(savedMangerAccount, "userRole", userRole);
+
+
                         //clear fields
-                        residenceViewModel = null;
+                        //residenceViewModel = null;
                         //navigate to login page
-                        navManager.NavigateTo("/auth/login");
+                        navManager.NavigateTo("/");
                     }
 
                 }

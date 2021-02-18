@@ -36,6 +36,7 @@ namespace ResLink.DAL.Repositories
             string whereClause = $"objectId in (Event[hc.student.studentAccount.residence.objectId = '{loggedResidence.objectId}'].objectId)";
 
             queryBuilder.SetWhereClause(whereClause);
+            queryBuilder.SetPageSize(100).SetOffset(0); 
             queryBuilder.AddRelated("hc.student");
             queryBuilder.AddRelated("hc.hcRole");
             return await instance.db.GetItems<Event>(queryBuilder);

@@ -1,5 +1,6 @@
 ﻿@page "/home"
 @inject BackendlessService backendlessService
+@inject NavigationManager navManager
 
 <div class="row">
     <div class="col-md-6 col-xl-3 mb-4">
@@ -70,14 +71,39 @@
 
 @code{
 
-    int announcementsCount;
-    int eventsCount;
-    int complaintsCount;
+        int announcementsCount;
+        int eventsCount;
+        int complaintsCount;
+
+    public ResidenceManager Manager { get; set; }
+
+    public HouseCommittee LoggedUser { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        announcementsCount = (await AnnouncementRepository.GetAnnouncements() as List<Announcement>).Count;
-        eventsCount = (await EventRepository.GetEvents() as List<Event>).Count;
+
+        var account = await UserAccountRepository.GetCurrentlyLoggedAccount();
+        var userRole = (UserRole)account.GetProperty("userRole");
+
+
+        if (userRole.RoleId == 0)//if Manager
+        {
+            Manager = await UserAccountRepository.GetLoggedManager();
+
+            navManager.NavigateTo("/manager/register");
+
+            return;
+        }
+
+        if (userRole.RoleId == 1)//if admin
+        {
+            LoggedUser = await UserAccountRepository.GetLoggedHouseCommittee();
+
+            announcementsCount = (await AnnouncementRepository.GetAnnouncements() as List<Announcement>).Count;
+            eventsCount = (await EventRepository.GetEvents() as List<Event>).Count;
+        }
+
+
     }
 
 
