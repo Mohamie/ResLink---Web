@@ -15,7 +15,7 @@
         </RadzenScheduler>
     </div>
     <div class="col-7">
-        <EventsList />
+        <EventsList Events="eventList"/>
     </div>
 
 </div>
@@ -28,7 +28,7 @@
 
     Dictionary<DateTime, string> _events = new Dictionary<DateTime, string>();
 
-    IList<Event> eventList;
+    List<Event> eventList;
 
 
     protected override async Task OnInitializedAsync()
@@ -72,6 +72,9 @@
             {
                 object[] childObject = new object[] { await UserAccountRepository.GetLoggedHouseCommittee() };
                 await EventRepository.SetRelation(_event, "hc", childObject);
+
+                eventList = null;
+                eventList = await EventRepository.GetEvents() as List<Event>;
 
                 NotificationMessage message = new NotificationMessage { Severity = NotificationSeverity.Success, Summary = "Event:", Detail = "Added Successfuly", Duration = 4000 };
 

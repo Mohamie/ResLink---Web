@@ -1,20 +1,46 @@
-﻿
-<h3 class="text-muted">House Members List</h3>
+﻿@inject DialogService DialogService
+
+<h3 class="text-muted text-center">House Members List</h3>
 
 <RadzenGrid class="shadow my-3" AllowFiltering="true" AllowPaging="true" PageSize="5"
-            AllowSorting="true" Data="@students" TItem="Student" ColumnWidth="200px">
+            AllowSorting="true" Data="@StudentsList" TItem="Student" ColumnWidth="200px">
     <Columns>
         <RadzenGridColumn TItem="Student" Property="StudentNumber" Title="Student Number" />
         <RadzenGridColumn TItem="Student" Property="FirstNames" Title="First Name" />
         <RadzenGridColumn TItem="Student" Property="LastName" Title="Last Name" />
+
+        <RadzenGridColumn TItem="Student" Context="student" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+
+            <Template Context="student">
+
+                <RadzenButton Icon="edit" Size="ButtonSize.Medium" />
+
+            </Template>
+
+        </RadzenGridColumn>
+
+        <RadzenGridColumn TItem="Student" Context="student" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+
+            <Template Context="student">
+
+                <RadzenButton Icon="visibility" Size="ButtonSize.Medium" Click="(() => StudentDetails(student))" />
+
+            </Template>
+
+        </RadzenGridColumn>
+
     </Columns>
 </RadzenGrid>
 
 @code {
 
-    List<Student> students = new List<Student>();
+    [Parameter]
+    public List<Student> StudentsList { get; set; }
 
+
+    async Task StudentDetails(Student student)
+    {
+        await DialogService.OpenAsync<UserProfile>("Student Details", new Dictionary<string, object> { { "RegularStudent", student } });
+    }
 
 }
-
-

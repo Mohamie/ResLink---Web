@@ -2,16 +2,32 @@
 @inject DialogService DialogService
 @inject NotificationService NotificationService
 
-<RadzenButton class="my-4" Text="Add Announcement" Icon="add_circle_outline" Click="(() => AddAnnouncement())" />
+
+@if(AnnouncementList != null)
+{
+    <RadzenButton class="my-4" Text="Add Announcement" Icon="add_circle_outline" Click="(() => AddAnnouncement())" />
+    <AnnouncementsList AnnouncementList="AnnouncementList" IsDisplayOnly="false"/>
+
+}
+else
+{
+    <div>Loading data please wait...</div>
+}
 
 
-<AnnouncementsList IsDisplayOnly="false"/>
 
 @code
 {
     //Create a ViewModel for Announcements
     AnnouncementViewModel announcementViewModel;
 
+
+    public List<Announcement> AnnouncementList { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        AnnouncementList = await AnnouncementRepository.GetAnnouncements() as List<Announcement>;
+    }
 
     async Task AddAnnouncement()
     {
@@ -40,6 +56,10 @@
             {
                 object[] childObject = new object[] { await UserAccountRepository.GetLoggedHouseCommittee()};
                 await AnnouncementRepository.SetRelation(announcement, "hc", childObject);
+
+
+                AnnouncementList = null;
+                AnnouncementList = await AnnouncementRepository.GetAnnouncements() as List<Announcement>;
 
                 NotificationMessage message = new NotificationMessage { Severity = NotificationSeverity.Success, Summary = "Announcement:", Detail = "Added Successfuly", Duration = 4000 };
 

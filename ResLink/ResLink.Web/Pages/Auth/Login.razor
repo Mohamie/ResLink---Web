@@ -11,14 +11,17 @@
 <div class="row mt-5">
     <div class="col-7 mx-auto">
         <EditForm Model="@user" OnValidSubmit="LoginUser">
+            <DataAnnotationsValidator/>
             <RadzenCard>
-                <RadzenLabel Text="Email"/>
-                <RadzenTextBox @bind-Value="user.Email" class="my-2"/>
-                
-                <RadzenLabel Text="Password"/>
-                <RadzenPassword @bind-Value="user.Password"  class="my-2"/>
+                <RadzenLabel Text="Email" />
+                <RadzenTextBox @bind-Value="user.Email" class="my-2" />
+                <ValidationMessage For="() => user.Email" />
 
-                <RadzenButton class="my-2" Text="Login" Disabled="isLoading" ButtonStyle="Radzen.ButtonStyle.Success" ButtonType="ButtonType.Submit"/>
+                <RadzenLabel Text="Password" />
+                <RadzenPassword @bind-Value="user.Password" class="my-2" />
+                <ValidationMessage For="() => user.Password" />
+
+                <RadzenButton class="my-2" Text="Login" Disabled="isLoading" ButtonStyle="Radzen.ButtonStyle.Success" ButtonType="ButtonType.Submit" />
 
             </RadzenCard>
 
@@ -79,10 +82,7 @@
         {
             isLoading = false;
 
-            NotificationMessage message = new NotificationMessage { Severity = NotificationSeverity.Info,
-                Summary = "Error",
-                Detail = e.Message,
-                Duration = 4000 };
+            NotificationMessage message = new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Error",Detail = e.Message,Duration = 4000 };
 
             NotificationService.Notify(message);
         }

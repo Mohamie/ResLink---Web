@@ -1,16 +1,61 @@
 ﻿@page "/manager/register"
 @inject DialogService DialogService
 
-<RadzenButton Disabled="@isDataLoaded" Text="Register Admin" Icon="admin_panel_settings" Click="(() => AddUser(StudentRoleViewModel.HouseCommittee))"/>
-<AdminList/>
 
-<RadzenButton Disabled="@isDataLoaded" Text="Register Student" Icon="group_add" Click="(() => AddUser(StudentRoleViewModel.Regular))" />
-<InmatesList/>
+@if (HouseCommittees != null && Students != null)
+{
+    <div class="row my-3">
+
+        <div class="col-3">
+            <RadzenCard>
+
+                <div class="row align-items-center no-gutters">
+                    <div class="col mr-2">
+                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Registered Admins</span></div>
+                        <div class="text-dark font-weight-bold h5 mb-0"><span>@HouseCommittees.Count</span></div>
+                    </div>
+                    <div class="col-auto"><span class="oi oi-people" aria-hidden="true"></span></div>
+                </div>
+
+            </RadzenCard>
+
+        </div>
+        <div class="col-3">
+            <RadzenCard>
+                <div class="row align-items-center no-gutters">
+                    <div class="col mr-2">
+                        <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>Registered Regular Students</span></div>
+                        <div class="text-dark font-weight-bold h5 mb-0"><span>@Students.Count</span></div>
+                    </div>
+                    <div class="col-auto"><span class="oi oi-people" aria-hidden="true"></span></div>
+                </div>
+            </RadzenCard>
+
+        </div>
+
+    </div>
+
+    <RadzenButton Disabled="@isDataLoaded" Text="Register Admin" Icon="admin_panel_settings" Click="(() => AddUser(StudentRoleViewModel.HouseCommittee))" />
+    <AdminList HouseCommittees="HouseCommittees" />
+
+    <RadzenButton Disabled="@isDataLoaded" Text="Register Student" Icon="group_add" Click="(() => AddUser(StudentRoleViewModel.Regular))" />
+    <InmatesList StudentsList="Students"/>
+
+}
+else
+{
+    <div>Loading data please wait......</div>
+}
 
 
-@code 
+
+
+
+@code
 {
     StudentViewModel studentViewModel;
+
+
 
     public List<HCRole> HCRoles { get; set; }
     public Gender StudentGender { get; set; }
@@ -18,12 +63,22 @@
     public UserRole AdminRole { get; set; }
     public UserRole RegularRole { get; set; }
 
+    public List<HouseCommittee> HouseCommittees { get; set; }
+    public List<Student> Students { get; set; }
+
+    public HouseCommittee NewHC { get; set; }
+
 
     BackendlessUser currentLoggedUser;
     bool isDataLoaded = true;
 
     protected override async Task OnInitializedAsync()
     {
+
+        HouseCommittees = (await HouseCommitteeRepository.GetHouseCommittees()).ToList();
+        Students = (await StudentRepository.GetRegularStudents()).ToList();
+
+
         HCRoles = (await HCRoleRepository.GetHCRoles()).ToList();
         AdminRole = await UserRoleRepository.GetAdminRole();
         RegularRole = await UserRoleRepository.GetRegularRole();
@@ -38,112 +93,120 @@
 
         StudentGender = (residence as Residence).ResidenceGender;
 
-        @*currentLoggedUser = Backendless.UserService.CurrentUser;
-        currentLoggedUser = await UserAccountRepository.GetRelations(currentLoggedUser.ObjectId);
 
-        var res = currentLoggedUser.GetProperty("residence");
-
-        StudentGender = (res as Residence).ResidenceGender;
-*@
-
-    isDataLoaded = false;
-}
+        isDataLoaded = false;
+    }
 
 
-private async Task AddUser(StudentRoleViewModel role)
-{
-
-    studentViewModel = await DialogService.OpenAsync<RegisterStudentPage>("Register Student", new Dictionary<string, object> { { "Gender", StudentGender }, { "Role", role }, { "HCRoles", HCRoles } });
-
-    if(studentViewModel != null)
+    private async Task AddUser(StudentRoleViewModel role)
     {
-        try
+
+        studentViewModel = await DialogService.OpenAsync<RegisterStudentPage>("Register Student", new Dictionary<string, object> { { "Gender", StudentGender }, { "Role", role }, { "HCRoles", HCRoles } },
+            new DialogOptions() { Width = "700px", Height = "800px" });
+
+        if (studentViewModel != null)
         {
-            BackendlessUser studentAccount = null;
-            Student student = new Student();
-
-            //Create Student Account using email and password
-            if (role == StudentRoleViewModel.HouseCommittee)
+            try
             {
-                studentAccount = await ResLinkUserRegistration.RegisterUserAccount(studentViewModel.Email, studentViewModel.Password);
+                BackendlessUser studentAccount = null;
+                Student student = new Student();
 
-                //set UserRole
-                object[] userRoleChild = new object[] { AdminRole };
-                await UserAccountRepository.SetRelation(studentAccount, "userRole", userRoleChild);
-
-            }
-
-            if (role == StudentRoleViewModel.Regular)
-            {
-                studentAccount = await ResLinkUserRegistration.RegisterUserAccount(studentViewModel.Email, studentViewModel.Password);
-
-                //set UserRole
-                object[] userRoleChild = new object[] { RegularRole};
-                await UserAccountRepository.SetRelation(studentAccount, "userRole", userRoleChild);
-
-            }
-
-            //set Residence
-            object[] residenceChild = new object[] { Residence };
-            await UserAccountRepository.SetRelation(studentAccount, "residence", residenceChild);
-
-
-
-            //Save student details in student 
-            student.StudentNumber = Convert.ToInt32(studentViewModel.StudentNumber);
-            student.FullNames = studentViewModel.FirstNames;
-            student.LastName = studentViewModel.LastName;
-            student.PhoneNumber = studentViewModel.PhoneNumber;
-            student.RoomNumber = studentViewModel.RoomNumber;
-
-            student = await StudentRepository.SaveStudent(student);
-
-            if (student != null)
-            {
-                //SetRelation for studentAccount and gender
-
-                //set studentAccount
-                object[] studentAccountChild = new object[] { studentAccount };
-                await StudentRepository.SetRelation(student, "studentAccount", studentAccountChild);
-
-
-                //set gender
-                object[] genderChild = new object[] { studentViewModel.Gender };
-                await StudentRepository.SetRelation(student, "gender", genderChild);
-
-
-                //Set HouseCommitte
+                //Create Student Account using email and password
                 if (role == StudentRoleViewModel.HouseCommittee)
                 {
-                    HouseCommittee houseCommittee = new HouseCommittee();
+                    studentAccount = await ResLinkUserRegistration.RegisterUserAccount(studentViewModel.Email, studentViewModel.Password);
 
-                    //save to obtain objectId
-                    houseCommittee = await HouseCommitteeRepository.SaveHouseCommittee(houseCommittee);
+                    //set UserRole
+                    object[] userRoleChild = new object[] { AdminRole };
+                    await UserAccountRepository.SetRelation(studentAccount, "userRole", userRoleChild);
 
-                    //set student
-                    object[] studentChild = new object[] { student };
-                    await HouseCommitteeRepository.SetRelation(houseCommittee, "student", studentChild);
+                }
 
-                    //set HCRole
-                    object[] hcRoleChild = new object[] { studentViewModel.HCRole };
-                    await HouseCommitteeRepository.SetRelation(houseCommittee, "hcRole", hcRoleChild);
+                if (role == StudentRoleViewModel.Regular)
+                {
+                    studentAccount = await ResLinkUserRegistration.RegisterUserAccount(studentViewModel.Email, studentViewModel.Password);
+
+                    //set UserRole
+                    object[] userRoleChild = new object[] { RegularRole };
+                    await UserAccountRepository.SetRelation(studentAccount, "userRole", userRoleChild);
+
+                }
+
+                //set Residence
+                object[] residenceChild = new object[] { Residence };
+                await UserAccountRepository.SetRelation(studentAccount, "residence", residenceChild);
+
+
+
+                //Save student details in student
+                student.StudentNumber = Convert.ToInt32(studentViewModel.StudentNumber);
+                student.FullNames = studentViewModel.FirstNames;
+                student.LastName = studentViewModel.LastName;
+                student.PhoneNumber = studentViewModel.PhoneNumber;
+                student.RoomNumber = studentViewModel.RoomNumber;
+
+                student = await StudentRepository.SaveStudent(student);
+
+                if (student != null)
+                {
+                    //SetRelation for studentAccount and gender
+
+                    //set studentAccount
+                    object[] studentAccountChild = new object[] { studentAccount };
+                    await StudentRepository.SetRelation(student, "studentAccount", studentAccountChild);
+
+
+                    //set gender
+                    object[] genderChild = new object[] { studentViewModel.Gender };
+                    await StudentRepository.SetRelation(student, "gender", genderChild);
+
+
+                    //Set HouseCommitte
+                    if (role == StudentRoleViewModel.HouseCommittee)
+                    {
+                        HouseCommittee houseCommittee = new HouseCommittee();
+
+                        //save to obtain objectId
+                        houseCommittee = await HouseCommitteeRepository.SaveHouseCommittee(houseCommittee);
+
+                        //set student
+                        object[] studentChild = new object[] { student };
+                        await HouseCommitteeRepository.SetRelation(houseCommittee, "student", studentChild);
+
+                        //set HCRole
+                        object[] hcRoleChild = new object[] { studentViewModel.HCRole };
+                        await HouseCommitteeRepository.SetRelation(houseCommittee, "hcRole", hcRoleChild);
+
+                        //add hc to memory
+                        HouseCommittees = null;
+                        HouseCommittees = (await HouseCommitteeRepository.GetHouseCommittees()).ToList();
+
+
+
+                    }
+
+                    if (role == StudentRoleViewModel.Regular)
+                    {
+                        //add student to memory
+                        Students = null;
+                        Students = (await StudentRepository.GetRegularStudents()).ToList();
+
+                    }
+
 
 
                 }
 
-
             }
+            catch (Exception e)
+            {
 
+                Console.WriteLine("Error: " + e.Message);
+            }
         }
-        catch (Exception e)
-        {
 
-            Console.WriteLine("Error: " + e.Message);
-        }
+
+
+
     }
-
-
-
-
-}
 }

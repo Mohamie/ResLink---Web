@@ -1,39 +1,49 @@
-﻿
+﻿@inject DialogService DialogService
 
-
-<h3 class="text-muted ">House Committe List</h3>
+<h3 class="text-muted text-center">House Committe List</h3>
 
 <RadzenGrid class="shadow my-3" AllowFiltering="true" AllowPaging="true" PageSize="5"
             AllowSorting="true" Data="@HouseCommittees" TItem="HouseCommittee" ColumnWidth="200px">
     <Columns>
         <RadzenGridColumn TItem="HouseCommittee" Property="Student.StudentNumber" Title="Student Number" />
-        <RadzenGridColumn TItem="HouseCommittee" Property="Student.FirstNames" Title="First Name" />
+        <RadzenGridColumn TItem="HouseCommittee" Property="Student.FullNames" Title="First Name" />
         <RadzenGridColumn TItem="HouseCommittee" Property="Student.LastName" Title="Last Name" />
-        <RadzenGridColumn TItem="HouseCommittee" Property="Student.Gender" Title="Gender" />
+        <RadzenGridColumn TItem="HouseCommittee" Property="Student.Gender.GenderName" Title="Gender" />
         <RadzenGridColumn TItem="HouseCommittee" Property="Student.PhoneNumber" Title="Phone Number" />
         <RadzenGridColumn TItem="HouseCommittee" Property="Student.RoomNumber" Title="Room Number" />
-        <RadzenGridColumn TItem="HouseCommittee" Property="HcRole.HcRoleName" Title="Role" />
+
+        <RadzenGridColumn TItem="HouseCommittee" Context="hc" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+
+            <Template Context="hc">
+
+                <RadzenButton Icon="edit" Size="ButtonSize.Medium" />
+
+            </Template>
+
+        </RadzenGridColumn>
+
+        <RadzenGridColumn TItem="HouseCommittee" Context="hc" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+
+            <Template Context="hc">
+
+                <RadzenButton Icon="visibility" Size="ButtonSize.Medium" Click="(() => AdminDetails(hc))"/>
+
+            </Template>
+
+        </RadzenGridColumn>
+
     </Columns>
 </RadzenGrid>
 
-@code {
+@code 
+{
+    [Parameter]
+    public List<HouseCommittee> HouseCommittees { get; set; }
 
-    List<HouseCommittee> HouseCommittees = new List<HouseCommittee>();
-    public Residence Residence { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    async Task AdminDetails(HouseCommittee hc)
     {
-
-        //Get Currently Logged User
-        var account = await UserAccountRepository.GetCurrentlyLoggedAccount();
-
-        var residence = (Residence)account.GetProperty("residence");
-
-        Residence = residence;
-
-        HouseCommittees = (await HouseCommitteeRepository.GetHouseCommittees()).ToList();
-
+        await DialogService.OpenAsync<UserProfile>("Admin Details", new Dictionary<string, object> { { "HCProfile", hc } });
     }
-
 
 }

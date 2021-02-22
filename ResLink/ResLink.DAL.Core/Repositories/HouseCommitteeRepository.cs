@@ -55,6 +55,12 @@ namespace ResLink.DAL.Repositories
             string whereClause = $"objectId in (HouseCommittee[student.studentAccount.residence.objectId = '{loggedResidence.objectId}'].objectId)";
 
             queryBuilder.SetWhereClause(whereClause);
+            queryBuilder.AddRelated("student");
+            queryBuilder.AddRelated("student.studentAccount.residence");
+            queryBuilder.AddRelated("student.studentAccount.residence.residenceManager");
+            queryBuilder.AddRelated("hcRole");
+            queryBuilder.AddRelated("student.gender");
+
             return await instance.db.GetItems<HouseCommittee>(queryBuilder);
 
         }

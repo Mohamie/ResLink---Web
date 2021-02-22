@@ -4,7 +4,7 @@
 
 
 <RadzenGrid class="shadow m-1" AllowFiltering="true" AllowPaging="true" PageSize="displayPages"
-            AllowSorting="true" Data="@announcements" TItem="Announcement" ColumnWidth="200px">
+            AllowSorting="true" Data="@AnnouncementList" TItem="Announcement" ColumnWidth="200px">
     <Columns>
         <RadzenGridColumn Width="200px" TItem="Announcement" Property="HouseCommittee.HcRole.HcRoleName" Title="HC Role" />
         <RadzenGridColumn TItem="Announcement" Property="AnnouncementTitle" Title="Announcement Title" />
@@ -55,22 +55,16 @@
 
 @code {
 
-    List<Announcement> announcements = new List<Announcement>();
 
     [Parameter]
-    public Announcement Announcement { get; set; }
+    public List<Announcement> AnnouncementList { get; set; }
 
     [Parameter]
     public bool IsDisplayOnly { get; set; }
 
     private int displayPages = 10;
 
-    Announcement newAnnouncement;
-
-    protected override async Task OnInitializedAsync()
-    {
-        announcements = await AnnouncementRepository.GetAnnouncements() as List<Announcement>;
-    }
+    
 
     private async Task Edit(Announcement announcement)
     {
@@ -89,14 +83,6 @@
         if (IsDisplayOnly)
         {
             displayPages = 5;
-        }
-
-        //To be refactored
-        newAnnouncement = Announcement;
-
-        if (newAnnouncement != null)
-        {
-            announcements.Add(newAnnouncement);
         }
     }
 }

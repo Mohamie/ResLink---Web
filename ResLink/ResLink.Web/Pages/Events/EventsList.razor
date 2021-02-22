@@ -3,7 +3,7 @@
 <h3 class="text-muted">Events List</h3>
 
 <RadzenGrid class="shadow m-1" AllowFiltering="true" AllowPaging="true" PageSize="10"
-            AllowSorting="true" Data="@events" TItem="Event" ColumnWidth="200px">
+            AllowSorting="true" Data="@Events" TItem="Event" ColumnWidth="200px">
     <Columns>
         <RadzenGridColumn TItem="Event" Property="EventTitle" Title="Title" />
         <RadzenGridColumn TItem="Event" Property="EventDescription" Title="Description" />
@@ -25,13 +25,9 @@
 
 @code {
 
-    List<Event> events = new List<Event>();
+    [Parameter]
+    public List<Event> Events { get; set; }
 
-
-    protected override async Task OnInitializedAsync()
-    {
-        events = await EventRepository.GetEvents() as List<Event>;
-    }
 
     private async Task Details(Event _event)
     {

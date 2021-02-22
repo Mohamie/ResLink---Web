@@ -14,7 +14,7 @@ namespace ResLink.DAL.Repositories
         private ResLinkDatabase db = null;
         protected static UserAccountRepository instance;
 
-        DataQueryBuilder queryBuilder;
+        private static DataQueryBuilder queryBuilder;
 
         static UserAccountRepository()
         {
@@ -82,6 +82,36 @@ namespace ResLink.DAL.Repositories
             return user;
         }
 
-        
+        public static async Task<IEnumerable<BackendlessUser>> GetAdminsByResidence()
+        {
+            var manager = await GetRelations((await GetCurrentlyLoggedAccount()).ObjectId);
+            var loggedResidence = manager.GetProperty("residence") as Residence;
+
+            string whereClause = $"objectId in (Users[residence.objectId = '{loggedResidence.objectId}' and  userRole.roleId = '1'].objectId)";
+
+            queryBuilder.SetWhereClause(whereClause);
+            queryBuilder.AddRelated("residence");
+            queryBuilder.AddRelated("residence.residenceGender");
+            queryBuilder.AddRelated("userRole");
+
+            return await instance.db.GetItems<BackendlessUser>(queryBuilder); 
+        }
+
+        public static async Task<IEnumerable<BackendlessUser>> GetRegularStudentsByResidence()
+        {
+            var manager = await GetRelations((await GetCurrentlyLoggedAccount()).ObjectId);
+            var loggedResidence = manager.GetProperty("residence") as Residence;
+
+            string whereClause = $"objectId in (Users[residence.objectId = '{loggedResidence.objectId}' and  userRole.roleId = '2'].objectId)";
+
+            queryBuilder.SetWhereClause(whereClause);
+            queryBuilder.AddRelated("residence");
+            queryBuilder.AddRelated("residence.residenceGender");
+            queryBuilder.AddRelated("userRole");
+
+            return await instance.db.GetItems<BackendlessUser>(queryBuilder);
+
+        }
+
     }
 }

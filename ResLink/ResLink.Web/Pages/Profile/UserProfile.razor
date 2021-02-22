@@ -1,4 +1,29 @@
 ﻿
+@if (ManagerProfile != null)
+{
+    <table class="table table-striped table-bordered table-dark">
+
+        <tr>
+            <th>Manger Names</th>
+            <td class="text-success">@ManagerProfile.ManagerFirstName @ManagerProfile.ManagerLastName</td>
+        </tr>
+
+
+        <tr>
+            <th>Manager Email</th>
+            <td class="text-success">@ManagerProfile.ManagerAccount.Email</td>
+        </tr>
+
+
+        <tr>
+            <th>Residence</th>
+            <td class="text-info">@((ManagerProfile.ManagerAccount.GetProperty("residence") as Residence).ResidenceName)</td>
+        </tr>
+
+    </table>
+
+}
+
 @if (HCProfile != null)
 {
     <table class="table table-striped table-bordered table-dark">
@@ -36,7 +61,7 @@
 
         <tr>
             <th>Student's Room Number</th>
-            <td class="text-success">@HCProfile.Student.PhoneNumber</td>
+            <td class="text-success">@HCProfile.Student.RoomNumber</td>
         </tr>
 
         <tr>
@@ -53,30 +78,62 @@
     </table>
 }
 
-@if (ManagerProfile != null)
+@if (RegularStudent != null)
 {
     <table class="table table-striped table-bordered table-dark">
 
         <tr>
-            <th>Manger Names</th>
-            <td class="text-success">@ManagerProfile.ManagerFirstName @ManagerProfile.ManagerLastName</td>
+            <th>Student Names</th>
+            <td class="text-success">@RegularStudent.FullNames @RegularStudent.LastName</td>
         </tr>
 
-        
         <tr>
-            <th>Manager Email</th>
-            <td class="text-success">@ManagerProfile.ManagerAccount.Email</td>
+            <th>Student Number</th>
+            <td class="text-success">@RegularStudent.StudentNumber</td>
         </tr>
 
+        <tr>
+            <th>Student Role (End-User)</th>
+            <td class="text-success">Regular Student</td>
+        </tr>
+
+        <tr>
+            <th>Student's Gender</th>
+            <td class="text-success">@RegularStudent.Gender.GenderName</td>
+        </tr>
+
+        <tr>
+            <th>Student Email</th>
+            <td class="text-success">@RegularStudent.StudentAccount.Email</td>
+        </tr>
+
+
+        <tr>
+            <th>Student's PhoneNumber</th>
+            <td class="text-success">@RegularStudent.PhoneNumber</td>
+        </tr>
+
+        <tr>
+            <th>Student's Room Number</th>
+            <td class="text-success">@RegularStudent.RoomNumber</td>
+        </tr>
 
         <tr>
             <th>Residence</th>
-            <td class="text-info">@((ManagerProfile.ManagerAccount.GetProperty("residence") as Residence).ResidenceName)</td>
+            <td class="text-info">@((RegularStudent.StudentAccount.GetProperty("residence") as Residence).ResidenceName)</td>
         </tr>
+
+        <tr>
+            <th>Residence Manager</th>
+            <td class="text-info">@((RegularStudent.StudentAccount.GetProperty("residence") as Residence).ResidenceManager.ManagerFirstName) @((RegularStudent.StudentAccount.GetProperty("residence") as Residence).ResidenceManager.ManagerLastName)</td>
+        </tr>
+
 
     </table>
 
 }
+
+
 
 @code {
 
@@ -85,6 +142,9 @@
 
     [Parameter]
     public ResidenceManager ManagerProfile { get; set; }
+
+    [Parameter]
+    public Student RegularStudent { get; set; }
 
 
 }
