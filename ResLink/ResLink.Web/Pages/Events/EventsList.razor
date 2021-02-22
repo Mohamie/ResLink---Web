@@ -1,4 +1,5 @@
-﻿@inject DialogService DialogService
+﻿@inject NotificationService NotificationService
+@inject DialogService DialogService
 
 <h3 class="text-muted">Events List</h3>
 
@@ -9,6 +10,17 @@
         <RadzenGridColumn TItem="Event" Property="EventDescription" Title="Description" />
         <RadzenGridColumn TItem="Event" Property="EventStartTime" Title="Date Scheduled" />
         <RadzenGridColumn TItem="Event" Property="Coordinator.Student.FullNames" Title="Coordinator" />
+
+        <RadzenGridColumn TItem="Event" Context="_event" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+
+            <Template Context="_event">
+
+                <RadzenButton Icon="edit" Size="ButtonSize.Medium" Click="((args) => Edit(_event))" />
+
+            </Template>
+
+        </RadzenGridColumn>
+
 
         <RadzenGridColumn TItem="Event" Context="_event" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
 
@@ -34,4 +46,29 @@
         await DialogService.OpenAsync<EventDetailsPage>("Event Details", new Dictionary<string, object> { { "Event", _event } });
     }
 
+    private async Task Edit(Event _event)
+    {
+        EventViewModel viewModel = await DialogService.OpenAsync<AddEventPage>("Edit Event", new Dictionary<string, object> { { "EditEvent", _event}, { "EventStartTime", _event.EventStartTime }, { "EventEndTime", _event.EventEndTime} });
+
+        if(viewModel != null)
+        {
+            _event.EventTitle = viewModel.EventTitle;
+            _event.EventDescription = viewModel.EventDescription;
+            _event.EventStartTime = viewModel.StartDate;
+            _event.EventEndTime = viewModel.EndDate;
+
+            _event = await EventRepository.SaveEvent(_event);
+
+            if(_event != null)
+            {
+                Events = (await EventRepository.GetEvents()).ToList();
+
+
+                NotificationMessage message = new NotificationMessage { Severity = NotificationSeverity.Success, Summary = "Event:", Detail = "Updated Successfuly", Duration = 4000 };
+
+                NotificationService.Notify(message);
+            }
+        }
+
+    }
 }

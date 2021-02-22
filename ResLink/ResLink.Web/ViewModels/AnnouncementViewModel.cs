@@ -11,6 +11,8 @@ namespace ResLink.Web.ViewModels
     public class AnnouncementViewModel
     {
 
+        public string objectId { get; set; }
+
         [Required]
         public string AnnouncementTitle { get; set; }
 

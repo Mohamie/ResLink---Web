@@ -20,7 +20,19 @@
 
 
     AnnouncementViewModel announcementViewModel = new AnnouncementViewModel();
-    
+
+    [Parameter]
+    public Announcement EditAnnouncement { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if(EditAnnouncement != null)
+        {
+            announcementViewModel.objectId = EditAnnouncement.objectId;
+            announcementViewModel.AnnouncementTitle = EditAnnouncement.AnnouncementTitle;
+            announcementViewModel.AnnouncementDescription = EditAnnouncement.AnnouncementDescription;
+        }
+    }
 
     private void OnSubmit()
     {
